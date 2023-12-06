@@ -1,0 +1,178 @@
+
+<%-include("../partials/head.ejs")%>
+<body class="bg-[#F2F2F2]">
+    <%-include("../partials/header.ejs")%>
+    <main class="px-10 flex">
+        <div class="left mt-28 space-y-4 border-r-[.1px] border-gray-400  w-fit  pr-2 pb-1 pt-1">
+            <a class="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-6" src="/images/dashboardIcon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Dashboard</h2>
+            </a>
+            <a href="products" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/productsIcon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Products</h2>
+            </a>
+            <a href="customers" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3 ">
+                <img class="h-5" src="/images/customersicon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Customers</h2>
+            </a>
+            <a href="orders" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-5" src="/images/ordersIconselected.png" alt="">
+                <h2 class="text-base font-semibold text-[#4B727A]">Orders</h2>
+            </a>
+            <a href="category" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/categoryicon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Category</h2>
+            </a>
+            <a href="banner" class="flex items-center space-x-2 mb-12 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3 ">
+                <img class="h-3" src="/images/bannericon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878] pr-10 whitespace-nowrap ">Banner Manage</h2>
+            </a>
+        </div>
+        
+        <div class="right mt-20 ml-16 w-full">
+            <div class="searchandsort flex justify-between space-x-6">
+                <div class="flex space-x-6">
+                    <form action="">
+                        <label class="text-xs text-[#333333]" for="">sort</label>
+                        <select name="" id="" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
+                            <option  value="">Date</option>
+                            <option value="">Price</option>
+                        </select>
+                        <label class="text-xs text-[#333333]" for="">by</label>
+                        <select name="" id="" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                            <option value="">All</option>
+                            <option value="">Ascending
+                            </option>
+                            <option value="">Descending</option>
+                        </select>
+                    </form>
+                    <form action="">
+                        <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                            <option value="">Delivered</option>
+                            <option value="">Packed</option>
+                            <option value="">Shipped</option>
+                            <option value="">Cancelled</option>
+                        </select>
+                    </form>
+                </div>
+                <form action="">
+                    <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
+                        <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search customers.. ">
+                        <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
+                            <img src="/images/search white.png" class="h-4" alt="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <table class=" w-full mt-2 ">
+                <tr class="bg-[#5E8E99]   text-white text-left font-medium  ">
+                    <th class="font-medium ps-3 rounded-tl-md py-2">Order ID </th>
+                    <TH class="font-medium  ">Address</TH>
+                    <th class="font-medium">Phone</th>
+                    <th class="font-medium text-center">Date</th>
+                    <th class="font-medium text-center">Price</th>
+                    <th class="font-medium text-center">Status</th>
+                    <th class="rounded-tr-md font-medium text-center">Action</th>
+                </tr>
+                
+                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
+                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
+                        Ma’adin,Edupark alathurpadi 
+                        Manjeri  ,676121
+                    </td>
+                    <td>8086812602</td>
+                    <td class="text-center ">dd/mm/yyyy</td>
+                    <td class="text-center">₹599</td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-5 ">
+                            <div>
+                                Cancelled
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
+                            <img class="h-4" src="/images/edit blue.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
+                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
+                        Ma’adin,Edupark alathurpadi 
+                        Manjeri ,676121
+                    </td>
+                    <td>8086812602</td>
+                    <td class="text-center ">dd/mm/yyyy</td>
+                    <td class="text-center">₹599</td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#FEF1E2] text-[#FCB547] rounded-full text-center w-2/3 ml-5 ">
+                            <div>
+                                Shipped
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
+                            <img  class="h-4" src="/images/edit blue.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
+                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
+                        Ma’adin,Edupark alathurpadi 
+                        Manjeri ,676121
+                    </td>
+                    <td>8086812602</td>
+                    <td class="text-center ">dd/mm/yyyy</td>
+                    <td class="text-center">₹599</td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 ml-5 ">
+                            <div>
+                                Active
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
+                            <img class="h-4" src="/images/edit blue.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
+                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
+                        Ma’adin,Edupark alathurpadi 
+                        Manjeri ,676121
+                    </td>
+                    <td>8086812602</td>
+                    <td class="text-center ">dd/mm/yyyy</td>
+                    <td class="text-center">₹599</td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 ml-5 ">
+                            <div>
+                                Delivered
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
+                            <img class="h-4" src="/images/edit blue.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+               
+               
+            </table>
+           
+
+        </div>
+    </main>
+    <%-include("../partials/ordermanagmentPopup.ejs")%>
+</body>
+<script src="/javascripts/admin/adminOrders.js"></script>
+</html>

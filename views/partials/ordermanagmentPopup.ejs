@@ -1,0 +1,138 @@
+
+<%-include("head.ejs")%>
+<body class="bg-slate-200 ">
+    <div class="fixed inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)] hidden" id="ordermanagmentPopup">
+        <form action="" class=" bg-white rounded-lg w-fit   py-8 px-5 relative  text-sm pr-8 pt-10 grid grid-cols-2 grid-rows-2">
+            <div class="shadow-xl px-2 py-3 rounded-lg mr-3 mb-3 max-w-sm max-h-72 overflow-y-auto"><!--First part-->
+                <table class=""> 
+                    <tr class=" ">
+                        <th class="text-left w-40 text-sm ">Address</th>
+                        <th class=""></th>
+                    </tr>
+                    <tr class="text-[#333333]">
+                        <td class="">Name</td>
+                        <td>Shibil Muhammad</td>
+                    </tr>
+                    <tr class="text-[#333333]">
+                        <td>Phone</td>
+                        <td>8086812602 </td>
+                    </tr>
+                    <tr class="text-[#333333]">
+                        <td class="">House No/Name</td>
+                        <td>356 </td>
+                    </tr>
+                    <tr class="text-[#333333]">
+                        <td>Area</td>
+                        <td>vadakra </td>
+                    </tr>
+                    <tr class="text-[#333333]">
+                        <td>City</td>
+                        <td>Kozhickode </td>
+                    </tr>
+                    <tr class="text-[#333333]">
+                        <td>State</td>
+                        <td>Kerala </td>
+                    </tr>
+                    <tr class="text-[#333333]">
+                        <td>Pincode</td>
+                        <td>673524 </td>
+                    </tr>
+                    <tr class="text-[#333333]"> 
+                        <td>Land Mark</td>
+                        <td>Near kuniyil thazhe juma masjid 
+                        </td>
+                    </tr>
+                   </table>
+            </div>
+           <div class="shadow-xl px-2 py-3 rounded-lg mb-3 max-h-72 overflow-y-auto">  <!--second part-->
+            <h1 class="text-sm font-semibold">Products</h1>
+            <div class="flex space-x-3  border-[.1px] border-gray-400">
+                <div class="w-4/12 flex justify-center items- border-r-[.1px] border-gray-400">
+                    <div class="py-3 ">
+                        <img class="h-20" src="/images/alchemist.jpeg" alt="">
+                        <div class="bg-[#E8E8E8] text-[10px] flex justify-around mt-2 rounded-sm whitespace-now">
+                            <p class="text-gray-500">Qty</p> <span>2</span>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h1 class="text-lg text-[#4B727A] font-semibold">The Alchemist</h1>
+                    <h2 class="text-[#5E8E99] text-base">Paulo Coelho </h2>
+                    <div class="flex space-x-1 items-center">
+                        <p class="font-semibold">₹150</p><span class="text-xs line-through text-[#666666]">MRP 250</span>
+                    </div> 
+                </div>
+            </div>
+            
+          
+           </div>
+           <div class="shadow-xl px-2 py-3 rounded-lg mr-3">  <!--third part-->
+            <table> 
+                <tr class="text-[#333333]"  >
+                    <th class="text-left w-40 ">Payment Summary</th>
+                    <th class=""></th>
+                </tr>
+                <tr class="text-[#333333">
+                    <td class="">Payment Method</td>
+                    <td>Debit Card</td>
+                </tr>
+                <tr>
+                    <td>Shipping charge</td>
+                    <td>₹40 </td>
+                </tr>
+                <tr class="text-[#333333">
+                    <td class="">Discount</td>
+                    <td>₹40 </td>
+                </tr>
+                <tr class="text-[#333333">
+                    <td>Total Amount </td>
+                    <td>₹400 </td>
+                </tr>
+                <tr class="text-[#333333">
+                    <td>Phone</td>
+                    <td>3022333453 </td>
+                </tr>
+                <tr text-[#333333>
+                    <td>Created on</td>
+                    <td>dd/mm/yyyy 12:14:25 am </td>
+                </tr>
+               </table>
+           </div>
+           <div class="flex flex-col justify-between shadow-xl px-2 py-3 rounded-lg"> <!--final part-->
+                <h1 class="text-sm font-semibold">Order Status</h1>
+                <div class="flex  space-x-3">
+                    <label for="">Order Status</label>
+                    <div>
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="status" id="Packed">
+                            <label for="Packed">Packed</label>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="status" id="Shipped">
+                            <label for="Shipped">Shipped</label>
+                        </div>
+                        <div class="flex items-center space-x-3"> 
+                            <input type="radio" name="status" id="Delivered">
+                            <label for="Delivered">Delivered</label>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="status" id="Cancelled">
+                            <label for="Cancelled">Cancelled</label>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <button class="w-full bg-[#DAA520] text-white rounded-lg">
+                    Update details
+                </button>
+           </div>
+           <div class="absolute top-4 cursor-pointer right-2" onclick="hideEditOrder()">
+            <img class="h-6" src="/images/close.png" alt="">
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

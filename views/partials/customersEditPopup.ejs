@@ -1,0 +1,46 @@
+
+<%-include("head.ejs")%>
+<body class="bg-slate-200 ">
+    <div class="fixed inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)] hidden" id="customersEditPopup">
+        <form action="" class=" bg-white rounded-lg w-fit  py-8 px-5 relative space-y-6 text-sm pr-8 pt-10">
+           <div  class="space-x-10 flex justify-between">
+            <label for="">Full name</label>
+            <input type="text" name="" id="" class="px-2 border-gray-400 border-[.1px] w-80 rounded-full">
+           </div>
+           <div  class="space-x-10 flex justify-between">
+            <label for="">Email</label>
+            <input type="text" name="" id="" class="px-2 border-gray-400 border-[.1px] w-80 rounded-full">
+           </div>
+           <div  class="space-x-10 flex justify-between">
+            <label for="">Phone</label>
+            <input type="text" name="" id="" class="px-2 border-gray-400 border-[.1px] w-80 rounded-full">
+           </div>
+           <div  class="space-x-14 flex w-full">
+            <label for="">Gender</label>
+            <select class="border-gray-400 border-[.1px] w-4/12  rounded-full text-left text-xs px-2 text-gray-500" name="" id="">
+                <option value="">Male</option>
+                <option value="">Female</option>
+            </select>
+            
+           </div>
+           <div  class="space-x-16 flex w-full">
+            <label for="">Status</label>
+            <select class="border-gray-400 border-[.1px] w-4/12  rounded-full text-left text-xs px-2 text-gray-500" name="" id="">
+                <option value="">Active</option>
+                <option value="">Blocked</option>
+            </select>
+            
+           </div>
+           <div class="w-full ">
+            <button class="bg-[#DAA520] text-white w-full rounded-full font text-base font-normal ">
+                Save
+           </button>
+        </div>
+           <div class="absolute -top-4 cursor-pointer right-2 " onclick="hideCustomerEdit()">
+            <img class="h-6" src="/images/close.png" alt="">
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

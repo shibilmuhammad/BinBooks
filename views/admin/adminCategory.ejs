@@ -1,0 +1,137 @@
+
+    
+<%-include("../partials/head.ejs")%>
+<body class="bg-[#F2F2F2]">
+    <%-include("../partials/header.ejs")%>
+    <main class="px-10 flex">
+        <div class="left mt-28 space-y-4 border-r-[.1px] border-gray-400  w-fit pt-1 pb-1 pr-2">
+            <a href="" class="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-6" src="/images/dashboardIcon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Dashboard</h2>
+            </a>
+            <a href="products" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/productsIcon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Products</h2>
+            </a>
+            <a href="customers" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-5" src="/images/customersicon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Customers</h2>
+            </a>
+            <a href="orders" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-5" src="/images/Orders icon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Orders</h2>
+            </a>
+            <a href="category" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/CategorySelected.png" alt="">
+                <h2 class="text-base font-semibold text-[#4B727A]">Category</h2>
+            </a>
+            <a href="banner" class="flex items-center space-x-2 mb-12 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-3" src="/images/bannericon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878] pr-10 whitespace-nowrap ">Banner Manage</h2>
+            </a>
+        </div>
+        
+        <div class="right mt-20 ml-16 w-full">
+            <div class="searchandsort flex  justify-between">
+                <div class="flex space-x-7 ">
+                    <div class="flex space-x-7">
+                        <form action="" class="flex space-x-1 "><!--sort-->
+                            <div class="flex items-center space-x-1">
+                                <label class="text-xs text-[#333333]" for="">sort</label>
+                              <select name="" id="" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
+                                <option  value="">Product name</option>
+                                <option value="">Price</option>
+                              </select>
+                            </div>
+                            <div class="flex  items-center space-x-1">
+                                <label class="text-xs text-[#333333]" for="">by</label>
+                             <select name="" id="" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                                <option value="">A-Z
+                                </option>
+                                <option value="">Z-A</option>
+                                <option value="">Newset first</option>
+                                <option value="">Oldesr first</option>
+                             </select>
+                            </div>
+                            
+        
+                        </form>
+                        <form action="" ><!--filter-->
+                            <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                                <option value="">All categories</option>
+                                <option value="">Novel</option>
+                                <option value="">Fantasy</option>
+                                <option value="">Comic</option>
+                                <option value="">Relegious</option>
+                                <option value="">Comedy</option>
+                                <option value="">Myseterious</option>
+                                <option value="">Below 100</option>
+                                <option value="">100-200</option>
+                                <option value="">200-300</option>
+                                <option value="">above 300</option>
+                            </select>
+                        </form>
+                    </div>
+                   
+                    <form action=""> <!--search-->
+                        <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search products.. ">
+                            <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
+                                <img src="/images/search white.png" class="h-4" alt="">
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+                <form action="" class="relative flex justify-end cursor-pointer" onclick="showCategoryEdit()">
+                    <img class="h-6 ml-64" src="/images/uploadIcon.png"  alt="">
+                    <h2 class="text-white absolute top-1 right-4 text-xs font-semibold ">Upload</h2>
+                </form>
+            </div>
+  
+            <table class=" w-full mt-2">
+                <tr class="bg-[#5E8E99]   text-white text-left font-medium  ">
+                    <th class="font-medium ps-3 rounded-tl-md py-2">Category ID </th>
+                    <TH class="font-medium text-center  ">Category</TH>
+                    <th class="font-medium text-center">Products</th>
+                    <th class="font-medium text-center">Status</th>
+                    <th class="rounded-tr-md font-medium text-center">Action</th>
+                </tr>
+                <tr class="bg-white  text-sm  ">
+                    <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 ">#3233322 </td>
+                    <td class="max-w-[14rem] truncate pr-6 font-semibold text-center">Novel</td>
+                    <td class="text-center">122</td>
+                    <td class="flex justify-center items-center mt-1">
+                        <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2">Active</div>
+                    </td>
+                    <td>
+                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showCategoryEdit()">
+                            <img class="h-4" src="/images/edit blue.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="bg-white  text-sm  ">
+                    <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 ">#3233322 </td>
+                    <td class="max-w-[14rem] truncate pr-6 font-semibold text-center">Novel</td>
+                    <td class="text-center">122</td>
+                    <td class="flex justify-center items-center mt-1">
+                        <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2">Active</div>
+                    </td>
+                    <td>
+                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showCategoryEdit()">
+                            <img class="h-4" src="/images/edit blue.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+               
+            </table>
+            
+           
+
+        </div>
+    </main>
+    <%-include('../partials/categoryEditPopup.ejs')%>
+    
+</body>
+    <script src="/javascripts/admin/adminCategory.js"></script>
+</html>

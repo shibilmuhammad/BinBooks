@@ -1,0 +1,176 @@
+
+<%-include("../partials/head.ejs")%>
+<body class="bg-[#F2F2F2]">
+    <%-include("../partials/header.ejs")%>
+    <main class="px-10 flex">
+        <div class="left mt-28 space-y-4 border-r-[.1px] border-gray-400  w-fit pt-1 pb-1 pr-2">
+            <a class="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-6" src="/images/dashboardIcon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Dashboard</h2>
+            </a>
+            <a class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/productsIconselected.png" alt="">
+                <h2 class="text-base font-semibold text-[#4B727A]">Products</h2>
+            </a>
+            <a href="customers" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3" >
+                <img class="h-5" src="/images/customersicon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Customers</h2>
+            </a>
+            <a href="orders" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-5" src="/images/Orders icon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Orders</h2>
+            </a>
+            <a href="category" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/categoryicon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Category</h2>
+            </a>
+            <a href="banner" class="flex items-center space-x-2 mb-12 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-3" src="/images/bannericon.png" alt="">
+               <h2 class="text-base font-semibold text-[#7E7878] pr-10 whitespace-nowrap ">Banner Manage</h2>
+            </a>
+        </div>
+
+        <div class="right mt-20 ml-16 w-full">
+            <div class="searchandsort flex  justify-between">
+                <div class="flex space-x-7 ">
+                    <div class="flex space-x-7">
+                        <form action="" class="flex space-x-1 "><!--sort-->
+                            <div class="flex items-center space-x-1">
+                                <label class="text-xs text-[#333333]" for="">sort</label>
+                              <select name="" id="" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
+                                <option  value="">Product name</option>
+                                <option value="">Price</option>
+                              </select>
+                            </div>
+                            <div class="flex  items-center space-x-1">
+                                <label class="text-xs text-[#333333]" for="">by</label>
+                             <select name="" id="" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                                <option value="">A-Z
+                                </option>
+                                <option value="">Z-A</option>
+                                <option value="">Newset first</option>
+                                <option value="">Oldesr first</option>
+                             </select>
+                            </div>
+                            
+        
+                        </form>
+                        <form action="" ><!--filter-->
+                            <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                                <option value="">All categories</option>
+                                <option value="">Novel</option>
+                                <option value="">Fantasy</option>
+                                <option value="">Comic</option>
+                                <option value="">Relegious</option>
+                                <option value="">Comedy</option>
+                                <option value="">Myseterious</option>
+                                <option value="">Below 100</option>
+                                <option value="">100-200</option>
+                                <option value="">200-300</option>
+                                <option value="">above 300</option>
+                            </select>
+                        </form>
+                    </div>
+                   
+                    <form action=""> <!--search-->
+                        <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search products.. ">
+                            <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
+                                <img src="/images/search white.png" class="h-4" alt="">
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+                <div action="" class="relative flex justify-end  cursor-pointer" onclick="showUploadProductPopup()" >
+                    <img class="h-6 ml-64" src="/images/uploadIcon.png"  alt="">
+                    <h2 class="text-white absolute top-1 right-4 text-xs font-semibold ">Upload</h2>
+                </div>
+            </div>
+  
+            <table class=" w-full mt-2">
+                <tr class="bg-[#5E8E99]   text-white text-left font-medium  ">
+                    <th class="font-medium ps-3 rounded-tl-md py-2">Product ID</th>
+                    <TH class="font-medium  ">Product Name</TH>
+                    <th class="font-medium">Category</th>
+                    <th class="font-medium">Author</th>
+                    <th class="font-medium">Price</th>
+                    <th class="font-medium text-center">Status</th>
+                    <th class="rounded-tr-md font-medium">Action</th>
+                </tr>
+                
+                <tr class="bg-white  text-sm  ">
+                    <td class="ps-3 py-2">#135343</td>
+                    <td class="max-w-[14rem] truncate pr-6 font-medium">The Princess Bride: S. Morgenstern's Classic Tale of True Love and High Adventure</td>
+                    <td>Novel</td>
+                    <td>Arthur Conan Doyle</td>
+                    <td>₹299</td>
+                    <td class="flex justify-center items-center mt-1">
+                        <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2">stock</div>
+                    </td>
+                    <td>
+                        <div class="flex space-x-4">
+                            <img  onclick="showEditProductPopup()" class="h-4 cursor-pointer" src="/images/edit blue.png" alt="">
+                            <img    onclick=" deletePopup()" class="h-4 cursor-pointer" src="/images/trash red.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="bg-white  text-sm  ">
+                    <td class="ps-3 py-2">#135343</td>
+                    <td class="max-w-[14rem] truncate pr-6 font-medium">The Curious Incident of the Dog in the Night-Time</td>
+                    <td>Novel</td>
+                    <td>Arthur Conan Doyle</td>
+                    <td>₹299</td>
+                    <td class="flex justify-center items-center mt-1">
+                        <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2">stock</div>
+                    </td>
+                    <td>
+                        <div class="flex space-x-4 cursor-pointer">
+                            <img  onclick="showEditProductPopup()()" class="h-4" src="/images/edit blue.png" alt="">
+                            <img onclick=" deletePopup()" class="h-4 cursor-pointer" src="/images/trash red.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="bg-white  text-sm  ">
+                    <td class="ps-3 py-2">#135343</td>
+                    <td class="max-w-[14rem] truncate pr-6 font-medium">I'd Tell You I Love You, But Then I'd Have to Kill You (Gallagher Girls, #1)</td>
+                    <td>Novel</td>
+                    <td>Arthur Conan Doyle</td>
+                    <td>₹299</td>
+                    <td class="flex justify-center items-center mt-1">
+                        <div class="bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 px-2">no stock</div>
+                    </td>
+                    <td>
+                        <div class="flex space-x-4 cursor-pointer">
+                            <img  onclick="showEditProductPopup()()" class=" cursor-pointer h-4" src="/images/edit blue.png" alt="">
+                            <img onclick=" deletePopup()" class="h-4" src="/images/trash red.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="bg-white  text-sm  ">
+                    <td class="ps-3 py-2">#135343</td>
+                    <td class="max-w-[14rem] truncate pr-6 font-medium">The Hound of baskerville</td>
+                    <td>Novel</td>
+                    <td class="max-w-[10rem] truncate pr-6">Arthur Conan doyale</td>
+                    <td>₹299</td>
+                    <td class="flex justify-center items-center mt-1">
+                        <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2">stock</div>
+                    </td>
+                    <td>
+                        <div class="flex space-x-4 cursor-pointer">
+                            <img  onclick="showEditProductPopup()()" class="cursor-pointer h-4" src="/images/edit blue.png" alt="">
+                            <img onclick=" deletePopup()" class="h-4" src="/images/trash red.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+           
+
+        </div>
+        <%-include("../partials/deletePopup.ejs")%>
+        <%-include("../partials/productUploadPopup.ejs")%>
+    </main>
+    
+</body>
+<script src="/javascripts/admin/adminproducts.js"></script>
+</html>
