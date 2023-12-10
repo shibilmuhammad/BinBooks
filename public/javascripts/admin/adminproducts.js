@@ -26,7 +26,6 @@ function Imagedone(){
     document.getElementById("tickImage").style.display="block";
     document.getElementById("BrowseImage").style.display="none";
     document.getElementById("UploadImage").style.display="none";
-    
 }
 
 

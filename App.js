@@ -18,14 +18,16 @@ app.listen(3000,()=>{
 })
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+// Admin Routes
 const adminProducts = require('./routes/admin/products');
 const adminCustomers = require('./routes/admin/customers');
 const adminOrders = require('./routes/admin/orders')
 const adminCategory = require('./routes/admin/category')
 const adminBannerManage = require('./routes/admin/bannermanage')
-// const userRoutes = require('./routes/user')
+// User Routes
+const userRoutes = require('./routes/user/home')
 
+//Admin Routes use 
 app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage);
-// app.use('/admin',adminProducts);
-// app.use('/admin',adminCustomers);
+//Users Routes use 
+app.use('/user',userRoutes)
