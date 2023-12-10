@@ -47,11 +47,6 @@
 #moreIcon{
   transition: transform .4s;
 }
-/* .dropdown_contents{
-  opacity: 0;
-  display: none;
-  transition: opacitiy 2s;
-} */
 #dropDownContents{
   visibility: hidden;
   opacity: 0 ;
@@ -60,7 +55,4 @@
 #moreIconContainer:hover #dropDownContents {
   visibility: visible;
   opacity: 1 ; }
-  #Sidebar{
-
-  }
 

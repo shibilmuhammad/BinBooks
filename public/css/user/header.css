@@ -1,0 +1,14 @@
+#moreIconContainer:hover #moreIcon {
+    transform: rotate(180deg) }
+  
+  #moreIcon{
+    transition: transform .4s;
+  }
+  #dropDownContents{
+    visibility: hidden;
+    opacity: 0 ;
+    transition: opacity .6s ,visibility .6s;
+  }
+  #moreIconContainer:hover #dropDownContents {
+    visibility: visible;
+    opacity: 1 ; }

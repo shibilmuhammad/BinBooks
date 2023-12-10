@@ -25,9 +25,9 @@ const adminOrders = require('./routes/admin/orders')
 const adminCategory = require('./routes/admin/category')
 const adminBannerManage = require('./routes/admin/bannermanage')
 // User Routes
-const userRoutes = require('./routes/user/home')
-
+const Home = require('./routes/user/home');
+const category = require('./routes/user/category');
 //Admin Routes use 
 app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage);
 //Users Routes use 
-app.use('/user',userRoutes)
+app.use('/user',Home,category)

@@ -1,7 +1,7 @@
 <%-include("../partials/head.ejs")%>
 <link rel="stylesheet" href="/css/user/home.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-<body class="bg-[#F2F2F2]]">
+<body class="bg-[#F2F2F2]">
     <header class="bg-[#5E8E99] md:px-10 px-2 py-2 lg:py-0 ">
         <div class="flex justify-between lg:justify-around  items-center"> <!--Top logo sign in cart-->
             <div class="flex items-center space-x-3 lg:space-x-1 xl:space-x-5 md:space-x-5"> <!--left-->
@@ -404,7 +404,7 @@
                 </div>
             </div>
         </div>
-        <div><!--See All categories-->
+        <a href="/user/category"><!--See All categories-->
             <div  class="">
                 <button class="flex items-center justify-between bg-white my-3  px-3 border w-full py-1 text-sm">
                     <span>See all categories</span>
@@ -413,32 +413,10 @@
                     </span>
                 </button>
             </div>
-        </div>
+        </a>
        
     </main>
-    <footer class="bg-[#E1E0E0] py-4">
-        <div class="flex justify-evenly font-medium text-[10px] text-[#666666]">
-            <div class="flex flex-col text-start">
-                <a href="">About Us</a>
-                <a href="">Contact Us</a>
-                <a href="">Mail Us</a>
-            </div>
-            <div class="flex flex-col text-start">
-                <a href="">Sign in</a>
-                <a href="">Sign up</a>
-                <a href="">Sigh Out</a>
-            </div>
-            <div class="flex flex-col text-start">
-                <a href="">Your Account </a>
-                <a href="">Your Orders</a>
-                <a href="">Become A seller</a>
-
-            </div>
-        </div>
-        <div class="flex justify-center text-[9px] mt-3  border-t-[#666666] border-t-[.1px] pt-2 text-gray-700 "> <!--Copy right-->
-            <p>&copy; 2023 BinBooks All rights reserved.</p>
-        </div>
-    </footer>
+    <%-include("../partials/userFooter.ejs")%>
         <div  id="SidebarContainerr" class="h-full w-full absolute inset-0 bg-[rgba(0,0,0,0.6)] invisible   transition-all duration-75">
             <div id="Sidebar" class="-translate-x-[250px] w-[250px] h-full  overflow-hidden fixed top-0 left-0 transition-all duration-300 ease-in "><!--Side bar Mobile-->
                 <div class="bg-[#5E8E99] min-h-[100px] max-h-[100px] py-5 flex justify-between items-center ">
