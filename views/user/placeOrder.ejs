@@ -1,0 +1,148 @@
+<%-include("../partials/head.ejs")%>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="/css/user/header.css">
+<link rel="stylesheet" href="">
+<body class="bg-[#F2F2F2] flex flex-col h-screen pb-2">
+    <%-include('../partials/headerPhone.ejs')%>
+    <%-include('../partials/HeaderDesktopUser.ejs')%>
+    <main class="pb-16">
+        <div class="bg-white py-5 lg:px-52"><!--Top address progress-->
+            <div class="flex justify-between px-5">
+                <div class="flex  w-full " id="address">
+                    <a href="/user/buynow" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div id="addressSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden "></div> <!--insdie Circle-->
+                        </div>
+                        <p class="text-xs">Address</p>
+                    </a>
+                    <div class="w-full">
+                         <div class=" h-[1px] w-full bg-[#476B73] mt-2 ml-[-10px]"></div>
+                    </div>
+                   
+                </div>
+                <div class="flex  w-full " id="payment">
+                    <a href="/user/payment" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div id="paymentSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden "></div><!--insdie Circle-->
+                        </div>
+                        <p class="text-xs">Payment</p>
+                    </a>
+                    <div class="w-full">
+                        <div class=" h-[1px] w-full bg-[#476B73] mt-2 ml-[-10px] "></div>
+                    </div>
+                    
+                </div>
+                <div class="flex  "  id="placeOrder">
+                    <a href="/user/placeOrder" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div class="h-[14px] w-[14px] bg-[#476B73] rounded-full  " id="placeOrderSelected"></div><!--insdie Circle-->
+                        </div>
+                        <label for="placeOrder" class="text-xs whitespace-nowrap">Place Order</label>
+                    </a>
+                </div>
+
+            </div>            
+        </div>  
+        <div class="px-4 mt-5 lg:px-52">
+            <p class='font-medium text-xl'>Place Order</p>
+            <form action="" class="my-3 mt-5 space-y-3">
+                <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--order detais-->
+                    <p class="text-base font-semibold">Order Details</p>
+                    <div class="flex space-x-20 ">
+                        <div class="text-sm  space-y-3 text-[#666666]">
+                            <p>Price(2 items)</p>
+                            <p class="text-red-700">Delivery</p>
+                            <p class="text-green-700">Discount</p>
+                            
+                        </div>
+                        <div class="text-sm  space-y-3 text-[#666666]">
+                            <p>₹500</p>
+                            <p class="text-red-700">₹40</p>
+                            <p class="text-green-700">₹250</p>
+                            
+                        </div>
+                    </div>
+                    <div class="flex space-x-20 border-t text-sm font-semibold  py-2">
+                        <p>Total Amount</p>
+                        <p>₹290</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--Payment method-->
+                    <p class="text-base font-semibold">Payment Method</p>
+                    <a href="" class="flex items-center justify-between">
+                        <p class="text-[#666666] text-sm">Cash on delivery</p>
+                        <div class=" rounded-[50%] cursor-pointer bg-gray-100 m-[5px] inline-block">
+                            <span class="material-symbols-outlined  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
+                                chevron_right
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="bg-white rounded-md px-5 py-3 space-y-3"> <!--Deliver to-->
+                    <div href="" class="flex items-center justify-between">
+                        <div>
+                            <p class="text-base font-semibold pb-3">Deliver to</p>
+                            <p class="text-[#333333] font-semibold text-sm">Shibil Muhammad</p>
+                             <p class="text-[#333333] text-sm">Maadin Edupark </p>
+                            <p class="text-[#333333] text-sm">Alathur padi </p>
+                            <p class="text-[#333333] text-sm">Manjeri, 676121 </p>
+                            <p class="text-[#333333] text-sm">Phone no: 8086812602</p>
+                        </div>
+                        <a class=" rounded-[50%] cursor-pointer bg-gray-100 m-[5px] inline-block">
+                            <span class="material-symbols-outlined  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
+                                chevron_right
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--Payment method-->
+                    <div class="space-y-1"> 
+                        <p class="text-base font-semibold">Get it by</p>
+                        <p class="text-xs text-green-700">Sunday 3 january</p>
+                    </div>
+                    <div class="flex space-x-3">
+                        <div class="w-4/12   border-r pr-3 ">
+                            <div class="w-full ">
+                                <img class="w-full h-28 object-contain" src="/images/alchemist.jpeg" alt="">
+                            </div>
+                           
+                            <p class="whitespace-nowrap text-xs text-center mt-2 text-[#4B727A] font-semibold w-24  truncate lg:w-full">My Grandmother Asked Me to Tell You She’s Sorry </p>
+                        </div>
+                        <div class=" space-y-1">
+                            <p class="text-[#4B727A] mb-[-5px] font-semibold text-base">My Grandmother Asked Me to Tell You She’s Sorry </p>
+                            <p class="text-[#5E8E99] font-light text-sm">Paulo Coelho</p>
+                            <div class="flex items-center space-x-1">
+                                <div class="bg-[#008000] w-fit px-1 py-1 text-xs text-white rounded-md">
+                                    <p>15% off</p>
+                                </div>
+                                <p class="text-xs text-[#666666] line-through">MRP 250</p>
+                            </div>
+                            <P class="font-semibold text-lg">₹150</P>
+                            <div class="flex items-center bg-[#DAA520] text-white rounded-md w-fit px-3 py-2 text-xs space-x-1">
+                                <p>Qty</p>
+                                <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[12px]">
+                                        remove
+                                    </span>
+                                </div>
+                                <span>1</span>
+                                <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[12px]">
+                                        add
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button id="submit" type="submit" class="hidden"></button>
+            </form>
+        </div>
+    </main>
+    <div class="flex-grow"></div>
+    <div class="px-3  lg:px-52 fixed bottom-0  w-full bg-white pt-2">
+        <label for="submit"  class="bg-[#DAA520] mb-2 text-white font-semibold py-[6px] rounded-lg w-full text-center cursor-pointer flex flex-col ">Confirm </button>
+    </div>
+    <script src="/javascripts/user/stateLoad.js"></script>
+</body>

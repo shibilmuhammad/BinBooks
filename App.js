@@ -31,8 +31,10 @@ const products = require('./routes/user/products');
 const product = require('./routes/user/product');
 const buynow = require('./routes/user/buynow');
 const payment= require('./routes/user/payment')
+const placeOrder= require('./routes/user/placeOrder')
+const orderSuccessful = require('./routes/user/orderSuccessful')
 
 //Admin Routes use 
 app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage);
 //Users Routes use 
-app.use('/user',Home,category,products,product,buynow,payment)
+app.use('/user',Home,category,products,product,buynow,payment,placeOrder,orderSuccessful)
