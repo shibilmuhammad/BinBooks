@@ -1,0 +1,94 @@
+<%-include("../partials/head.ejs")%>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="/css/user/header.css">
+<body class="bg-[#F2F2F2] flex flex-col h-screen pb-2 lg:mb-20">
+    <%-include('../partials/headerPhone.ejs')%>
+    <%-include('../partials/HeaderDesktopUser.ejs')%>
+    <main>
+        <div class="bg-white py-5 lg:px-52"><!--Top address progress-->
+            <div class="flex justify-between px-5">
+                <div class="flex  w-full " id="address">
+                    <a href="/user/buynow" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div id="addressSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full  "></div> <!--insdie Circle-->
+                        </div>
+                        <p class="text-xs">Address</p>
+                    </a>
+                    <div class="w-full">
+                         <div class=" h-[1px] w-full bg-[#476B73] mt-2 ml-[-10px]"></div>
+                    </div>
+                   
+                </div>
+                <div class="flex  w-full " id="payment">
+                    <a href="/user/payment" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div id="paymentSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden"></div><!--insdie Circle-->
+                        </div>
+                        <p class="text-xs">Payment</p>
+                    </a>
+                    <div class="w-full">
+                        <div class=" h-[1px] w-full bg-[#476B73] mt-2 ml-[-10px] "></div>
+                    </div>
+                    
+                </div>
+                <div class="flex  "  id="placeOrder">
+                    <a href="" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden " id="placeOrderSelected"></div><!--insdie Circle-->
+                        </div>
+                        <label for="placeOrder" class="text-xs whitespace-nowrap">Place Order</label>
+                    </a>
+                </div>
+
+            </div>            
+        </div>   
+        <div class="px-4 mt-5 lg:px-52">
+            <p class='font-medium text-xl'>Enter your address</p>
+            <form action="" class="my-3 mt-5 space-y-3">
+                <div class="space-y-1">
+                    <p class="px-2 font-medium text-sm">Full name</p>
+                    <input type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter first name and last name">
+                </div>
+                <div class="space-y-1 ">
+                    <p class="px-2 font-medium text-sm">Phone number</p>
+                    <input type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter your mobile number">
+                </div>
+                <div class="space-y-1 ">
+                    <p class="px-2 font-medium text-sm">Flat, House no., Building, Company, Apartment</p>
+                    <input type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" >
+                </div>
+                <div class="space-y-1 ">
+                    <p class="px-2 font-medium text-sm">Area, Street, Sector, Village</p>
+                    <input type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" >
+                </div>
+                <div class="space-y-1 ">
+                    <p class="px-2 font-medium text-sm">Land mark</p>
+                    <input type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Nearby Landmark">
+                </div>
+                <div class="space-y-1 ">
+                    <p class="px-2 font-medium text-sm">PIN code</p>
+                    <input type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter 6-digit PIN code">
+                </div>
+                <div class="space-y-1 ">
+                    <p class="px-2 font-medium text-sm">Town/City </p>
+                    <input type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter 6-digit PIN code">
+                </div>
+                <div class="space-y-1 ">
+                    <label for="state" class="px-2 font-medium text-sm">State </p>
+                    <select name="" id="state" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600 ">
+
+                    </select>
+                </div>
+                <button id="submit" type="submit" class="hidden"></button>
+                
+            </form>
+        </div>
+    </main>
+    <div class="flex-grow lg:flex-grow-0"></div>
+    <div class="px-3 lg:px-52 lg:my-7 
+    ">
+        <label for="submit"  class="bg-[#DAA520] mb-2 text-white font-semibold py-[6px] rounded-lg w-full text-center cursor-pointer flex flex-col ">Confirm Address</button>
+    </div>
+    
+    <script src="/javascripts/user/stateLoad.js"></script>
+</body>

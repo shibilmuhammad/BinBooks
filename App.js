@@ -27,7 +27,12 @@ const adminBannerManage = require('./routes/admin/bannermanage')
 // User Routes
 const Home = require('./routes/user/home');
 const category = require('./routes/user/category');
+const products = require('./routes/user/products');
+const product = require('./routes/user/product');
+const buynow = require('./routes/user/buynow');
+const payment= require('./routes/user/payment')
+
 //Admin Routes use 
 app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage);
 //Users Routes use 
-app.use('/user',Home,category)
+app.use('/user',Home,category,products,product,buynow,payment)

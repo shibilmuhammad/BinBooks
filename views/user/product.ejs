@@ -1,0 +1,185 @@
+<%-include("../partials/head.ejs")%>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="/css/user/header.css">
+<link rel="stylesheet" href="/css/user/product.css">
+
+<body class="bg-[#F2F2F2] flex flex-col h-screen  ">
+    <%-include('../partials/headerPhone.ejs')%>
+    <%-include('../partials/HeaderDesktopUser.ejs')%>
+    <div class=""><!--container-->
+        <div class="px-3 bg-white m-2  rounded-md pb-6 lg:flex   ">
+            <div class="lg:w-1/2 w-full px-6"><!--Desktop flex firs part-->
+                <div class="flex justify-center py-5 border-b-gray-500 border-b-[.1px] lg:border-0 w-full lg:min-w-1/2
+            relative">
+                    <img class="h-80 w-full object-contain lg:w-96" src="/images/alchemist.jpeg" alt="">
+                    <button onclick="favorite()" id="favButton"  class="material-symbols-outlined  absolute top-3 right-[-10px] favFill text-[#666666] lg:right-20 lg:top-5">
+                        favorite
+                    </button>
+                </div>
+                <div class="flex lg:mt-5 fixed lg:relative  bottom-0 right-0 w-full lg:flex lg:flex-col lg:items-center lg:space-y-5 "><!--Fixed buttons-->
+                    <button class="w-1/2 lg:w-7/12 lg:py-2 bg-white border-[#C4951D] border py-4 font-semibold lg:rounded-md">
+                        Add to cart 
+                    </button>
+                    <button class="w-1/2  lg:w-7/12 lg:py-2 bg-[#C4951D] py-4 text-white font-semibold lg:rounded-md">
+                        Buy now
+                    </button>
+                </div>
+            </div>
+           <div class="lg:w-1/2 mt-3 lg:m-6 lg:mt-0 lg:flex lg:flex-col lg:justify-center"><!--Desktop flex second part-->
+            <div class="space-y-[2px]">
+                <p class="text-[#4B727A] font-bold text-2xl lg:text-3xl">The Alchemist</p>
+                <p class="text-[#5E8E99] font-light">Paulo Coelho</p>
+                <div class="flex space-x-2 items-center">
+                    <div class="bg-[#DAA520] text-white w-fit px-2 rounded-md lg:t text-sm py-1">
+                        15% off
+                    </div>
+                    <p class="text-[#666666] font-medium text-sm">MRP <span class="line-through">250</span></p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <p class="font-bold text-2xl">₹150</p>
+                    <span class="text-sm text-red-700 font-medium">+40 (delivery)</span>
+                </div>
+            </div>
+            <div class="mt-5 border-[.2px] border-gray-600 p-3 lg:flex lg:space-x-16 ">
+                <div class="w-fit whitespace-nowrap">
+                    <span class="text-[#333333] font-semibold">Book Details</span>
+                    <div class="flex lg:space-x-10 space-x-20 mt-3" >
+                        <div class="text-sm text-[#666666] space-y-1 "> <!--headings-->
+                           <p>Title :</p>
+                           <p>Author :</p>
+                            <p>Height :</p>
+                            <p>Width :</p>
+                            <p>Pages :</p>
+                             <p>Publisher :</p>
+                            <div class="flex items-center">
+                                <p>Condition</p>
+                                <span class="material-symbols-outlined text-[#666666] text-xs">
+                                help
+                                </span>
+                                <p> :</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-[#666666] space-y-1"> <!--datas-->
+                            <p>The Alchemist</p>
+                            <p>Paulo Coelho</p>
+                            <p>198 mm</p>
+                            <p>128 mm</p>
+                            <p>212</p>
+                            <p>HarperTorch</p>
+                            <p>Like new</p>
+                        </div>
+                    </div>
+                </div>
+               
+                
+                <div class="mt-3">
+                    <h2 class="text-[#333333] font-semibold">Description</h2>
+                    <p class="text-sm text-[#666666] mt-2">"The Alchemist" by Paulo Coelho is a captivating and philosophical novel that takes readers on a transformative journey of self-discovery and the pursuit of one's dreams. Set in the mystical and enchanting world of Andalusia, Spain, the story follows Santiago<span id="readmoreDots">...</span><span id="showText" class="hidden"> a young shepherd who embarks on a quest to find his personal legend, or his true purpose in life. As Santiago traverses through the desert and encounters a series of characters, including an alchemist and an Englishman, he learns valuable</span> <button id="readMoreButton" class="text-blue-500 text-sm h-fit py-0 my-0">Read more</button></p>
+                </div>
+            </div>
+           </div>
+        </div>
+        <div class="bg-[#FBFBFB] pb-20 lg:pb-5 lg:mx-2 lg:px-2 lg:rounded-md lg:mb-5 "> <!--Novel conatiner-->
+            <p class="pl-8 lg:pl-4 lg:font-semibold pt-2 text-sm lg:text-base font-medium">Recommended Books</p>
+            <div class="flex space-x-5 md:space-x-4 lg:space-x-5 px-2 mt-3 w-full overflow-auto"> <!--Books group container-->
+                <!--item-->
+                <div class="bg-white md:min-w-[135px] md:max-w-[135px]  min-w-[119px] max-w-[119px] max-h-44  rounded-md drop-shadow-md hover:drop-shadow-xl cursor-pointer  pt-2 pb-1 relative lg:min-h-[200px] lg:min-w-[160px] w-3 lg:pb-52 "> 
+                    <div class="flex items-center justify-center"> 
+                        <img class="rounded-t-md w-[115px] md:w-[135px] h-[93px] md:h-[100px] object-contain pb-2 border-b lg:min-h-[120px] lg:min-w-[150px]" src="/images/alchemist.jpeg" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="mt-2 text-[#4B727A] font-semibold text-[13px] max-w-[110px] lg:max-w-[140px] truncate lg:text-sm">The hunt of basker ville vol 2</p>
+                        <p class="text-[#5E8E99] font-normal text-[11px] max-w-[110px] lg:max-w-[130px] truncate lg:text-xs">Sir arther conon doyal hfsfasfa </p>
+                        <div class="mt-[-5px] lg:mt-[1px]">
+                            <span class="text-[11px] font-bold text-[#008000] lg:text-sm ">15% off</span> <span class="text-[11px] text-[#666666] line-through lg:text-sm">250</span> <span class="text-[11px] font-bold lg:text-sm">150</span></div>
+                    </div>
+                    <div class="absolute top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20">
+                        <button class="flex bg-[#DAA520] items-center px-1 py-[1px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
+                            <p class="text-xs lg:text-sm font-medium">Add</p>
+                            <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                        </button>
+                    </div>
+                </div>
+                <!--item2-->
+                <div class="bg-white md:min-w-[135px] md:max-w-[135px]  min-w-[119px] max-w-[119px] max-h-44  rounded-md drop-shadow-md hover:drop-shadow-xl cursor-pointer  pt-2 pb-1 relative lg:min-h-[200px] lg:min-w-[160px] w-3 lg:pb-52 "> 
+                    <div class="flex items-center justify-center"> 
+                        <img class="rounded-t-md w-[115px] md:w-[135px] h-[93px] md:h-[100px] object-contain pb-2 border-b lg:min-h-[120px] lg:min-w-[150px]" src="/images/alchemist.jpeg" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="mt-2 text-[#4B727A] font-semibold text-[13px] max-w-[110px] lg:max-w-[140px] truncate lg:text-sm">The hunt of basker ville vol 2</p>
+                        <p class="text-[#5E8E99] font-normal text-[11px] max-w-[110px] lg:max-w-[130px] truncate lg:text-xs">Sir arther conon doyal hfsfasfa </p>
+                        <div class="mt-[-5px] lg:mt-[1px]">
+                            <span class="text-[11px] font-bold text-[#008000] lg:text-sm">15% off</span> <span class="text-[11px] text-[#666666] line-through lg:text-sm">250</span> <span class="text-[11px] font-bold lg:text-sm">150</span></div>
+                    </div>
+                    <div class="absolute top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20">
+                        <button class="flex bg-[#DAA520] items-center px-1 py-[1px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
+                            <p class="text-xs lg:text-sm font-medium">Add</p>
+                            <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                        </button>
+                    </div>
+                </div>
+                <!--item3-->
+                <div class="bg-white md:min-w-[135px] md:max-w-[135px]  min-w-[119px] max-w-[119px] max-h-44  rounded-md drop-shadow-md hover:drop-shadow-xl cursor-pointer  pt-2 pb-1 relative lg:min-h-[200px] lg:min-w-[160px] w-3 lg:pb-52 "> 
+                    <div class="flex items-center justify-center"> 
+                        <img class="rounded-t-md w-[115px] md:w-[135px] h-[93px] md:h-[100px] object-contain pb-2 border-b lg:min-h-[120px] lg:min-w-[150px]" src="/images/alchemist.jpeg" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="mt-2 text-[#4B727A] font-semibold text-[13px] max-w-[110px] lg:max-w-[140px] truncate lg:text-sm">The hunt of basker ville vol 2</p>
+                        <p class="text-[#5E8E99] font-normal text-[11px] max-w-[110px] lg:max-w-[130px] truncate lg:text-xs">Sir arther conon doyal hfsfasfa </p>
+                        <div class="mt-[-5px] lg:mt-[1px]">
+                            <span class="text-[11px] font-bold text-[#008000] lg:text-sm">15% off</span> <span class="text-[11px] text-[#666666] line-through lg:text-sm">250</span> <span class="text-[11px] font-bold lg:text-sm">150</span></div>
+                    </div>
+                    <div class="absolute top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20">
+                        <button class="flex bg-[#DAA520] items-center px-1 py-[1px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
+                            <p class="text-xs lg:text-sm font-medium">Add</p>
+                            <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                        </button>
+                    </div>
+                </div>
+                <!--item4-->
+                <div class="bg-white md:min-w-[135px] md:max-w-[135px]  min-w-[119px] max-w-[119px] max-h-44  rounded-md drop-shadow-md hover:drop-shadow-xl cursor-pointer  pt-2 pb-1 relative lg:min-h-[200px] lg:min-w-[160px] w-3 lg:pb-52 "> 
+                    <div class="flex items-center justify-center"> 
+                        <img class="rounded-t-md w-[115px] md:w-[135px] h-[93px] md:h-[100px] object-contain pb-2 border-b lg:min-h-[120px] lg:min-w-[150px]" src="/images/alchemist.jpeg" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="mt-2 text-[#4B727A] font-semibold text-[13px] max-w-[110px] lg:max-w-[140px] truncate lg:text-sm">The hunt of basker ville vol 2</p>
+                        <p class="text-[#5E8E99] font-normal text-[11px] max-w-[110px] lg:max-w-[130px] truncate lg:text-xs">Sir arther conon doyal hfsfasfa </p>
+                        <div class="mt-[-5px] lg:mt-[1px]">
+                            <span class="text-[11px] font-bold text-[#008000] lg:text-sm">15% off</span> <span class="text-[11px] text-[#666666] line-through lg:text-sm">250</span> <span class="text-[11px] font-bold lg:text-sm">150</span></div>
+                    </div>
+                    <div class="absolute top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20">
+                        <button class="flex bg-[#DAA520] items-center px-1 py-[1px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
+                            <p class="text-xs lg:text-sm font-medium">Add</p>
+                            <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white md:min-w-[135px] md:max-w-[135px]  min-w-[119px] max-w-[119px] max-h-44  rounded-md drop-shadow-md hover:drop-shadow-xl cursor-pointer  pt-2 pb-1 relative lg:min-h-[200px] lg:min-w-[160px] w-3 lg:pb-52 "> 
+                    <div class="flex items-center justify-center"> 
+                        <img class="rounded-t-md w-[115px] md:w-[135px] h-[93px] md:h-[100px] object-contain pb-2 border-b lg:min-h-[120px] lg:min-w-[150px]" src="/images/alchemist.jpeg" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="mt-2 text-[#4B727A] font-semibold text-[13px] max-w-[110px] lg:max-w-[140px] truncate lg:text-sm">The hunt of basker ville vol 2</p>
+                        <p class="text-[#5E8E99] font-normal text-[11px] max-w-[110px] lg:max-w-[130px] truncate lg:text-xs">Sir arther conon doyal hfsfasfa </p>
+                        <div class="mt-[-5px] lg:mt-[1px]">
+                            <span class="text-[11px] font-bold text-[#008000] lg:text-sm">15% off</span> <span class="text-[11px] text-[#666666] line-through lg:text-sm">250</span> <span class="text-[11px] font-bold lg:text-sm">150</span></div>
+                    </div>
+                    <div class="absolute top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20">
+                        <button class="flex bg-[#DAA520] items-center px-1 py-[1px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
+                            <p class="text-xs lg:text-sm font-medium">Add</p>
+                            <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                        </button>
+                    </div>
+                </div>
+                <!--item6-->
+            </div>
+        </div>
+    
+    </div>
+    <div class="hidden lg:block">  
+        <%-include("../partials/userFooter.ejs")%>
+    </div>
+    <div class="flex-grow">
+    </div> 
+</body>
+<script src="/javascripts/user/product.js"></script>
