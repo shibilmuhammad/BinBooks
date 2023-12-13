@@ -30,11 +30,15 @@ const category = require('./routes/user/category');
 const products = require('./routes/user/products');
 const product = require('./routes/user/product');
 const buynow = require('./routes/user/buynow');
-const payment= require('./routes/user/payment')
-const placeOrder= require('./routes/user/placeOrder')
-const orderSuccessful = require('./routes/user/orderSuccessful')
+const payment= require('./routes/user/payment');
+const placeOrder= require('./routes/user/placeOrder');
+const orderSuccessful = require('./routes/user/orderSuccessful');
+const address = require('./routes/user/address');
+const yourOrders = require("./routes/user/yourorders");
+const orderSummery = require("./routes/user/orderSummery");
+const wishList = require('./routes/user/wishList');
 
 //Admin Routes use 
 app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage);
 //Users Routes use 
-app.use('/user',Home,category,products,product,buynow,payment,placeOrder,orderSuccessful)
+app.use('/user',Home,category,products,product,buynow,payment,placeOrder,orderSuccessful,address,yourOrders,orderSummery,wishList)

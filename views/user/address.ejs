@@ -1,0 +1,77 @@
+<%-include("../partials/head.ejs")%>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="/css/user/header.css">
+<body class="bg-[#F2F2F2] flex flex-col h-screen pb-2 lg:mb-20">
+    <%-include('../partials/headerPhone.ejs')%>
+    <%-include('../partials/HeaderDesktopUser.ejs')%>
+    <main>
+        <div class="bg-white py-5 lg:px-52"><!--Top address progress-->
+            <div class="flex justify-between px-5">
+                <div class="flex  w-full " id="address">
+                    <a href="/user/buynow" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div id="addressSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full  "></div> <!--insdie Circle-->
+                        </div>
+                        <p class="text-xs">Address</p>
+                    </a>
+                    <div class="w-full">
+                         <div class=" h-[1px] w-full bg-[#476B73] mt-2 ml-[-10px]"></div>
+                    </div>
+                   
+                </div>
+                <div class="flex  w-full " id="payment">
+                    <a href="/user/payment" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div id="paymentSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden"></div><!--insdie Circle-->
+                        </div>
+                        <p class="text-xs">Payment</p>
+                    </a>
+                    <div class="w-full">
+                        <div class=" h-[1px] w-full bg-[#476B73] mt-2 ml-[-10px] "></div>
+                    </div>
+                    
+                </div>
+                <div class="flex  "  id="placeOrder">
+                    <a href="/user/placeOrder" class="flex flex-col items-center space-y-1">
+                        <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
+                            <div class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden " id="placeOrderSelected"></div><!--insdie Circle-->
+                        </div>
+                        <label for="placeOrder" class="text-xs whitespace-nowrap">Place Order</label>
+                    </a>
+                </div>
+
+            </div>            
+        </div>   
+        <div class="px-4 mt-5 lg:px-52">
+            <div class="bg-white px-3 lg:py-8 py-3 rounded-md flex justify-between items-center">
+                <div class="text-sm space-y-1 lg:text-base">
+                    <p class="font-semibold">Shibil Muhammad</p>
+                    <p>Maadin Edupark</p>
+                    <p>Alathur Padi</p>
+                    <p>Manjeri,676121</p>
+                    <p>Phone number: 8086812602</p>
+                </div>
+                <div>
+                    <div class="flex flex-col space-y-2 lg:space-y-9">
+                        <button class="bg-[#EBEBEB] text-sm px-2 lg:px-4 lg:py-3 py-1 rounded-md font-semibold text-[#55808A] drop-shadow-sm" >Confirm</button>
+                        <button class="bg-[#F6F6F6] text-sm px-4 lg:px-4 lg:py-3  py-1 rounded-md font-semibold text-[#476B73] drop-shadow-sm">Edit</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="w-full">
+                <button class="flex justify-between items-center mt-3 bg-white rounded-md w-full px-3">
+                    <p class="font-semibold text-sm">Add new Address</p>
+                    <div class=" rounded-[50%] cursor-pointer bg-gray-100 m-[5px] inline-block">
+                        <span class="material-symbols-outlined  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
+                            chevron_right
+                        </span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    
+    <script src="/javascripts/user/stateLoad.js"></script>
+</body>

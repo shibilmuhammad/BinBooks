@@ -1,0 +1,146 @@
+<%-include("../partials/head.ejs")%>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="/css/user/header.css">
+<link rel="stylesheet" href="">
+<body class="bg-[#F2F2F2] flex flex-col h-screen pb-2">
+    <%-include('../partials/headerPhone.ejs')%>
+    <%-include('../partials/HeaderDesktopUser.ejs')%>
+    <div class="mt-5 px-4 lg:px-32">
+        <div class="">
+            <div class="">
+                <p class="font-semibold text-lg">Order Summery</p>
+                <div class=""><!--Container-->
+                    <div class="flex space-x-6 mt-5">
+                        <div class="flex flex-col items-center w-fit  ">
+                            <div class="flex flex-col items-center text-xs ">
+                                <div class="mt-[2p] w-6 h-6 rounded-full border-[1px] border-[#476B73] flex items-center justify-center ">
+                                    <span class="material-symbols-outlined text-[#476B73]">
+                                        done
+                                        </span>
+                                </div>
+                                <p class="text-[10px] text-[#666666]">Ordered</p>
+                            </div>
+                            <div class="w-[2px] h-16 bg-[#476B73] ">
+                            </div>
+                        </div>  
+                        <div class="text-sm">
+                            <p class="text-green-800">Ordered</p>
+                            <p class="text-[#666666]">Order confirmed</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-6 mt-3">
+                        <div class="flex flex-col items-center w-fit  ">
+                            <div class="flex flex-col items-center text-xs ">
+                                <div class="mt-[2p] w-6 h-6 rounded-full border-[1px] border-[#476B73] flex items-center justify-center ">
+                                    <span class="material-symbols-outlined text-[#476B73]">
+                                        done
+                                        </span>
+                                </div>
+                                <p class="text-[10px] text-[#666666]">Packed</p>
+                            </div>
+                            <div class="w-[2px] h-16 bg-[#476B73] ">
+                            </div>
+                        </div>  
+                        <div class="text-sm">
+                            <p class="text-green-800">Packed</p>
+                            <p class="text-[#666666]">Item packed from warehouse</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-6 mt-3">
+                        <div class="flex flex-col items-center w-fit  ">
+                            <div class="flex flex-col items-center text-xs ">
+                                <div class="mt-[2p] w-6 h-6 rounded-full border-[1px] border-[#476B73] flex items-center justify-center ">
+                                    <span class="material-symbols-outlined text-[#476B73]">
+                                        done
+                                        </span>
+                                </div>
+                                <p class="text-[10px] text-[#666666]">Shipped</p>
+                            </div>
+                            <div class="w-[2px] h-16 bg-[#476B73] ">
+                            </div>
+                        </div>  
+                        <div class="text-sm">
+                            <p class="text-green-800">Shipped</p>
+                            <p class="text-[#666666]">Your order is on its way! </p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-6 mt-3">
+                        <div class="flex flex-col items-center w-fit  ">
+                            <div class="flex flex-col items-center text-xs ">
+                                <div class="mt-[2p] w-6 h-6 rounded-full border-[1px] border-[#476B73] flex items-center justify-center ">
+                                    <span class="material-symbols-outlined text-[#476B73]">
+                                        done
+                                        </span>
+                                </div>
+                                <p class="text-[10px] text-[#666666]">Delivered</p>
+                            </div>
+                        </div>  
+                        <div class="text-sm">
+                            <p class="text-green-800">Estimation of arrival</p>
+                            <p class="text-[#666666]">january 3 2023 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-sm mt-3" ><!--Product show--> <div class="flex space-x-3 items-center border-b "> <div class="lg:w-4/12  w-5/12 border-r pr-3 pb-2">
+                    <div class="w-full ">
+                        <img class="w-full h-[9rem] object-contain" src="/images/alchemist.jpeg" alt="">
+                    </div>
+                </div>
+                <div class=" space-y-2 lg:space-y-3 w-full">
+                    <p class="text-[#4B727A] mb-[-5px] font-semibold text-base lg:text-xl lg:max-w-[700px] max-w-[200px] truncate">The alchemist </p>
+                    <p class="text-[#5E8E99] font-light text-sm lg:text-base max-w-[200px] lg:max-w-[700px] truncate">Paulo Coelho sir arhte conon doyal</p>
+                    <div class="flex items-center space-x-1 ">
+                        <P class="font-semibold text-lg lg:text-xl mt-[-6px]">₹150</P>
+                        <p class="text-sm text-[#666666] line-through mt-[-6px]">MRP 250</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white rounded-md px-5 py-3 space-y-3 mt-3 drop-shadow-sm"><!--order detais-->
+            <p class="text-base font-semibold">Order Details</p>
+            <div class="flex space-x-20 ">
+                <div class="text-sm  space-y-3 text-[#666666]">
+                    <p>Price(2 items)</p>
+                    <p class="text-red-700">Delivery</p>
+                    <p class="text-green-700">Discount</p>
+                    
+                </div>
+                <div class="text-sm  space-y-3 text-[#666666]">
+                    <p>₹500</p>
+                    <p class="text-red-700">₹40</p>
+                    <p class="text-green-700">₹250</p>
+                    
+                </div>
+            </div>
+            <div class="flex space-x-20 border-t text-sm font-semibold  py-2">
+                <p>Total Amount</p>
+                <p>₹290</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-md px-5 py-3 space-y-3 mt-3 drop-shadow-sm"><!--Payment method-->
+            <p class="text-base font-semibold">Payment Method</p>
+            <a href="" class="flex items-center justify-between">
+                <p class="text-[#666666] text-sm">Cash on delivery</p>
+            </a>
+        </div>
+        <div class="bg-white rounded-md px-5 py-3 space-y-3 mt-3 drop-shadow-sm"> <!--Deliver to-->
+            <div href="" class="flex items-center justify-between">
+                <div>
+                    <p class="text-base font-semibold pb-3">Deliver to</p>
+                    <p class="text-[#333333] font-semibold text-sm">Shibil Muhammad</p>
+                     <p class="text-[#333333] text-sm">Maadin Edupark </p>
+                    <p class="text-[#333333] text-sm">Alathur padi </p>
+                    <p class="text-[#333333] text-sm">Manjeri, 676121 </p>
+                    <p class="text-[#333333] text-sm">Phone no: 8086812602</p>
+                </div>
+            </div>
+        </div>
+        <button class="bg-gray-200 font-medium mt-3 mb-6 text-red-700 w-full py-2 rounded-full">
+            Cancel Order 
+        </button>
+
+    </div>
+    
+</body>
