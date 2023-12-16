@@ -37,8 +37,11 @@ const address = require('./routes/user/address');
 const yourOrders = require("./routes/user/yourorders");
 const orderSummery = require("./routes/user/orderSummery");
 const wishList = require('./routes/user/wishList');
+const myAccount = require('./routes/user/myAccount');
+const searchResult = require('./routes/user/searchResult');
+const myCart = require('./routes/user/myCart');
 
 //Admin Routes use 
 app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage);
 //Users Routes use 
-app.use('/user',Home,category,products,product,buynow,payment,placeOrder,orderSuccessful,address,yourOrders,orderSummery,wishList)
+app.use('/user',Home,category,products,product,buynow,payment,placeOrder,orderSuccessful,address,yourOrders,orderSummery,wishList,myAccount,searchResult,myCart)
