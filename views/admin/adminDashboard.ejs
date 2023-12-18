@@ -1,0 +1,274 @@
+
+
+<%-include("../partials/head.ejs")%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.turbo.min.js"></script>
+ <body class="bg-[#F2F2F2]">
+    <%-include("../partials/header.ejs")%>
+    <main class="px-10 flex">
+        <div class="left mt-28 space-y-4 border-r-[.1px] border-gray-400  w-fit  pr-2 pb-1 pt-1">
+            <a href="dashboard" class="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-6" src="/images/dashboardSelected.png" alt="">
+                <h2 class="text-base font-semibold text-[#4B727A]">Dashboard</h2>
+            </a>
+            <a href="products" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/productsIcon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Products</h2>
+            </a>
+            <a href="customers" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3 ">
+                <img class="h-5" src="/images/customersicon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Customers</h2>
+            </a>
+            <a href="orders" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-5" src="/images/Orders icon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Orders</h2>
+            </a>
+            <a href="category" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+                <img class="h-4" src="/images/categoryicon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878]">Category</h2>
+            </a>
+            <a href="banner" class="flex items-center space-x-2 mb-12 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3 ">
+                <img class="h-4" src="/images/bannericon.png" alt="">
+                <h2 class="text-base font-semibold text-[#7E7878] pr-10 whitespace-nowrap ">Banner Manage</h2>
+            </a>
+        </div>
+        
+        <div class="right mt-20 ml-16 w-full">
+            <div class="grid grid-cols-3 gap-x-10">
+                <div class="bg-white px-10 pr-24  py-4 w-full flex items-center space-x-8 rounded-xl drop-shadow-lg">
+                    <div class="h-[4rem] w-[4rem] rounded-full bg-[#EFF4F5] px-2 py-2">
+                        <img class="object-contain" src="/images/Totalsales blue.png" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="text-[#666666] text-sm font-medium">Total Sales</p>
+                        <p class="font-semibold text-xl">₹10,800</p>
+                    </div>
+                </div>
+                <div class="bg-white px-10 pr-24  py-4 w-full flex items-center space-x-8 rounded-xl drop-shadow-lg">
+                    <div class="h-[4rem] w-[4rem] rounded-full bg-[#EFF4F5] px-2 py-2">
+                        <img class="object-contain" src="/images/delivery-status blue.png" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="text-[#666666] text-sm font-medium">Total Orders</p>
+                        <p class="font-semibold text-xl">1200</p>
+                    </div>
+                </div>
+                <div class="bg-white px-10 pr-24  py-4 w-full flex items-center space-x-8 rounded-xl drop-shadow-lg">
+                    <div class="h-[4rem] w-[4rem] rounded-full bg-[#EFF4F5] px-2 py-2">
+                        <img class="object-contain" src="/images/open-book blue.png" alt="">
+                    </div>
+                    <div class="flex flex-col items-center ">
+                        <p class="text-[#666666] text-sm font-medium">Total Products</p>
+                        <p class="font-semibold text-xl">320</p>
+                    </div>
+                </div>
+                <section class="mt-6 col-start-1 col-end-3"> <!--chart-->
+                    <div class=" w-full bg-white rounded-xl shadow dark:bg-gray-800 p-4 md:p-6">
+                        <div id="column-chart">
+                             <!-- Button -->
+                            <button
+                            id="dropdownDefaultButton"
+                            data-dropdown-toggle="lastDaysdropdown"
+                            data-dropdown-placement="bottom"
+                            class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+                            type="button">
+                            This year
+                            <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                           </button>
+                            <!-- Dropdown menu -->
+                             <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl drop-shadow-lg shadow w-44 dark:bg-gray-700">
+                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">This year</a>
+                                        </li>
+                                        <li>
+                                             <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Previous year</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2021</a>
+                                        </li>
+                                        <li>
+                                             <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2020</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">2019</a>
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-6 col-start-3 col-end-4"><!--male and female chart-->
+
+                    <div class="max-w-sm w-full bg-white rounded-xl shadow dark:bg-gray-800 p-4 md:p-6">
+                        <!-- Donut Chart -->
+                        <div class="py-4" id="donut-chart">
+                             <!-- Button -->
+                             <button
+                             id="dropdownDefaultButton"
+                             data-dropdown-toggle="lastDaysdropdown"
+                             data-dropdown-placement="bottom"
+                             class="text-sm  font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+                             type="button">
+                             Last 7 days
+                             <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                             </svg>
+                             </button>
+                             <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-xl shadow w-44 dark:bg-gray-700">
+                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
+                                 </li>
+                                 <li>
+                                     <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 90 days</a>
+                                 </li>
+                                 </ul>
+                             </div>
+                        </div>
+                    
+
+                    </div>
+  
+  
+  
+
+                </section>
+                <section class="mt-5 col-start-1 col-end-4 pb-20"> <!--Latest orders-->
+                    <div class="bg-white pl-6 rounded-t-lg py-3 pb-5  font-semibold flex justify-between px-3">
+                        <p>Latest Orders</p>
+                        <form action=""> <!--search-->
+                            <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
+                                <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search customer.. ">
+                                <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
+                                    <img src="/images/search white.png" class="h-4" alt="">
+                                </div>
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                    <table class=" w-full drop-shadow-xl ">
+
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
+                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
+                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
+                            <td class="text-center">₹2000</td>
+                            <td class="flex justify-center items-center mt-1">
+                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
+                            </td>
+                            <td class="text-sm text-[#666666]">
+                               01.02.2024 01.12 pm
+                            </td>
+                        </tr>
+                        
+                       
+                        
+                    </table>
+                </section>
+            </div>
+        </div>
+    </main>
+    <%-include("../partials/bannerEditPopup.ejs")%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</body><script src="/javascripts/admin/adminDashboard.js"></script>
+</html>

@@ -23,7 +23,8 @@ const adminProducts = require('./routes/admin/products');
 const adminCustomers = require('./routes/admin/customers');
 const adminOrders = require('./routes/admin/orders')
 const adminCategory = require('./routes/admin/category')
-const adminBannerManage = require('./routes/admin/bannermanage')
+const adminBannerManage = require('./routes/admin/bannermanage');
+const adminDashboard = require('./routes/admin/dashboard')
 // User Routes
 const Home = require('./routes/user/home');
 const category = require('./routes/user/category');
@@ -40,8 +41,15 @@ const wishList = require('./routes/user/wishList');
 const myAccount = require('./routes/user/myAccount');
 const searchResult = require('./routes/user/searchResult');
 const myCart = require('./routes/user/myCart');
+const login = require('./routes/user/login');
+const loginpswd = require('./routes/user/loginpswd');
+const Otp = require('./routes/user/otp');
+const resetpswd = require('./routes/user/resetpswd');
+const createAccount = require('./routes/user/createAccount');
+const aboutUs = require('./routes/user/aboutUs')
+
 
 //Admin Routes use 
-app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage);
+app.use('/admin',adminProducts,adminCustomers,adminOrders,adminCategory,adminBannerManage,adminDashboard);
 //Users Routes use 
-app.use('/user',Home,category,products,product,buynow,payment,placeOrder,orderSuccessful,address,yourOrders,orderSummery,wishList,myAccount,searchResult,myCart)
+app.use('/user',Home,category,products,product,buynow,payment,placeOrder,orderSuccessful,address,yourOrders,orderSummery,wishList,myAccount,searchResult,myCart,login,loginpswd,Otp,resetpswd,createAccount,aboutUs)

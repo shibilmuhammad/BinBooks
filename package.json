@@ -11,9 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apexcharts": "^3.45.0",
     "connect-livereload": "^0.6.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "flowbite": "^2.2.1",
     "livereload": "^0.9.3",
     "mongoose": "^8.0.2",
     "nodemon": "^3.0.1",
