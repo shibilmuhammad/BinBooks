@@ -18,6 +18,9 @@ app.listen(3000,()=>{
 })
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const userRoutes = require('./routes/user');
+app.use('/user',userRoutes);
 // Admin Routes
 const adminProducts = require('./routes/admin/products');
 const adminCustomers = require('./routes/admin/customers');

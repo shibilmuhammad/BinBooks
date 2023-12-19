@@ -1,11 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>shibl</h2>
+<%-include("../partials/head.ejs")%>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="/css/user/header.css">
+<body class="bg-[#F2F2F2] flex flex-col h-screen">
+    <%-include('../partials/headerPhone.ejs')%>
+    <%-include('../partials/HeaderDesktopUser.ejs')%>
+    <main class="px-2 lg:px-96 lg:mt-10">
+        <div class="bg-white  pl-4 rounded-md py-2 mt-3  text-base text-[#452F24] font-semibold ">
+            <p>About us</p>
+        </div>
+        <div id="whatwedoButton" class=" cursor-pointer bg-white px-4 rounded-md py-2 mt-5 flex items-center justify-between  text-sm text-[#523E33] font-semibold ">
+            <p>What we do</p>
+            <div class=" rotate-90 rounded-[50%] cursor-pointer bg-gray-100  inline-block">
+                <span class="material-symbols-outlined font-semibold  text-center h-5 w-5  align-middle table-cell text-[#666666] ">
+                    chevron_right
+                </span>
+            </div>
+        </div>
+        <div id="whatwedo" class="bg-white z-0   px-4 rounded-md mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold -translate-y-12 transition-all ease-in-out mb-1 duration-300 h-0 overflow-hidden">
+            <div class="h-fit w-full space-y-4 py-2">
+                <img src="/images/whatwedo.jpeg" class="object-cover rounded-md h-56 w-full" alt="">
+                <div class="space-y-2">
+                    <p>What we do</p>
+                    <P class="text-xs">At Binbooks, we're passionate about making books accessible to everyone. We connect readers to second-hand books, delivering them to your doorstep.</P>
+                </div>
+            </div>
+        </div>
+
+        <!--Our mission-->
+        <div id="ourMissionButton" class=" cursor-pointer bg-white px-4 rounded-md py-2 mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold ">
+            <p>Our mission</p>
+            <div class=" rotate-90 rounded-[50%] cursor-pointer bg-gray-100  inline-block">
+                <span class="material-symbols-outlined font-semibold  text-center h-5 w-5  align-middle table-cell text-[#666666] ">
+                    chevron_right
+                </span>
+            </div>
+        </div>
+        <div id="ourMission" class="bg-white z-0   px-4 rounded-md mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold -translate-y-12 transition-all ease-in-out mb-1 duration-300 h-0 overflow-hidden">
+            <div class="h-fit w-full space-y-4 py-2">
+                <img src="/images/ourmission.jpeg" class="object-cover rounded-md h-56  w-full" alt="">
+                <div class="space-y-2">
+                    <p>Our mission</p>
+                    <P class="text-xs">We bridge the gap between distant second-hand bookshops and readers in villages, ensuring that affordable literature is within reach for all.</P>
+                </div>
+            </div>
+        </div>
+        <!--affordable reading-->
+        <div id="affordableButton" class=" cursor-pointer bg-white px-4 rounded-md py-2 mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold ">
+            <p>Affordable reading</p>
+            <div class=" rotate-90 rounded-[50%] cursor-pointer bg-gray-100  inline-block">
+                <span class="material-symbols-outlined font-semibold  text-center h-5 w-5  align-middle table-cell text-[#666666] ">
+                    chevron_right
+                </span>
+            </div>
+        </div>
+        <div id="affordable" class="bg-white z-0   px-4 rounded-md mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold -translate-y-12 transition-all ease-in-out mb-1 duration-300 h-0 overflow-hidden">
+            <div class="h-fit w-full space-y-4 py-2">
+                <img src="/images/affordable.jpeg" class="object-cover rounded-md h-56  w-full" alt="">
+                <div class="space-y-2">
+                    <p>Affordable reading</p>
+                    <P class="text-xs">Offering a curated selection of affordable second-hand books, we believe in making literature accessible, regardless of economic constraints.</P>
+                </div>
+            </div>
+        </div>
+        
+        <!--Community-->
+        <div id="communityButton" class=" cursor-pointer bg-white px-4 rounded-md py-2 mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold ">
+            <p>Community-Driven</p>
+            <div class=" rotate-90 rounded-[50%] cursor-pointer bg-gray-100  inline-block">
+                <span class="material-symbols-outlined font-semibold  text-center h-5 w-5  align-middle table-cell text-[#666666] ">
+                    chevron_right
+                </span>
+            </div>
+        </div>
+        <div id="community" class="bg-white z-0   px-4 rounded-md mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold -translate-y-12 transition-all ease-in-out mb-1 duration-300 h-0 overflow-hidden">
+            <div class="h-fit w-full space-y-4 py-2">
+                <img src="/images/community.jpeg" class="object-cover rounded-md h-56  w-full" alt="">
+                <div class="space-y-2">
+                    <p>Affordable reading</p>
+                    <P class="text-xs">Join our network of readers, sellers, and bookshops. Together, we build a community united by a love for literature.
+                    </P>
+                </div>
+            </div>
+        </div>
+        
+         <!--journy-->
+         <div id="journyButton" class=" cursor-pointer bg-white px-4 rounded-md py-2 mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold ">
+            <p>Your Literary Journey Begins Here</p>
+            <div class=" rotate-90 rounded-[50%] cursor-pointer bg-gray-100  inline-block">
+                <span class="material-symbols-outlined font-semibold  text-center h-5 w-5  align-middle table-cell text-[#666666] ">
+                    chevron_right
+                </span>
+            </div>
+        </div>
+        <div id="journy" class="bg-white z-0   px-4 rounded-md mt-3 flex items-center justify-between  text-sm text-[#523E33] font-semibold -translate-y-12 transition-all ease-in-out mb-1 duration-300 h-0 overflow-hidden">
+            <div class="h-fit w-full space-y-4 py-2">
+                <img src="/images/journy.jpeg" class="object-cover rounded-md h-56  w-full" alt="">
+                <div class="space-y-2">
+                    <p>Your Literary Journey Begins Here</p>
+                    <P class="text-xs">Explore Binbooks, connect with fellow readers, and let the magic of literature unfold in the comfort of your own home.
+                    </P>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <div class=" flex-grow">
+    </div>
+    <%-include("../partials/userFooter.ejs")%>
 </body>
+<script src="/javascripts/user/aboutUs.js"></script>
 </html>
