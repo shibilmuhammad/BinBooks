@@ -1,3 +1,5 @@
-exports.showHomepage = function (req,res){
-    res.render('user/home')
+module.exports = {
+    get: function (req,res){
+        res.render('user/home')
+    }
 }

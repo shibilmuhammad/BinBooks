@@ -1,4 +1,5 @@
-
-exports.showaddressPage = function (req,res){
-    res.render('user/address')
+module.exports = {
+    get: function (req,res){
+        res.render('user/address')
+    }
 }

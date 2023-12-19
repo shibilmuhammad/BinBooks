@@ -1,3 +1,5 @@
-exports.showmyAccountPage = function (req,res){
-    res.render('user/myAccount')
+module.exports = {
+    get: function (req,res){
+        res.render('user/myAccount')
+    }
 }

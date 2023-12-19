@@ -1,3 +1,5 @@
-exports.showloginPage = function (req,res){
-    res.render('user/login')
+module.exports = {
+    get: function (req,res){
+        res.render('user/login')
+    }
 }

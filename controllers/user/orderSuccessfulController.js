@@ -1,3 +1,5 @@
-exports.showorderSuccessfulPage = function (req,res){
-    res.render('user/orderSuccessful')
+module.exports = {
+    get: function (req,res){
+        res.render('user/orderSuccessful')
+    }
 }

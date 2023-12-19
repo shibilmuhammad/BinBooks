@@ -1,3 +1,5 @@
-exports.showaboutUsPage = function (req,res){
-    res.render('user/aboutUs')
+module.exports = {
+    get: function (req,res){
+        res.render('user/aboutUs')
+    }
 }

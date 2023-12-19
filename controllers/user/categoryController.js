@@ -1,4 +1,5 @@
-
-exports.showCategoryPage = function (req,res){
-    res.render('user/category')
+module.exports = {
+    get: function (req,res){
+        res.render('user/category')
+    }
 }

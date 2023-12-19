@@ -1,3 +1,5 @@
-exports.showBannerPage = function (req,res){
-    res.render('admin/adminBannermanage');
+module.exports = {
+    get: function (req,res){
+        res.render('admin/adminBannermanage')
+    }
 }

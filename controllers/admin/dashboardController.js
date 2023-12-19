@@ -1,3 +1,5 @@
-exports.showdashboardPage = function (req,res){
-    res.render('admin/adminDashboard');
+module.exports = {
+    get: function (req,res){
+        res.render('admin/adminDashboard')
+    }
 }

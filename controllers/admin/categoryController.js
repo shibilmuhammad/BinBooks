@@ -1,3 +1,5 @@
-exports.showCategoryPage = function (req,res){
-    res.render('admin/adminCategory');
+module.exports = {
+    get: function (req,res){
+        res.render('admin/adminCategory')
+    }
 }

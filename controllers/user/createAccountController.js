@@ -1,3 +1,5 @@
-exports.showcreateAccountPage = function (req,res){
-    res.render('user/createAccount')
+module.exports = {
+    get: function (req,res){
+        res.render('user/createAccount')
+    }
 }

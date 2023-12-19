@@ -1,3 +1,5 @@
-exports.showpaymentPage = function (req,res){
-    res.render('user/payment')
+module.exports = {
+    get: function (req,res){
+        res.render('user/payment')
+    }
 }

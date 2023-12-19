@@ -1,4 +1,5 @@
-
-exports.showyourOrdersPage = function (req,res){
-    res.render('user/yourOrders')
+module.exports = {
+    get: function (req,res){
+        res.render('user/yourOrders')
+    }
 }

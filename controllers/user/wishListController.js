@@ -1,4 +1,5 @@
-
-exports.showwishListPage = function (req,res){
-    res.render('user/wishList')
+module.exports = {
+    get: function (req,res){
+        res.render('user/wishList')
+    }
 }

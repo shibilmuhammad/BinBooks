@@ -1,3 +1,5 @@
-exports.showplaceOrderPage = function (req,res){
-    res.render('user/placeOrder')
+module.exports = {
+    get: function (req,res){
+        res.render('user/placeOrder')
+    }
 }

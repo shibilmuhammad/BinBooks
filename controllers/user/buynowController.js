@@ -1,4 +1,5 @@
-
-exports.showbuynowPage = function (req,res){
-    res.render('user/buynow')
+module.exports = {
+    get: function (req,res){
+        res.render('user/buynow')
+    }
 }

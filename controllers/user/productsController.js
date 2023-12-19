@@ -1,4 +1,5 @@
-
-exports.showProductsPage = function (req,res){
-    res.render('user/products')
+module.exports = {
+    get: function (req,res){
+        res.render('user/products')
+    }
 }

@@ -1,3 +1,6 @@
-exports.showmyCartPage = function (req,res){
-    res.render('user/myCart')
+
+module.exports = {
+    get: function (req,res){
+        res.render('user/myCart')
+    }
 }

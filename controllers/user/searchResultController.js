@@ -1,4 +1,5 @@
-
-exports.showsearchResultPage = function (req,res){
-    res.render('user/searchResult')
+module.exports = {
+    get: function (req,res){
+        res.render('user/searchResult')
+    }
 }

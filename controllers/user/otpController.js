@@ -1,3 +1,5 @@
-exports.showotpPage = function (req,res){
-    res.render('user/otp')
+module.exports = {
+    get: function (req,res){
+        res.render('user/otp')
+    }
 }
