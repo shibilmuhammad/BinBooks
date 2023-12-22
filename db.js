@@ -6,12 +6,10 @@ const connectDB = async () => {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-    
     console.log(`MongoDB connected: ${connection.connection.host}`);
   } catch (error) {
     console.error(`Error connecting to MongoDB: ${error.message}`);
     process.exit(1); 
   }
 };
-
 module.exports = connectDB;

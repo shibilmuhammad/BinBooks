@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true}));
 const connectDB = require('./db');
 connectDB();
 
-//   const upload = multer({ storage: storage });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

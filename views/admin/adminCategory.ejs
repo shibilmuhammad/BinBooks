@@ -56,7 +56,7 @@
                             
         
                         </form>
-                        <form action="" ><!--filter-->
+                        <form action=""  ><!--filter-->
                             <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
                                 <option value="">All categories</option>
                                 <option value="">Novel</option>
@@ -92,7 +92,7 @@
             <table class=" w-full mt-2">
                 <tr class="bg-[#5E8E99]   text-white text-left font-medium  ">
                     <th class="font-medium ps-3 rounded-tl-md py-2">Category ID </th>
-                    <TH class="font-medium text-center  ">Category</TH>
+                    <TH class="font-medium text-left ">Category</TH>
                     <th class="font-medium text-center">Products</th>
                     <th class="font-medium text-center">Status</th>
                     <th class="rounded-tr-md font-medium">Action</th>
@@ -101,28 +101,24 @@
                     <%categories.forEach(function(data){%>
                         <tr class="bg-white  text-sm  ">
                             <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 "><%=data._id%></td>
-                            <td class="max-w-[14rem] truncate pr-6 font-semibold text-center"><%=data.categoryName%></td>
+                            <td class="max-w-[14rem] truncate pr-6 font-semibold text-left"><%=data.categoryName%></td>
                             <td class="text-center">122</td>
                             <td class="flex justify-center items-center mt-1">
                                 <div  <% if(data.Status==="Active"){%>class="bg-[#DBFCDF] itext-[#189E34] rounded-full text-center w-2/3 px-2"<%}else{%>class="bg-[#fbebec] text-[#b16d70] rounded-full text-center w-2/3 px-2"<%}%> ><%=data.Status%></div>
                             </td>
                             <td>
                                  <div class="flex space-x-4">
-                                     <img class="h-4 cursor-pointer" src="/images/edit blue.png" alt="">
-                                     <img   class="h-4 cursor-pointer" src="/images/trash red.png" alt="">
+                                    <a  onclick="editCategory(this)" id="<%=data._id%>"   ><img class="h-4 cursor-pointer" src="/images/edit blue.png" alt=""></a> 
+                                    <a href=""><img   class="h-4 cursor-pointer" id="<%=data._id%>"  src="/images/trash red.png" alt=""></a> 
                                 </div>
                             </td>
                         </tr>
-                    
                     <%})%>
-
             </table>
-            
-           
-
         </div>
     </main>
     <%-include('../partials/categoryUploadPopup.ejs')%>
+    <%-include('../partials/categoryEditPopup.ejs')%>
     
 </body>
     <script src="/javascripts/admin/adminCategory.js"></script>
