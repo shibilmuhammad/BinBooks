@@ -145,3 +145,49 @@ document.getElementById('CategoryEditsubmit').addEventListener('submit',function
     event.preventDefault()
     validateEditForm()
 })
+function hideDeletePopup(){
+    document.getElementById('categoryDelete').style.display='none'
+}
+function deleteCategory(element){
+    document.getElementById('categoryDelete').style.display='flex'
+    document.getElementById('deleteId').value=element.id;
+}
+
+let filterForm =  document.getElementById('filterForm');
+let filtervalues = document.getElementById('categoryFilter');
+filtervalues.addEventListener('change',function(){
+    filterForm.submit();
+})
+
+function updateSortHowOptions() {
+    const sortWhatSelect = document.getElementById("sortSelect");
+    const selectedSortWhat = sortWhatSelect.value;
+    const sortHowSelect = document.getElementById("sortHow");
+    const initialOption = sortHowSelect.firstElementChild.cloneNode(true);
+
+    sortHowSelect.innerHTML = "";
+  
+    sortHowSelect.appendChild(initialOption);
+    if (selectedSortWhat === "CategoryName") {
+      addOption(sortHowSelect, "a-z", "a-z");
+      addOption(sortHowSelect, "z-a", "z-a");
+      addOption(sortHowSelect, "Newest first", "Newest first");
+      addOption(sortHowSelect, "Oldest First", "Oldest First");
+    } else if (selectedSortWhat === "ProductCount") {
+      addOption(sortHowSelect, "Ascending", "Ascending");
+      addOption(sortHowSelect, "Descending", "Descending");
+    }
+  }
+  function addOption(selectElement, text, value) {
+    const option = document.createElement("option");
+    option.text = text;
+    option.value = value;
+    selectElement.add(option);
+  }
+  updateSortHowOptions()
+  const sortWhatSelect = document.getElementById("sortSelect");
+  sortWhatSelect.addEventListener('change',updateSortHowOptions)
+  const sortHowSelect = document.getElementById("sortHow");
+  sortHowSelect.addEventListener('change',function(){
+    document.getElementById('CategorySortForm').submit()
+  })

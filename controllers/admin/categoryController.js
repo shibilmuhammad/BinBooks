@@ -14,7 +14,6 @@ module.exports = {
   post: async function (req, res) {
     try {
       upload.single('categoryImage')(req, res, async function (err) {
-        console.log(req.file)
         if (err) {
           console.error(err);
           return res.status(500).send('Internal Server Error');
@@ -77,6 +76,79 @@ module.exports = {
       console.error(error);
       res.status(500).send('Internal Server Error');
     }
+  },
+  postDelete: async function (req,res){
+    idforDelete = req.body.deleteId;
+    let DeleteCategory =  await categoryModel.findByIdAndDelete(idforDelete);
+    cloudinary.uploader.destroy(DeleteCategory.cloudinaryId)
+    res.redirect('/admin/category')
+  },
+  postSearch: async function(req,res){
+    let searchResult = req.body.categorySearch;
+    res.redirect(`/admin/category/searcResult?sv=${searchResult}`);
+  },
+  searchRenderGet: async function(req,res){
+    let searchResult = req.query.sv;
+    const categories = await categoryModel.find({ categoryName: { $regex: new RegExp(searchResult, 'i') } });
+    res.render('admin/adminCategory',{ categories:categories, searchvalue:searchResult})
+  },
+  postFilter: async function (req,res){
+    let filterValue = req.body.categoryFilter;
+    res.redirect(`/admin/category/filterResult?fv=${filterValue}`)
+  },
+  filterResultGet:async function(req,res){
+    let filterValue =req.query.fv;
+      let categories
+      if(filterValue=='All'){
+        categories = await categoryModel.find()
+      }else{
+        categories = await categoryModel.find({Status:filterValue})
+      }
+       res.render('admin/adminCategory',{ categories:categories,filterValue})
     
   },
+  postSort:async function(req,res){
+    sortStatus =req.body.sortValue
+    categories = await categoryModel.find()
+    if(sortStatus=="z-a"){
+     let sortResult =  categories.sort(sortArrayZtoA)
+     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+    }
+    if(sortStatus=="a-z"){
+      let sortResult =  categories.sort(sortArrayAtoZ)
+     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+    }
+   
+    if(sortStatus=="Newest first"){
+      let sortResult =  categories.reverse()
+     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+    }
+    if(sortStatus=="Oldest First"){
+      let sortResult =  categories
+     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+    }
+  },
+  sortResult:async function(req,res){
+    let  categories = JSON.parse(req.query.Sv)
+    let sortStatus = req.query.sortStatus
+    res.render('admin/adminCategory',{ categories:categories,sortStatus:sortStatus})
+  }
 };
+function sortArrayZtoA(a,b){
+  if(a.categoryName < b.categoryName){
+    return 1
+  }
+  if(a.categoryName > b.categoryName){
+    return -1
+  }
+  return 0;
+}
+function sortArrayAtoZ(a,b){
+  if(a.categoryName < b.categoryName){
+    return-1
+  }
+  if(a.categoryName > b.categoryName){
+    return 1
+  }
+  return 0;
+}
