@@ -4,7 +4,8 @@ const cloudinary = require('../../util/cloudinary')
 module.exports = {
   get: async function (req, res) {
     try {
-      const categories = await categoryModel.find();
+      const categoriesinDb = await categoryModel.find();
+      const categories = categoriesinDb.reverse()
       res.render('admin/adminCategory', { categories });
     } catch (error) {
       console.error(error);
@@ -93,46 +94,43 @@ module.exports = {
     res.render('admin/adminCategory',{ categories:categories, searchvalue:searchResult})
   },
   postFilter: async function (req,res){
-    let filterValue = req.body.categoryFilter;
-    res.redirect(`/admin/category/filterResult?fv=${filterValue}`)
-  },
-  filterResultGet:async function(req,res){
-    let filterValue =req.query.fv;
-      let categories
-      if(filterValue=='All'){
-        categories = await categoryModel.find()
-      }else{
-        categories = await categoryModel.find({Status:filterValue})
-      }
-       res.render('admin/adminCategory',{ categories:categories,filterValue})
-    
+    const filterStatus =req.body.filterValue
+    if(filterStatus =='All'){
+      let categoriesData = await categoryModel.find()
+      let categories = categoriesData.reverse()
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
+    }else if(filterStatus=='filterBy'){
+      let categoriesData = await categoryModel.find()
+      let categories = categoriesData.reverse()
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
+    }
+    else{
+      let categories = await categoryModel.find({Status:filterStatus})
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
+    }
+   
   },
   postSort:async function(req,res){
-    sortStatus =req.body.sortValue
-    categories = await categoryModel.find()
+    const sortStatus =req.body.sort
+    categoriesInDb = await categoryModel.find()
     if(sortStatus=="z-a"){
-     let sortResult =  categories.sort(sortArrayZtoA)
-     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+     let categories =  categoriesInDb.sort(sortArrayZtoA)
+     res.render('partials/admin/CategoryTabledata',{ categories:categories})
     }
     if(sortStatus=="a-z"){
-      let sortResult =  categories.sort(sortArrayAtoZ)
-     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+      let categories =  categoriesInDb.sort(sortArrayAtoZ)
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
     }
    
     if(sortStatus=="Newest first"){
-      let sortResult =  categories.reverse()
-     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+      let categories =  categoriesInDb.reverse()
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
     }
     if(sortStatus=="Oldest First"){
-      let sortResult =  categories
-     res.redirect(`/admin/category/sortResult?Sv=${JSON.stringify(sortResult)}&sortStatus=${sortStatus}`)
+      let categories =  categoriesInDb
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
     }
   },
-  sortResult:async function(req,res){
-    let  categories = JSON.parse(req.query.Sv)
-    let sortStatus = req.query.sortStatus
-    res.render('admin/adminCategory',{ categories:categories,sortStatus:sortStatus})
-  }
 };
 function sortArrayZtoA(a,b){
   if(a.categoryName < b.categoryName){

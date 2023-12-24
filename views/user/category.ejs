@@ -1,9 +1,9 @@
-<%-include("../partials/head.ejs")%>
+<%-include("../partials/user/head.ejs")%>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" href="/css/user/header.css">
 <body class="bg-[#F2F2F2] flex flex-col h-screen">
-    <%-include('../partials/headerPhone.ejs')%>
-    <%-include('../partials/HeaderDesktopUser.ejs')%>
+    <%-include('../partials/user/headerPhone.ejs')%>
+    <%-include('../partials/user/HeaderDesktopUser.ejs')%>
     <main class="px-3 lg:px-10">
         <div id="TopCategorycontainer" class="grid grid-cols-2  gap-4 space-x-2 md:space-x-4   overflow-auto relative mt-6 lg:mt-20"> <!--Top category sldier -->
             <%categories.forEach(function(data){%>
@@ -22,6 +22,6 @@
     <div class=" flex-grow">
 
     </div>
-    <%-include("../partials/userFooter.ejs")%>
+    <%-include("../partials/user/userFooter.ejs")%>
 </body>
 </html>

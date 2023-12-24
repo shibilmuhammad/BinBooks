@@ -1,5 +1,5 @@
 module.exports = {
     get: function (req,res){
-        res.render('user/resetpswd')
+        res.render('admin/adminLogin')
     }
 }

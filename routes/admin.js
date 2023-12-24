@@ -7,6 +7,7 @@ const customersController = require('../controllers/admin/customerController');
 const dashboardController = require('../controllers/admin/dashboardController');
 const ordersController = require("../controllers/admin/ordersController");
 const productController = require('../controllers/admin/productController');
+const loginController = require('../controllers/admin/loginController');
 
 
 // category routes
@@ -18,13 +19,13 @@ router.post('/category/delete',categorycontroller.postDelete)
 router.post('/category/search',categorycontroller.postSearch)
 router.get('/category/searcResult',categorycontroller.searchRenderGet)
 router.post('/category/filter',categorycontroller.postFilter)
-router.get('/category/filterResult',categorycontroller.filterResultGet)
 router.post('/category/sort',categorycontroller.postSort)
-router.get('/category/sortResult',categorycontroller.sortResult)
+
 
 router.get('/customers',customersController.get)
 router.get('/dashboard',dashboardController.get)
 router.get('/orders',ordersController.get);
 router.get('/products',productController.get)
 router.get('/banner',bannerController.get)
+router.get('/login',loginController.get)
 module.exports = router;

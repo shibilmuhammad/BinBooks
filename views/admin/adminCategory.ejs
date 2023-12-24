@@ -1,31 +1,31 @@
 
     
-<%-include("../partials/head.ejs")%>
+<%-include("../partials/admin/head.ejs")%>
 <body class="bg-[#F2F2F2]">
-    <%-include("../partials/header.ejs")%>
+    <%-include("../partials/admin/header.ejs")%>
     <main class="px-10 flex">
         <div class="left mt-28 space-y-4 border-r-[.1px] border-gray-400  w-fit pt-1 pb-1 pr-2">
-            <a href="dashboard" class="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 rounded-sm px-3 py-3">
+            <a href="/admin/dashboard" class="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 rounded-sm px-3 py-3">
                 <img class="h-6" src="/images/dashboardIcon.png" alt="">
                 <h2 class="text-base font-semibold text-[#7E7878]">Dashboard</h2>
             </a>
-            <a href="products" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+            <a href="/admin/products" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
                 <img class="h-4" src="/images/productsIcon.png" alt="">
                 <h2 class="text-base font-semibold text-[#7E7878]">Products</h2>
             </a>
-            <a href="customers" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+            <a href="/admin/customers" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
                 <img class="h-5" src="/images/customersicon.png" alt="">
                 <h2 class="text-base font-semibold text-[#7E7878]">Customers</h2>
             </a>
-            <a href="orders" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+            <a href="/admin/orders" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
                 <img class="h-5" src="/images/Orders icon.png" alt="">
                 <h2 class="text-base font-semibold text-[#7E7878]">Orders</h2>
             </a>
-            <a href="category" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+            <a href="/admin/category" class="flex items-center space-x-2 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
                 <img class="h-4" src="/images/CategorySelected.png" alt="">
                 <h2 class="text-base font-semibold text-[#4B727A]">Category</h2>
             </a>
-            <a href="banner" class="flex items-center space-x-2 mb-12 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
+            <a href="/admin/banner" class="flex items-center space-x-2 mb-12 cursor-pointer  hover:bg-gray-200 rounded-sm px-3 py-3">
                 <img class="h-3" src="/images/bannericon.png" alt="">
                 <h2 class="text-base font-semibold text-[#7E7878] pr-10 whitespace-nowrap ">Banner Manage</h2>
             </a>
@@ -35,7 +35,7 @@
             <div class="searchandsort flex  justify-between">
                 <div class="flex space-x-7 ">
                     <div class="flex space-x-7">
-                        <form action="/admin/category/sort" method="post" id="CategorySortForm" class="flex space-x-1 "><!--sort-->
+                        <form action="" method="post" id="CategorySortForm" class="flex space-x-1 "><!--sort-->
                             <div class="flex items-center space-x-1">
                                 <label class="text-xs text-[#333333]" for="">sort</label>
                               <select name="" id="sortSelect"  class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
@@ -46,13 +46,12 @@
                             <div class="flex  items-center space-x-1">
                                 <label class="text-xs text-[#333333]" for="sortHow">by</label>
                              <select name="sortValue" id="sortHow" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
-                                <option id="createdId" value="<%=locals.sortStatus%>"><%=locals.sortStatus  ||"sort type"%></option>
                              </select>
                             </div>
                         </form>
-                        <form action="/admin/category/filter"  method="post" id="filterForm"><!--filter-->
+                        <form action=""  method="post" id="filterForm"><!--filter-->
                                 <select  name="categoryFilter"  id="categoryFilter"  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
-                                    <option value="<%=locals.filterValue%>"><%=locals.filterValue ||" Filter by"%></option>
+                                    <option value="filterBy">Filter by</option>
                                     <option value="All">All</option>
                                     <option value="Active">Active</option>
                                     <option value="Blocked">Blocked</option>
@@ -60,7 +59,7 @@
                         </form>
                     </div>
                    
-                    <form action="/admin/category/search" method="post"> <!--search-->
+                    <form action="/admin/category/search" method="post" > <!--search-->
                         <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
                             <input value="<%=locals.searchvalue%>" type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="categorySearch" id="" placeholder="Search by Category name.. ">
                             <button type="submit" class="bg-[#DAA520] px-1 py-1 rounded-md h-full cursor-pointer" >
@@ -83,29 +82,15 @@
                     <th class="font-medium text-center">Status</th>
                     <th class="rounded-tr-md font-medium">Action</th>
                 </tr>
-          
-                    <%categories.forEach(function(data){%>
-                        <tr class="bg-white  text-sm  ">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 "><%=data._id%></td>
-                            <td class="max-w-[14rem] truncate pr-6 font-semibold text-left"><%=data.categoryName%></td>
-                            <td class="text-center">122</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div  <% if(data.Status==="Active"){%>class="bg-[#DBFCDF] itext-[#189E34] rounded-full text-center w-2/3 px-2"<%}else{%>class="bg-[#fbebec] text-[#b16d70] rounded-full text-center w-2/3 px-2"<%}%> ><%=data.Status%></div>
-                            </td>
-                            <td>
-                                 <div class="flex space-x-4">
-                                    <a  onclick="editCategory(this)" id="<%=data._id%>"   ><img class="h-4 cursor-pointer" src="/images/edit blue.png" alt=""></a> 
-                                    <img onclick="deleteCategory(this)"   class="h-4 cursor-pointer" id="<%=data._id%>"  src="/images/trash red.png" alt="">
-                                </div>
-                            </td>
-                        </tr>
-                    <%})%>
+                <tbody id="table-container">
+                    <%-include('../partials/admin/CategoryTabledata.ejs')%>
+                </tbody>
             </table>
         </div>
     </main>
-    <%-include('../partials/categoryUploadPopup.ejs')%>
-    <%-include('../partials/categoryEditPopup.ejs')%>
-    <%-include('../partials/deleteCategory.ejs')%>
+    <%-include('../partials/admin/categoryUploadPopup.ejs')%>
+    <%-include('../partials/admin/categoryEditPopup.ejs')%>
+    <%-include('../partials/admin/deleteCategory.ejs')%>
 </body>
     <script src="/javascripts/admin/adminCategory.js"></script>
 </html>

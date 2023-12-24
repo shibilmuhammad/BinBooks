@@ -36,12 +36,12 @@ router.get('/myCart',myCartController.get);
 router.get('/orderSuccessful',ordersuccessfulController.get);
 router.get('/orderSummery',orderSummeryController.get)
 router.get('/otp',otpController.get);
-router.get('./payment',paymentController.get);
-router.get('placeOrder',placeOrderController.get);
+router.get('/payment',paymentController.get);
+router.get('/placeOrder',placeOrderController.get);
 router.get('/product',productController.get);
 router.get('/products',productsController.get);
 router.get('/resetPassword',resetpswdController.get);
 router.get('/searchResult',searchResultController.get);
 router.get('/wishList',wishListController.get);
-router.get('yourOrders',yourOrderControllers.get);
+router.get('/yourOrders',yourOrderControllers.get);
 module.exports = router;

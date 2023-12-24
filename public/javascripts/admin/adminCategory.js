@@ -10,6 +10,7 @@ let categoryEditName = document.getElementById('categoryEditName');
 let categoryEditDescription = document.getElementById('categoryEditDescription');
 let categoryNameEditError = document.getElementById('categoryNameEditError');
 let categoryDescriptionEditError = document.getElementById('categoryDescriptionEditError');
+// 
 function showCategoryEdit(){
     document.getElementById("categoryUploadPopup").style.display="flex"
     document.getElementById("imageDone").style.display="none";
@@ -49,6 +50,7 @@ document.getElementById('Categorysubmit').addEventListener('submit', function(ev
     
     validateUploadForm()
 })
+//validate form of uploading 
 function validateUploadForm(){
     if(categoryName.value.trim()===""){
         categoryDescriptionError.style.display='none';
@@ -81,6 +83,8 @@ function validateUploadForm(){
         document.getElementById('Categorysubmit').submit();
     }
 }
+
+// validate form of editing 
 function validateEditForm(){
     if(categoryEditName.value.trim()===""){
         categoryDescriptionEditError.style.display='none';
@@ -114,7 +118,7 @@ function validateEditForm(){
     }
 
 }
-
+// Edit category fetch the route 
 async function  editCategory(element){   
     try {
         const categoryId =  element.id
@@ -145,6 +149,7 @@ document.getElementById('CategoryEditsubmit').addEventListener('submit',function
     event.preventDefault()
     validateEditForm()
 })
+// hide delete popup
 function hideDeletePopup(){
     document.getElementById('categoryDelete').style.display='none'
 }
@@ -152,22 +157,42 @@ function deleteCategory(element){
     document.getElementById('categoryDelete').style.display='flex'
     document.getElementById('deleteId').value=element.id;
 }
-
+// filter cateogry
 let filterForm =  document.getElementById('filterForm');
 let filtervalues = document.getElementById('categoryFilter');
 filtervalues.addEventListener('change',function(){
-    filterForm.submit();
+    filterCategory()
 })
+async function filterCategory(){
+    const selectedOption = document.getElementById('categoryFilter').value;
+    try {
+      const response = await fetch('/admin/category/filter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'filterValue=' + selectedOption,
+      });
 
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.text();
+      document.getElementById('table-container').innerHTML = data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+}
+  //change second sort tag respect to first sortchooses
 function updateSortHowOptions() {
     const sortWhatSelect = document.getElementById("sortSelect");
     const selectedSortWhat = sortWhatSelect.value;
     const sortHowSelect = document.getElementById("sortHow");
-    const initialOption = sortHowSelect.firstElementChild.cloneNode(true);
+    // const initialOption = sortHowSelect.firstElementChild.cloneNode(true);
 
     sortHowSelect.innerHTML = "";
-  
-    sortHowSelect.appendChild(initialOption);
+    addOption(sortHowSelect, "Sort type", "sortType");
+    // sortHowSelect.appendChild(initialOption);
     if (selectedSortWhat === "CategoryName") {
       addOption(sortHowSelect, "a-z", "a-z");
       addOption(sortHowSelect, "z-a", "z-a");
@@ -184,10 +209,32 @@ function updateSortHowOptions() {
     option.value = value;
     selectElement.add(option);
   }
+
   updateSortHowOptions()
   const sortWhatSelect = document.getElementById("sortSelect");
   sortWhatSelect.addEventListener('change',updateSortHowOptions)
   const sortHowSelect = document.getElementById("sortHow");
+  //fetch data and sort on change sortvalues 
   sortHowSelect.addEventListener('change',function(){
-    document.getElementById('CategorySortForm').submit()
+    sortCategory()
   })
+  async function sortCategory() {
+    const selectedOption = document.getElementById('sortHow').value;
+    try {
+      const response = await fetch('/admin/category/sort', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'sort=' + selectedOption,
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.text();
+      document.getElementById('table-container').innerHTML = data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
