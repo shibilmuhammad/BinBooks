@@ -116,7 +116,6 @@ function validateEditForm(){
         loadingEdit()
         document.getElementById('CategoryEditsubmit').submit();
     }
-
 }
 // Edit category fetch the route 
 async function  editCategory(element){   
