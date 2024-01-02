@@ -21,11 +21,15 @@ router.get('/category/searcResult',categorycontroller.searchRenderGet)
 router.post('/category/filter',categorycontroller.postFilter)
 router.post('/category/sort',categorycontroller.postSort)
 
+//products routes
+router.get('/products',productController.get)
+router.post('/products',productController.post)
+
 
 router.get('/customers',customersController.get)
 router.get('/dashboard',dashboardController.get)
 router.get('/orders',ordersController.get);
-router.get('/products',productController.get)
+
 router.get('/banner',bannerController.get)
 router.get('/login',loginController.get)
 module.exports = router;

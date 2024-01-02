@@ -23,7 +23,8 @@ function showCategoryEdit(){
 }
 function hideCategoryUpload(){
     document.getElementById("categoryUploadPopup").style.display="none";
-
+    var previewImage = document.getElementById('preview-image');
+  previewImage.style.display='none'
 }
 function hideCategoryEdit(){
     document.getElementById("categoryEditPopup").style.display="none";
@@ -128,6 +129,7 @@ async function  editCategory(element){
         const status = data.item.Status;
         const categoryDescription = data.item.categoryDescription;
         const imageUrl = data.item.imageUrl;
+
         let categoryEditName = document.getElementById('categoryEditName')
         let categoryEditStatus = document.getElementById('categoryEditStatus')
         let categoryEditDescription = document.getElementById('categoryEditDescription')
@@ -140,6 +142,7 @@ async function  editCategory(element){
         document.getElementById("tickImageEdit").style.display="block";
         document.getElementById("BrowseImageEdit").style.display="none";
         document.getElementById("UploadImageEdit").style.display="none"
+        document.getElementById('preview-imageEdit').src=imageUrl
       } catch (error) {
         console.error('Error fetching category data:', error);
       }
@@ -237,3 +240,40 @@ function updateSortHowOptions() {
       console.error('Fetch error:', error);
     }
   }
+//show preview of image when upload
+
+document.getElementById('productImage').addEventListener('change',function(){
+ 
+  showPreviewimageUpload(this)
+})
+function showPreviewimageUpload(input){
+  var previewImage = document.getElementById('preview-image');
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+      };
+
+      reader.readAsDataURL(input.files[0]);
+  }
+}
+//show preview of image when Edit
+document.getElementById('productImageEdit').addEventListener('change',function(){
+  showPreviewimage(this)
+})
+function showPreviewimage(input){
+  var previewImage = document.getElementById('preview-imageEdit');
+
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+      };
+
+      reader.readAsDataURL(input.files[0]);
+  }
+}

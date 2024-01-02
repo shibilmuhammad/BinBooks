@@ -29,18 +29,26 @@
             </div>
            
             </div>
+            
            <div class="flex  space-x-5 items-center">
             <p class="text-sm">Upload image</p>
             <div class="">
+                
                 <input  type="file" accept="image/*" name='editImg' id="productImageEdit" hidden  >
                 <label for="productImageEdit" class="flex items-center space-x-2 border-dotted border-[.1px] border-gray-400 px-2 w-fit py-2 cursor-pointer">
+                    <img src="" class="w-[100px] h-[80px] object-cover rounded-sm" id="preview-imageEdit" alt="">
                     <img src="/images/imageUpload.png" id="UploadImageEdit" alt="" class="h-4  " >
-                    <img class="h-4 hidden" src="/images/tick.png" id="tickImageEdit" alt="">
                     <p class="text-sm text-[#666666] " id="BrowseImageEdit">Browse image</p>
-                    <p class="text-sm text-[#666666] hidden  " id="imageEditDone">Done</p>
+                   
+                   
                 </label>
+                <div class="flex items-center justify-center  space-x-2">
+                    <img class="h-4 hidden" src="/images/tick.png" id="tickImageEdit" alt="">
+                    <p class="text-sm text-[#666666] hidden  " id="imageEditDone">Done</p>
+                </div>
+                
             </div>
-           
+            
     </div>  
     <span id="imageUploadEditError" class="text-[10px]  text-red-600 hidden">Upload suitable image for this category !!</span>
            <div class="w-full ">

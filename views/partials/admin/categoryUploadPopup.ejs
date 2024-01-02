@@ -35,10 +35,12 @@
             <div class="">
                 <input  type="file" accept="image/*" name="categoryImage" id="productImage" hidden onchange="Imagedone()" >
                 <label for="productImage" class="flex items-center space-x-2 border-dotted border-[.1px] border-gray-400 px-2 w-fit py-2 cursor-pointer">
+                    <img src="" class="w-[100px] h-[80px] object-cover rounded-sm hidden" id="preview-image" alt="">
                     <img src="/images/imageUpload.png" id="UploadImage" alt="" class="h-4  " >
-                    <img class="h-4 hidden" src="/images/tick.png" id="tickImage" alt="">
                     <p class="text-sm text-[#666666] " id="BrowseImage">Browse image</p>
+                    <img class="h-4 hidden" src="/images/tick.png" id="tickImage" alt="">
                     <p class="text-sm text-[#666666] hidden  " id="imageDone">Done</p>
+                   
                 </label>
             </div>
            
