@@ -56,18 +56,16 @@
         
                         </form>
                         <form action="" ><!--filter-->
-                            <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                            <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666] max-w-20">
+                                <option value="" disabled selected>Filter by</option>
                                 <option value="">All categories</option>
-                                <option value="">Novel</option>
-                                <option value="">Fantasy</option>
-                                <option value="">Comic</option>
-                                <option value="">Relegious</option>
-                                <option value="">Comedy</option>
-                                <option value="">Myseterious</option>
                                 <option value="">Below 100</option>
                                 <option value="">100-200</option>
                                 <option value="">200-300</option>
                                 <option value="">above 300</option>
+                                <% category.forEach(function(data){%>
+                                    <option value="<%=data.categoryName %>" ><%= data.categoryName%></option>
+                               <% }) %>
                             </select>
                         </form>
                     </div>
@@ -106,12 +104,12 @@
                         <td class="capitalize"><%=data.author%></td>
                         <td><%=data.MRP%></td>
                         <td class="flex justify-center items-center mt-1">
-                            <div <% if(data.status==="No stock") {%> class="bg-[#fbebec] text-[#b16d70] rounded-full text-center w-2/3 px-2 whitespace-nowrap"<% }else{%>class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2 whitespace-nowrap"<%}%>><%=data.status%></div>
+                            <div <% if(data.status==="No stock") {%> class="bg-[#fbebec] text-[#b16d70] rounded-full text-center w-2/3 px-3 whitespace-nowrap flex justify-center items-center"<% }else{%>class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-3 whitespace-nowrap flex justify-center items-center"<%}%>><%=data.status%></div>
                         </td>
                         <td>
                             <div class="flex space-x-4">
-                                <img  onclick="showEditProductPopup()" class="h-4 cursor-pointer" src="/images/edit blue.png" alt="">
-                                <img  onclick=" deletePopup()" class="h-4 cursor-pointer" src="/images/trash red.png" alt="">
+                                <img id="<%=data._id%>" onclick="editProduct(this)" class="h-4 cursor-pointer" src="/images/edit blue.png" alt="">
+                                <img  id="<%=data._id%>" onclick=" deletePopup(this)" class="h-4 cursor-pointer" src="/images/trash red.png" alt="">
                             </div>
                         </td>
                     </tr>
@@ -122,8 +120,9 @@
            
 
         </div>
-        <%-include("../partials/admin/deletePopup.ejs")%>
+        <%-include("../partials/admin/deleteProduct.ejs")%>
         <%-include("../partials/admin/productUploadPopup.ejs")%>
+        <%-include("../partials/admin/productEditPopup") %>
     </main>
     
 </body>

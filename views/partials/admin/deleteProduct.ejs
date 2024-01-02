@@ -2,7 +2,7 @@
 <%-include("head.ejs")%>
 <body class="bg-slate-200 ">
     <div class="fixed inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)] hidden" id="productDelete">
-        <form action="" class=" bg-white rounded-lg w-fit  py-3 px-5  text-sm ">
+        <form action="/admin/products/delete" method="post" class=" bg-white rounded-lg w-fit  py-3 px-5  text-sm ">
            <div class="flex flex-col items-center justify-center space-y-2">
                 <div class=" flex items-center justify-center px-2 py-2 bg-[#FEE2E1] rounded-full w-14 h-14">
                     <img class="h-10   " src="/images/warning red.png" alt="">
@@ -19,6 +19,7 @@
                         <button type="submit" class="w-full bg-red-600 text-white font-medium py-1 rounded-sm">
                             Delete Product
                         </button>
+                        <input hidden type="text" name="deleteId" id="deleteId">
                         <button onclick="hideDeletePopup()" type="button" class="w-full border  text-black font-medium py-1 rounded-sm ">
                             Cancel
                         </button>

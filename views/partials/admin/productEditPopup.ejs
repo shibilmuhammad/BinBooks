@@ -1,54 +1,54 @@
 
 <%-include("head.ejs")%>
 <body class="bg-slate-200 ">
-    <div class="fixed inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)] hidden " id="productUpload">
-        <form action="/admin/products" enctype="multipart/form-data" method="post" class="flex bg-white rounded-lg w-fit  py-8 px-5 relative" id="productUploadForm">
+    <div class="fixed inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)] hidden " id="productEditPopup">
+        <form action="/admin/products/update" enctype="multipart/form-data" method="post" class="flex bg-white rounded-lg w-fit  py-8 px-5 relative" id="productEditForm">
+            <input name="editId" id="editId" class="hidden" type="text">
             <div class="space-y-5 grid grid-cols-4 grid-rows-6 mr-10"><!--left-->
                 <div class="flex  space-x-5 items-center col-span-4 justify-between">
                     <label class="text-sm" for="">Book name</label>
-                    <input required class="px-2  border-gray-400 border-[.1px] w-[435px] rounded-full" name="bookName" type="text">
+                    <input required class="px-2  border-gray-400 border-[.1px] w-[385px] rounded-full  text-[#333333] text-xs py-[5px]" name="bookName" type="text" id="bookNameEdit">
                 </div>
                 <div class="flex  space-x-5 items-center col-span-4 justify-between">
                     <label class="text-sm" for="">Author</label>
-                    <input required name="author" class="px-2 border-gray-400 border-[.1px] w-[435px] rounded-full" type="text">
+                    <input required name="author" class="px-2 border-gray-400 border-[.1px] w-[385px] rounded-full  text-[#333333] text-xs py-[5px]" id="authorEdit" type="text">
                 </div>
                 <div class="flex col-start-1 row-start-3 col-end-3 justify-between mr-5">
                     <label class="text-sm " for="">MRP</label>
-                    <input type="number" required name="mrp" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full" type="text">
+                    <input type="number" required name="mrp" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full  text-[#333333] text-xs py-[5px]" id="mrpEdit" type="text">
                 </div>
                 <div class="flex col-start-3 row-start-3 col-end-5 justify-between">
                     <label class="text-sm" for="">Discount</label>
-                    <input type="number" required name="discount" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full" type="text">
+                    <input type="number" required name="discount" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full  text-[#333333] text-xs py-[5px]" id="discountEdit" type="text">
                 </div>
                 <div class="flex col-start-1 row-start-4 col-end-3 justify-between mr-5">
                     <label class="text-sm " for="">Del charge</label>
-                    <input required name="delcharge" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full" type="number">
+                    <input required name="delcharge" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full  text-[#333333] text-xs py-[5px]" id="delChargeEdit" type="number">
                 </div>
                 <div class="flex col-start-3 row-start-4 col-end-5 justify-between">
                     <label class="text-sm" for="">Pages</label>
-                    <input required name="pages" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full" type="number">
+                    <input required name="pages" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full  text-[#333333] text-xs py-[5px]" id="pagesEdit" type="number">
                 </div>
                 <div class="flex col-start-1 row-start-5 col-end-3 justify-between mr-5">
                     <label class="text-sm " for="">Width</label>
-                    <input type="number" required name="width" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full placeholder:text-xs" placeholder="Width in cm" >
+                    <input type="number" required name="width" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full placeholder:text-xs  text-[#333333] text-xs py-[5px]" id="widthEdit" placeholder="Width in cm" >
                 </div>
                 <div class="flex col-start-3 row-start-5 col-end-5 justify-between">
                     <label class="text-sm" for="">Height</label>
-                    <input required name="height" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full placeholder:text-xs" placeholder="Height in cm" type="number">
+                    <input required name="height" class="px-2 border-gray-400 border-[.1px] w-1/2 rounded-full placeholder:text-xs  text-[#333333] text-xs py-[5px]" id="heightEdit" placeholder="Height in cm" type="number">
                 </div>
                 <div class="flex col-start-1 row-start-6 col-end-3 justify-between mr-5">
                     <label class="text-sm " for="">Category</label>
-                    <select name="category" required class="border-gray-400 border-[.1px] w-1/2 rounded-full text-left text-xs px-2 text-gray-500" name="" id="">
+                    <select name="category" required class="border-gray-400 border-[.1px] w-1/2 rounded-full text-left text-xs px-2 text-gray-500" name="categoryEdit3" id="categoryEdit3">
                         <option value="" disabled selected>Category</option>
                         <% category.forEach(function(data){%>
-                            <option value="<%=data.categoryName %>"><%= data.categoryName %></option>
+                            <option value="<%=data.categoryName %>" ><%= data.categoryName%></option>
                        <% }) %>
-                       
                     </select>
                 </div>
                 <div class="flex col-start-3 row-start-6 col-end-5 justify-between">
                     <label class="text-sm" for="">Condtion</label>
-                    <select name="condition" required class="border-gray-400 border-[.1px] w-1/2 rounded-full text-left text-xs px-2 text-gray-500" name="" id="">
+                    <select name="condition"  required class="border-gray-400 border-[.1px] w-1/2 rounded-full text-left text-xs px-2 text-gray-500" name="" id="conditionEdit">
                         <option value="" disabled selected>Condition</option>
                         <option value="Like new">Like new</option>
                         <option value="Old">Old</option>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="flex col-start-1 row-start-7 col-end-3 justify-between mr-5">
                     <label class="text-sm " for="">Status</label>
-                    <select name="status" required class="border-gray-400 border-[.1px] py-1 w-1/2 rounded-full text-left text-xs px-2 text-gray-500" name="" id="">
+                    <select name="status" required class="border-gray-400 border-[.1px] py-1 w-1/2 rounded-full text-left text-xs px-2 text-gray-500" name="" id="statusEdit">
                         <option value="" disabled selected>Stauts</option>
                         <option value="Stock">Stock</option>
                         <option value="No stock">No stock</option>
@@ -66,26 +66,26 @@
 
                 <div class="flex  space-x-5 items-center col-span-4 justify-between ">
                     <label class="text-sm" for="">Publisher</label>
-                    <input required name="publisher" class="px-2 border-gray-400 border-[.1px] w-[435px] rounded-full" type="text">
+                    <input required name="publisher" class="px-2 border-gray-400 border-[.1px] w-[385px] rounded-full  text-[#333333] text-xs py-[5px]" id="publisherEdit" type="text">
                 </div>
             </div>
             <div class="flex  flex-col justify-between mr-4 "><!--right-->
                 <div class="flex flex-col w-full">
                     <label class="text-sm" for="">Book Description</label>
-                    <textarea required name="description" class="border-gray-400 border-[.1px]  " name="" id="" cols="40
-                    " rows="9"></textarea>
+                    <textarea required name="description" class="border-gray-400 border-[.1px]  text-[#333333] text-xs py-[5px] " name="" id="descriptionEdit" cols="50
+                    " rows="13"></textarea>
                 </div>
                 <div class="flex  space-x-2 items-center">
                         <p class="text-sm">Upload image</p>
                         <div class="">
-                            <input  type="file" accept="image/*" name="productImage" id="productImage" hidden onchange="Imagedone()" >
-                            <label for="productImage" class="flex items-center space-x-2 border-dotted border-[.1px] border-gray-400 px-2 w-fit py-2 cursor-pointer">
-                                <img src="" class=" h-16 object-cover rounded-sm hidden" id="preview-image" alt="">
-                                <img src="/images/imageUpload.png" id="UploadImage" alt="" class="h-4  " >
-                                <p class="text-sm text-[#666666] " id="BrowseImage">Browse image</p>
+                            <input  type="file" accept="image/*" name="productImageEdit" id="productImageEdit" hidden  >
+                            <label for="productImageEdit" class="flex items-center space-x-2 border-dotted border-[.1px] border-gray-400 px-2 w-fit py-2 cursor-pointer">
+                                <img src="" class=" h-16 object-cover rounded-sm " id="preview-imageEdit" alt="">
+                                <img src="/images/imageUpload.png" id="UploadImage" alt="" class="h-4 hidden " >
+                                <p class="text-sm text-[#666666] hidden" id="BrowseImage">Browse image</p>
                                 <div class="flex items-center justify-center">
-                                    <img class="h-3 hidden" src="/images/tick.png" id="tickImage" alt="">
-                                <p class="text-xs text-[#666666] hidden font-medium   " id="imageDone">Done</p>
+                                    <img class="h-3 " src="/images/tick.png" id="tickImage" alt="">
+                                <p class="text-xs text-[#666666]  font-medium   " id="imageDone">Done</p>
                                 </div>
                             </label>
                         </div>                
@@ -93,8 +93,8 @@
                 <span class="text-[9px]  text-red-600 hidden" id="uploadImageError">upload suitable image for your product</span>
                 <div class="w-full ">
                     <button class="bg-[#DAA520] text-white w-full rounded-full fontibold text-base py-1">
-                        <span id="saveSpan">Save</span>
-                        <div class="flex items-center justify-center font-normal hidden" id="loading">
+                        <span id="saveSpanEdit">Save</span>
+                        <div class="flex items-center justify-center font-normal hidden" id="loadingEdit">
                             <svg aria-hidden="true" role="status" class="inline w-4  h-4 me-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/>
                                 <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/>
@@ -104,7 +104,7 @@
                    </button>
                 </div>
             </div>
-            <div class="cursor-pointer" onclick="hideproductuploadPopup()" >
+            <div class="cursor-pointer" onclick="hideEditProductPopup()" >
                 <img class="h-6" src="/images/close.png" alt="">
             </div>
         </form>

@@ -24,7 +24,9 @@ router.post('/category/sort',categorycontroller.postSort)
 //products routes
 router.get('/products',productController.get)
 router.post('/products',productController.post)
-
+router.post('/products/delete',productController.postDelete)
+router.get('/products/edit/:id',productController.getEdit)
+router.post('/products/update',productController.postEdit)
 
 router.get('/customers',customersController.get)
 router.get('/dashboard',dashboardController.get)

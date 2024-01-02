@@ -13,10 +13,11 @@ const productSchema = mongoose.Schema({
     status:String,
     Date:Number,
     publisher:String,
-    discription:String,
+    description:String,
     imageUrl:String,
     cloudinaryId:String,
     path:String,
+    salePrice:Number,
 })
 
 module.exports = mongoose.model("product",productSchema);
