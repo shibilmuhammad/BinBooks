@@ -2,7 +2,7 @@
     <tr class="bg-white  text-sm  ">
         <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 "><%=data._id%></td>
         <td class="max-w-[14rem] truncate pr-6 font-semibold text-left"><%=data.categoryName%></td>
-        <td class="text-center">122</td>
+        <td class="text-center"><%=data.productCount%></td>
         <td class="flex justify-center items-center mt-1">
             <div  <% if(data.Status==="Active"){%>class="bg-[#DBFCDF] itext-[#189E34] rounded-full text-center w-2/3 px-2"<%}else{%>class="bg-[#fbebec] text-[#b16d70] rounded-full text-center w-2/3 px-2"<%}%> ><%=data.Status%></div>
         </td>

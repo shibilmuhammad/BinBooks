@@ -130,14 +130,123 @@ async function  editProduct(element){
 function hideEditProductPopup(){
     document.getElementById("productEditPopup").style.display="none"
 }
-function capitalizeFirstLetter(str) {
-    if (str.length === 0) {
-      return str;
-    }
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
+// function capitalizeFirstLetter(str) {
+//     if (str.length === 0) {
+//       return str;
+//     }
+//     return str.charAt(0).toUpperCase() + str.slice(1);
+//   }
 
 document.getElementById('productEditPopup').addEventListener('submit',function(){
     document.getElementById('loadingEdit').style.display='flex'
-    document.getElementById('saveSpanEdit').style.display='none'
+    document.getElementById('saveSpanEdit').style.display='non'
 })
+// filter 
+
+document.getElementById('filterValues').addEventListener('change',function(){
+    filterProduct()
+})
+
+async function filterProduct(){
+    let selectedValue = document.getElementById('filterValues').value;
+    try {
+        const response = await fetch('/admin/products/filter', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'filterValue=' + selectedValue,
+        });
+  
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.text();
+        document.getElementById('table-container').innerHTML = data;
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
+}
+// Sort 
+ //change second sort tag respect to first sortchooses
+ function updateSortHowOptions() {
+  const sortWhatSelect = document.getElementById("sortSelect");
+  const selectedSortWhat = sortWhatSelect.value;
+  const sortHowSelect = document.getElementById("sortHow");
+  
+  sortHowSelect.innerHTML = "";
+  addOption(sortHowSelect, "Sort type", "sortType");
+  // sortHowSelect.appendChild(initialOption);
+  if (selectedSortWhat === "productName") {
+    addOption(sortHowSelect, "a-z", "a-z");
+    addOption(sortHowSelect, "z-a", "z-a");
+    addOption(sortHowSelect, "Newest first", "Newest first");
+    addOption(sortHowSelect, "Oldest First", "Oldest First");
+  } else if (selectedSortWhat === "Price") {
+    addOption(sortHowSelect, "Ascending", "Ascending");
+    addOption(sortHowSelect, "Descending", "Descending");
+  }
+}
+function addOption(selectElement, text, value) {
+  const option = document.createElement("option");
+  option.text = text;
+  option.value = value;
+  selectElement.add(option);
+}
+
+updateSortHowOptions()
+const sortWhatSelect = document.getElementById("sortSelect");
+sortWhatSelect.addEventListener('change',updateSortHowOptions)
+const sortHowSelect = document.getElementById("sortHow");
+//fetch data and sort on change sortvalues 
+sortHowSelect.addEventListener('change',function(){
+  sortProduct()
+})
+
+async function sortProduct() {
+  const selectedOption = document.getElementById('sortHow').value;
+  try {
+    const response = await fetch('/admin/products/sort', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'sort=' + selectedOption,
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.text();
+    document.getElementById('table-container').innerHTML = data;
+  } catch (error) {
+    console.error('Fetch error:', error);
+  }
+}
+
+// search 
+document.getElementById('searchProductForm').addEventListener('submit',function(event){
+  event.preventDefault()
+  searchProducts()
+})
+
+async function searchProducts(){
+  const searchValue = document.getElementById('searchValue').value;
+  try {
+    const response = await fetch('/admin/products/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'searchValue=' + searchValue,
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.text();
+    document.getElementById('table-container').innerHTML = data;
+  } catch (error) {
+    console.error('Fetch error:', error);
+  }
+}

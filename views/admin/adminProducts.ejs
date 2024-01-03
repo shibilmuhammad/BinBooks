@@ -37,32 +37,27 @@
                         <form action="" class="flex space-x-1 "><!--sort-->
                             <div class="flex items-center space-x-1">
                                 <label class="text-xs text-[#333333]" for="">sort</label>
-                              <select name="" id="" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
-                                <option  value="">Product name</option>
-                                <option value="">Price</option>
+                              <select name="" id="sortSelect" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
+                                <option  value="productName">Product name</option>
+                                <option value="Price">Price</option>
                               </select>
                             </div>
                             <div class="flex  items-center space-x-1">
                                 <label class="text-xs text-[#333333]" for="">by</label>
-                             <select name="" id="" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
-                                <option value="">A-Z
-                                </option>
-                                <option value="">Z-A</option>
-                                <option value="">Newset first</option>
-                                <option value="">Oldesr first</option>
+                             <select name="" id="sortHow" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
                              </select>
                             </div>
                             
         
                         </form>
                         <form action="" ><!--filter-->
-                            <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666] max-w-20">
+                            <select name="" id="filterValues"  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666] max-w-20">
                                 <option value="" disabled selected>Filter by</option>
-                                <option value="">All categories</option>
-                                <option value="">Below 100</option>
-                                <option value="">100-200</option>
-                                <option value="">200-300</option>
-                                <option value="">above 300</option>
+                                <option value="allProducts">All products</option>
+                                <option value="below100">Below 100</option>
+                                <option value="100-200">100-200</option>
+                                <option value="200-300">200-300</option>
+                                <option value="above300">above 300</option>
                                 <% category.forEach(function(data){%>
                                     <option value="<%=data.categoryName %>" ><%= data.categoryName%></option>
                                <% }) %>
@@ -70,14 +65,13 @@
                         </form>
                     </div>
                    
-                    <form action=""> <!--search-->
+                    <form action="" id="searchProductForm"> <!--search-->
                         <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
-                            <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search products.. ">
-                            <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
+                            <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="searchValue" placeholder="Search products.. ">
+                            <button class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
                                 <img src="/images/search white.png" class="h-4" alt="">
-                            </div>
+                            </button>
                         </div>
-                        
                     </form>
                 </div>
                 <div action="" class="relative flex justify-end  cursor-pointer" onclick="showUploadProductPopup()" >
@@ -96,25 +90,10 @@
                     <th class="font-medium text-center">Status</th>
                     <th class="rounded-tr-md font-medium">Action</th>
                 </tr>
-                <% products.forEach(function(data){%>
-                    <tr class="bg-white  text-sm  ">
-                        <td class="ps-3 py-2"><%=data._id%></td>
-                        <td class="max-w-[14rem] truncate pr-6 font-medium capitalize"><%=data.bookName%></td>
-                        <td class="capitalize"><%=data.category%></td>
-                        <td class="capitalize"><%=data.author%></td>
-                        <td><%=data.MRP%></td>
-                        <td class="flex justify-center items-center mt-1">
-                            <div <% if(data.status==="No stock") {%> class="bg-[#fbebec] text-[#b16d70] rounded-full text-center w-2/3 px-3 whitespace-nowrap flex justify-center items-center"<% }else{%>class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-3 whitespace-nowrap flex justify-center items-center"<%}%>><%=data.status%></div>
-                        </td>
-                        <td>
-                            <div class="flex space-x-4">
-                                <img id="<%=data._id%>" onclick="editProduct(this)" class="h-4 cursor-pointer" src="/images/edit blue.png" alt="">
-                                <img  id="<%=data._id%>" onclick=" deletePopup(this)" class="h-4 cursor-pointer" src="/images/trash red.png" alt="">
-                            </div>
-                        </td>
-                    </tr>
-                <%})%> 
-                
+                <tbody id="table-container"> 
+                    <%-include("../partials/admin/productsTabledata.ejs")%>
+                </tbody>
+               
                
             </table>
            

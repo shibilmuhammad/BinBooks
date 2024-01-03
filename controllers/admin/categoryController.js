@@ -1,11 +1,28 @@
 const categoryModel = require('../../models/category');
+const prodectModel = require('../../models/products')
 const upload = require('../../middlewares/multer');
 const cloudinary = require('../../util/cloudinary')
 module.exports = {
   get: async function (req, res) {
     try {
       const categoriesinDb = await categoryModel.find();
-      const categories = categoriesinDb.reverse()
+      let categories = categoriesinDb.reverse()
+      const categoryCounts = await prodectModel.aggregate([
+        {
+          $group: {
+            _id: "$category", 
+            productCount: { $sum: 1 } 
+          }
+        }
+      ]);
+      const categoriesWithCounts = categories.map(category => {
+        const categoryCount = categoryCounts.find(count => count._id === category.categoryName);
+        return {
+          ...category.toObject(),
+          productCount: categoryCount ? categoryCount.productCount : 0
+        };
+      });
+      categories = categoriesWithCounts;
       res.render('admin/adminCategory', { categories });
     } catch (error) {
       console.error(error);
@@ -81,6 +98,11 @@ module.exports = {
   postDelete: async function (req,res){
     idforDelete = req.body.deleteId;
     let DeleteCategory =  await categoryModel.findByIdAndDelete(idforDelete);
+    const productsFordelete = await prodectModel.find({category: DeleteCategory.categoryName})
+    productsFordelete.forEach(function(element){
+      cloudinary.uploader.destroy(element.cloudinaryId)
+    })
+    let deletedProducts  = await prodectModel.deleteMany({ category: DeleteCategory.categoryName });
     cloudinary.uploader.destroy(DeleteCategory.cloudinaryId)
     res.redirect('/admin/category')
   },
