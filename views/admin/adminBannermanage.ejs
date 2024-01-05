@@ -31,79 +31,264 @@
         </div>
         
         <div class="right mt-20 ml-16 w-full">
-            <div class="searchandsort flex justify-between space-x-6">
-                <div class="flex space-x-6">
-                    <form action="">
-                        <label class="text-xs text-[#333333]" for="">sort</label>
-                        <select name="" id="" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
-                            <option  value="">Start date</option>
-                            <option value="">End date</option>
-                        </select>
-                        <label class="text-xs text-[#333333]" for="">by</label>
-                        <select name="" id="" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
-                            <option value="">All</option>
-                            <option value="">Ascending
-                            </option>
-                            <option value="">Descending</option>
-                        </select>
-                    </form>
-                    <form action="">
-                        <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
-                            <option value="">1 days left</option>
-                            <option value="">2 days left</option>
-                            <option value="">3 days left </option>
-                            <option value="">5 days left</option>
-                        </select>
-                    </form>
-                </div>
-                <form action="">
-                    <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
-                        <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search customers.. ">
-                        <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
-                            <img src="/images/search white.png" class="h-4" alt="">
-                        </div>
-                    </div>
-                </form>
-            </div>
-
+            
             <table class=" w-full mt-2 ">
                 <tr class="bg-[#5E8E99]   text-white text-left font-medium  ">
                     <th class="font-medium ps-3 rounded-tl-md py-2">#</th>
-                    <TH class="font-medium text-center ">Banner title</TH>
+                    <TH class="font-medium ">Banner title</TH>
                     <th class="font-medium">Start date</th>
                     <th class="font-medium text-center">End date</th>
                     <th class="font-medium text-center">Status</th>
                     <th class="rounded-tr-md font-medium text-center">Action</th>
                 </tr>
-                
-                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
-                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">1</td>
-                    <td class="max-w-[14rem]  pr-6 font-medium   ">
+            <!--LAP SCREEN FIRST BANNER-->
+                <tr  class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">BANNER 1 DESKTOP</td>
+                    <td class="max-w-[14rem]  pr-6 font-medium  flex justify-start ">
                         <div class="flex justify-center">
-                            <div class="flex items-center justify-center space-x-2">
-                                <img class="h-8" src="/images/BookBg.jpg" alt="">
-                                <p>Book delivery</p>
+                            <div class="flex items-center text-start  space-x-2">
+                                <img class="h-10 w-[7.5rem] object-contain"  src="<%=banners[0].imageUrl %>" alt="">
+                                <p><%=banners[0].title %></p>
                             </div>
                         </div>
-                        
                     </td>
-                    <td>dd/mm/yyyy</td>
-                    <td class="text-center ">dd/mm/yyyy</td>
+                    <td><%= formatDate(banners[0].startDate) %></td>
+                    <td class="text-center"><%= formatDate(banners[0].endDate) %></td>
                     <td class= "">
                         <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-8 ">
                             <div>
-                                2 days left
+                                <% 
+                                const startDate = new Date(banners[0].startDate);
+                                const endDate = new Date(banners[0].endDate);
+                                const currentDate = new Date();
+                                const difference = endDate - currentDate;
+                                const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
+                            
+                                if (daysLeft > 0) {
+                                  %> <%= daysLeft %> days left <% 
+                                } else if (daysLeft === 0) {
+                                  %> Today! <% 
+                                } else {
+                                  %> Expired <% 
+                                }
+                              %>
                             </div>
                         </div>
                     </td>
                     <td class="">
-                        <div class="flex justify-center space-x-4 rounded-lg overflow-hidden cursor-pointer " onclick="showBannerEdit()">
+                        <div class="flex justify-center space-x-4 rounded-lg overflow-hidden cursor-pointer " id="659673201f89838c67764626" onclick="showBannerEdit(this)">
                             <img class="h-4 " src="/images/edit blue.png" class="rounded-lg overflow-hidden" alt="">
                         </div>
                     </td>
                 </tr>
-                
-               
+            <!--MOBILE SCREEN FIRST BANNER-->
+                <tr  class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">BANNER 1 MOBILE</td>
+                    <td class="max-w-[14rem]  pr-6 font-medium  flex justify-start ">
+                        <div class="flex justify-center">
+                            <div class="flex items-center text-start  space-x-2">
+                                <img class="h-10 w-[7.5rem] object-contain"  src="<%=banners[1].imageUrl %>" alt="">
+                                <p><%=banners[0].title %></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><%= formatDate(banners[0].startDate) %></td>
+                    <td class="text-center"><%= formatDate(banners[0].endDate) %></td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-8 ">
+                            <div>
+                                <% 
+                                const startDate0 = new Date(banners[0].startDate);
+                                const endDate0 = new Date(banners[0].endDate);
+                                const currentDate0 = new Date();
+                                const difference0 = endDate - currentDate;
+                                const daysLeft0 = Math.ceil(difference / (1000 * 60 * 60 * 24));
+                            
+                                if (daysLeft0 > 0) {
+                                  %> <%= daysLeft0 %> days left <% 
+                                } else if (daysLeft0 === 0) {
+                                  %> Today! <% 
+                                } else {
+                                  %> Expired <% 
+                                }
+                              %>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="flex justify-center space-x-4 rounded-lg overflow-hidden cursor-pointer " id="6596734d1f89838c67764628" onclick="showBannerEdit(this)">
+                            <img class="h-4 " src="/images/edit blue.png" class="rounded-lg overflow-hidden" alt="">
+                        </div>
+                    </td>
+                </tr>
+             <!--LAP  SCREEN SECOND BANNER-->
+                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">BANNER 2 DESKTOP</td>
+                    <td class="max-w-[14rem]  pr-6 font-medium flex justify-start  ">
+                        <div class="flex justify-center">
+                            <div class=" flex items-center   space-x-2">
+                                <img class="h-10 w-[7.5rem] object-contain" src="<%=banners[2].imageUrl %>" alt="">
+                                <p><%=banners[2].title %></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><%= formatDate(banners[2].startDate) %></td>
+                    <td class="text-center"><%= formatDate(banners[2].endDate) %></td>
+                    
+                    <% function formatDate(dateString) {
+                       const date = new Date(dateString);
+                       const day = String(date.getDate()).padStart(2, '0');
+                       const month = String(date.getMonth() + 1).padStart(2, '0');
+                       const year = date.getFullYear();
+                       return `${day}-${month}-${year}`;
+                    } %>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-8 ">
+                            <div>
+                                <% 
+                                const startDate1 = new Date(banners[2].startDate);
+                                const endDate1 = new Date(banners[2].endDate);
+                                const currentDate1 = new Date();
+                                const difference1 = endDate1 - currentDate1;
+                                const daysLeft1 = Math.ceil(difference1 / (1000 * 60 * 60 * 24));
+                            
+                                if (daysLeft1 > 0) {
+                                  %> <%= daysLeft1 %> days left <% 
+                                } else if (daysLeft1 === 0) {
+                                  %> Today! <% 
+                                } else {
+                                  %> Expired <% 
+                                }
+                              %>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="flex justify-center space-x-4 rounded-lg overflow-hidden cursor-pointer " id="65967394c13cec315ab9ed0b"   onclick="showBannerEdit(this)">
+                            <img class="h-4 " src="/images/edit blue.png" class="rounded-lg overflow-hidden" alt="">
+                        </div>
+                    </td>
+                </tr>
+            <!--MOBILE  SCREEN SECOND BANNER-->
+                 <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">BANNER 2 MOBILE</td>
+                    <td class="max-w-[14rem]  pr-6 font-medium flex justify-start  ">
+                        <div class="flex justify-center">
+                            <div class=" flex items-center   space-x-2">
+                                <img class="h-10 w-[7.5rem] object-contain"  src="<%=banners[3].imageUrl %>" alt="">
+                                <p><%=banners[2].title %></p>
+                            </div>
+                        </div>
+                    </td>
+                         <td><%= formatDate(banners[2].startDate) %></td>
+                        <td class="text-center"><%= formatDate(banners[2].endDate) %></td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-8 ">
+                            <div>
+                                <% 
+                                const startDate11 = new Date(banners[1].startDate);
+                                const endDate11 = new Date(banners[1].endDate);
+                                const currentDate11 = new Date();
+                                const difference11 = endDate1 - currentDate1;
+                                const daysLeft11 = Math.ceil(difference1 / (1000 * 60 * 60 * 24));
+                            
+                                if (daysLeft11 > 0) {
+                                  %> <%= daysLeft1 %> days left <% 
+                                } else if (daysLeft11 === 0) {
+                                  %> Today! <% 
+                                } else {
+                                  %> Expired <% 
+                                }
+                              %>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="flex justify-center space-x-4 rounded-lg overflow-hidden cursor-pointer " id="65978f60186bbb130d126095"   onclick="showBannerEdit(this)">
+                            <img class="h-4 " src="/images/edit blue.png" class="rounded-lg overflow-hidden" alt="">
+                        </div>
+                    </td>
+                </tr>
+             <!--LAP  SCREEN THIRD BANNER-->
+                <tr  class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">BANNER 3 MOBILE</td>
+                    <td class="max-w-[14rem]  pr-6 font-medium flex justify-start   ">
+                        <div class="flex justify-center">
+                            <div class="flex items-center justify-start space-x-2">
+                                <img class="h-10 w-[7.5rem] object-contain"  src="<%=banners[4].imageUrl %>" alt="">
+                                <p><%=banners[4].title %></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><%= formatDate(banners[4].startDate) %></td>
+                    <td class="text-center"><%= formatDate(banners[4].endDate) %></td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-8 ">
+                            <div>
+                                <% 
+                                const startDate2 = new Date(banners[4].startDate);
+                                const endDate2 = new Date(banners[4].endDate);
+                                const currentDate2 = new Date();
+                                const difference2 = endDate2 - currentDate2;
+                                const daysLeft2 = Math.ceil(difference2 / (1000 * 60 * 60 * 24));
+                            
+                                if (daysLeft2 > 0) {
+                                  %> <%= daysLeft2 %> days left <% 
+                                } else if (daysLeft2 === 0) {
+                                  %> Today! <% 
+                                } else {
+                                  %> Expired <% 
+                                }
+                              %>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="flex justify-center space-x-4 rounded-lg overflow-hidden cursor-pointer "   id="65979053186bbb130d126096"   onclick="showBannerEdit(this)">
+                            <img class="h-4  " src="/images/edit blue.png" class="rounded-lg overflow-hidden" alt="">
+                        </div>
+                    </td>
+                </tr>
+             <!--MOBILE  SCREEN THIRD BANNER-->
+                <tr  class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">BANNER 3 MOBILE</td>
+                    <td class="max-w-[14rem]  pr-6 font-medium flex justify-start   ">
+                        <div class="flex justify-center">
+                            <div class="flex items-center justify-start space-x-2">
+                                <img class="h-10 w-[7.5rem] object-contain" src="<%=banners[5].imageUrl %>" alt="">
+                                <p><%=banners[4].title %></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><%= formatDate(banners[4].startDate) %></td>
+                    <td class="text-center"><%= formatDate(banners[4].endDate) %></td>
+                    <td class= "">
+                        <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-8 ">
+                            <div>
+                                <% 
+                                const startDate22 = new Date(banners[4].startDate);
+                                const endDate22 = new Date(banners[4].endDate);
+                                const currentDate22 = new Date();
+                                const difference22 = endDate22 - currentDate22;
+                                const daysLeft22 = Math.ceil(difference22 / (1000 * 60 * 60 * 24));
+                            
+                                if (daysLeft22 > 0) {
+                                  %> <%= daysLeft22 %> days left <% 
+                                } else if (daysLeft22 === 0) {
+                                  %> Today! <% 
+                                } else {
+                                  %> Expired <% 
+                                }
+                              %>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="flex justify-center space-x-4 rounded-lg overflow-hidden cursor-pointer " id="65979073186bbb130d126097"  onclick="showBannerEdit(this)">
+                            <img class="h-4 " src="/images/edit blue.png" class="rounded-lg overflow-hidden" alt="">
+                        </div>
+                    </td>
+                </tr>
             </table>
            
 

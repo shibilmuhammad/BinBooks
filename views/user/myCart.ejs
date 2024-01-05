@@ -10,83 +10,89 @@
             <div class="text-xl font-bold bg-white py-3 rounded-t-md flex px-3 hidden lg:flex">
                 <p>My Cart</p>
             </div>
-            <form action="" class="mb-3 space-y-3 ">
-                <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-md cursor-pointer lg:first:rounded-t-none"><!--get it by -->
-                    <div class="flex space-x-3">
-                        <div class="w-4/12 flex flex-col items-center  border-r pr-3 ">
-                            <div class="w-full ">
-                                <img class="w-full h-28 object-contain" src="/images/alchemist.jpeg" alt="">
+            
+                <form action="" class="mb-3 space-y-3 ">
+                    <% Mycart.forEach(function(product){%>
+                    <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-md cursor-pointer lg:first:rounded-t-none"><!--get it by -->
+                        <div class="flex space-x-3">
+                            <div class="w-4/12 flex flex-col items-center  border-r pr-3 ">
+                                <div class="w-full ">
+                                    <img class="w-full h-28 object-contain" src="<%=product.imageUrl %>" alt="">
+                                </div>
+                               <div class="w-full text-center flex justify-center">
+                                 <p class="whitespace-nowrap text-xs text-center mt-2 text-[#4B727A] font-semibold max-w-[96px] lg:max-w-[400px] truncate  ">The Alchemist</p>
+                               </div>
                             </div>
-                           <div class="w-full text-center flex justify-center">
-                             <p class="whitespace-nowrap text-xs text-center mt-2 text-[#4B727A] font-semibold max-w-[96px] lg:max-w-[400px] truncate  ">The Alchemist</p>
-                           </div>
-                        </div>
-                        <div class=" lg:flex lg:justify-between w-full  lg:w-full">
-                            <div class="space-y-1 ">
-                                <p class="text-[#4B727A] mb-[-5px] font-semibold text-base max-w-[180px] lg:max-w-[5r00px] truncate lg:text-xl">The Alchemist  </p>
-                                <p class="text-[#5E8E99] font-light text-sm lg:text-base">Paulo Coelho</p>
-                                <div class="flex items-center space-x-1">
-                                <div class="bg-[#008000] w-fit px-1 py-1 text-xs text-white rounded-md lg:text-sm lg:py-2 lg:px-2 lg:font-medium">
-                                    <p>15% off</p>
-                                </div>
-                                 <p class="text-xs text-[#666666] line-through lg:text-sm">MRP 250</p>
-                                </div>
-                                <P class="font-semibold text-lg lg:text-xl">₹150</P>
-                                 </div>
-                            
-                            <div class="w-full  lg:w-fit space-x-3 flex lg:flex-col lg:justify-center lg:space-y-3 lg:items-center text-white">
-                                <button class="w-1/2  lg:ml-3 lg:w-fit lg:px-8 text-black border-[#DAA520] border-[.1px] py-1 rounded-md font-medium">
-                                    Remove
-                                </button>
-                                    <div class="w-1/2 lg:w-fit lg:px-6  bg-[#DAA520] py-2 rounded-md flex-col font-semibold flex items-center  text-white   px-3  text-xs space-x-1">
-                                        <div class="flex space-x-1 md:space-x-3 lg:space-x-1">
-                                            <p class="font-semibold ">Qty</p>
-                                            <div class="bg-white rounded-full h-fit w px-[2px] py-[2px] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[12px]">
-                                                remove
-                                                </span>
-                                             </div>
-                                             <span>3</span>
-                                             <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
-                                                <span class="material-symbols-outlined text-[12px]">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </div>
-                                        
+                            <div class=" lg:flex lg:justify-between w-full  lg:w-full">
+                                <div class="space-y-1 ">
+                                    <p class="text-[#4B727A] mb-[-5px] font-semibold text-base max-w-[180px] lg:max-w-[5r00px] truncate lg:text-xl">The Alchemist  </p>
+                                    <p class="text-[#5E8E99] font-light text-sm lg:text-base">Paulo Coelho</p>
+                                    <div class="flex items-center space-x-1">
+                                    <div class="bg-[#008000] w-fit px-1 py-1 text-xs text-white rounded-md lg:text-sm lg:py-2 lg:px-2 lg:font-medium">
+                                        <p>15% off</p>
                                     </div>
+                                     <p class="text-xs text-[#666666] line-through lg:text-sm">MRP 250</p>
+                                    </div>
+                                    <P class="font-semibold text-lg lg:text-xl">₹150</P>
+                                     </div>
+                                
+                                <div class="w-full  lg:w-fit space-x-3 flex lg:flex-col lg:justify-center lg:space-y-3 lg:items-center text-white">
+                                    <button class="w-1/2  lg:ml-3 lg:w-fit lg:px-8 text-black border-[#DAA520] border-[.1px] py-1 rounded-md font-medium">
+                                        Remove
+                                    </button>
+                                        <div class="w-1/2 lg:w-fit lg:px-6  bg-[#DAA520] py-2 rounded-md flex-col font-semibold flex items-center  text-white   px-3  text-xs space-x-1">
+                                            <div class="flex space-x-1 md:space-x-3 lg:space-x-1">
+                                                <p class="font-semibold ">Qty</p>
+                                                <div class="bg-white rounded-full h-fit w px-[2px] py-[2px] text-black flex items-center justify-center">
+                                                    <span class="material-symbols-outlined text-[12px]">
+                                                    remove
+                                                    </span>
+                                                 </div>
+                                                 <span>3</span>
+                                                 <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
+                                                    <span class="material-symbols-outlined text-[12px]">
+                                                        add
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--order detais-->
-                    <p class="text-base font-semibold">Order Details</p>
-                    <div class="flex space-x-20 ">
-                        <div class="text-sm  space-y-3 text-[#666666]">
-                            <p>Price(2 items)</p>
-                            <p class="text-red-700">Delivery</p>
-                            <p class="text-green-700">Discount</p>
-                            
+                    <%  }) %>
+                    <!--Order Details-->
+                    <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--order detais-->
+                        <p class="text-base font-semibold">Order Details</p>
+                        <div class="flex space-x-20 ">
+                            <div class="text-sm  space-y-3 text-[#666666]">
+                                <p>Price(2 items)</p>
+                                <p class="text-red-700">Delivery</p>
+                                <p class="text-green-700">Discount</p>
+                                
+                            </div>
+                            <div class="text-sm  space-y-3 text-[#666666]">
+                                <p>₹500</p>
+                                <p class="text-red-700">₹40</p>
+                                <p class="text-green-700">₹250</p>
+                                
+                            </div>
                         </div>
-                        <div class="text-sm  space-y-3 text-[#666666]">
-                            <p>₹500</p>
-                            <p class="text-red-700">₹40</p>
-                            <p class="text-green-700">₹250</p>
-                            
+                        <div class=" border-t text-sm font-semibold py-2 lg:pt-2 lg:flex lg:justify-between lg:items-center">
+                            <div class="flex  space-x-20">
+                                <p>Total Amount</p>
+                                <p>₹290</p>
+                            </div>
+                            <div>
+                                <label for="submit"  class="bg-[#DAA520] hidden lg:flexr  text-white font-semibold py-[6px] rounded-lg px-5 text-center cursor-pointer  flex flex-col ">Place Order </button>
+                            </div>
                         </div>
                     </div>
-                    <div class=" border-t text-sm font-semibold py-2 lg:pt-2 lg:flex lg:justify-between lg:items-center">
-                        <div class="flex  space-x-20">
-                            <p>Total Amount</p>
-                            <p>₹290</p>
-                        </div>
-                        <div>
-                            <label for="submit"  class="bg-[#DAA520] hidden lg:flexr  text-white font-semibold py-[6px] rounded-lg px-5 text-center cursor-pointer  flex flex-col ">Place Order </button>
-                        </div>
-                    </div>
-                </div>
-                <button id="submit" type="submit" class="hidden"></button>
-            </form>
+                    <button id="submit" type="submit" class="hidden"></button>
+                </form>
+       
+          
         </div>
     </main>
     <div class="flex-grow"></div>

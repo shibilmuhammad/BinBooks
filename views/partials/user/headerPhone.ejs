@@ -1,9 +1,13 @@
 <header class="bg-[#5E8E99] flex items-center justify-between px-3 py-2 lg:hidden">
     <div class="flex items-center space-x-2"><!--Categories and back-->
-        <span onclick="history.back()" class="space-x-2 material-symbols-outlined text-white text-2xl font-medium">
+        <span onclick="history.back()" class="space-x-2 material-symbols-outlined text-white text-2xl font-medium <%= locals.products?.length === 0 ? 'hidden' : '' %>">
             arrow_back
         </span>
-        <p class="text-white font-medium">Categories</p>
+        <span class="font-medium text-white">
+            <%= locals.products && locals.products.length > 0 ? locals.products[0]?.category : (locals.product ? locals.product.bookName : 'Categories') %>
+        </span>
+       
+
     </div>
     <div class="flex items-center space-x-5 "><!--Search Cart user-->
         <img class="h-5" src="/images/search white.png" alt="">

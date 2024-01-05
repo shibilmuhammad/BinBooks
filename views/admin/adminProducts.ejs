@@ -79,23 +79,24 @@
                     <h2 class="text-white absolute top-1 right-4 text-xs font-semibold ">Upload</h2>
                 </div>
             </div>
-  
-            <table class=" w-full mt-2">
-                <tr class="bg-[#5E8E99]   text-white text-left font-medium  ">
-                    <th class="font-medium ps-3 rounded-tl-md py-2">Product ID</th>
-                    <TH class="font-medium  ">Product Name</TH>
-                    <th class="font-medium">Category</th>
-                    <th class="font-medium">Author</th>
-                    <th class="font-medium">Price</th>
-                    <th class="font-medium text-center">Status</th>
-                    <th class="rounded-tr-md font-medium">Action</th>
-                </tr>
-                <tbody id="table-container"> 
-                    <%-include("../partials/admin/productsTabledata.ejs")%>
-                </tbody>
-               
-               
-            </table>
+            
+            <div class="h-[32rem] overflow-y-auto">
+                <table class=" w-full mt-2 relative">
+                <tr class="bg-[#5E8E99]   text-white text-left font-medium sticky top-0  ">
+                        <th class="font-medium ps-3 rounded-tl-md py-2">Product ID</th>
+                        <TH class="font-medium  ">Product Name</TH>
+                        <th class="font-medium">Category</th>
+                        <th class="font-medium">Author</th>
+                        <th class="font-medium">Price</th>
+                        <th class="font-medium text-center">Status</th>
+                        <th class="rounded-tr-md font-medium">Action</th>
+                    </tr>
+                    <tbody id="table-container" > 
+                        <%-include("../partials/admin/productsTabledata.ejs")%>
+                    </tbody>
+                </table>
+            </div>
+           
            
 
         </div>

@@ -31,10 +31,16 @@ router.post('/products/filter',productController.postFilter);
 router.post('/products/sort',productController.postSort)
 router.post('/products/search',productController.postSearch)
 
+//banner
+router.get('/banner',bannerController.get)
+router.post('/banner',bannerController.post)
+router.get('/banner/:bannerId',bannerController.getEdit)
+
 router.get('/customers',customersController.get)
 router.get('/dashboard',dashboardController.get)
 router.get('/orders',ordersController.get);
 
-router.get('/banner',bannerController.get)
+
+
 router.get('/login',loginController.get)
 module.exports = router;

@@ -39,22 +39,6 @@ function showSlides1() {
     timeOutId = setTimeout(showSlides1, 2000); // Change image every 2 seconds
   }
   showSlides1()
-
-
-// let container = document.getElementById("TopCategorycontainer");
-// let rightScrollButton =document.getElementById("topCategoryScrollRight"); 
-// rightScrollButton.addEventListener("click",function(){
-//   container.scrollLeft += 600;
-
-// })
-  
-
-// container.addEventListener('scroll', function () {
-//   rightScrollButton.style.right=0+'px' ;
-// });
-// document.getElementById('menuButton').addEventListener('click',function(){
-//   openNav()
-// })
 function openNav(){
   var sidebar = document.getElementById("Sidebar");
   sidebar.style.transform="translateX(0px)";
@@ -66,3 +50,28 @@ function hideSidebar(){
   sidebar.style.transform="translateX(-250px)";
   document.getElementById("SidebarContainerr").style.visibility="hidden"
 } 
+
+var addToCartButtons = document.querySelectorAll('.add-to-cart-button');
+
+  addToCartButtons.forEach(function(button) {
+    button.addEventListener('click', async function(event) {
+      event.preventDefault();
+      var productId = this.dataset.productId;
+      try {
+        alert('h')
+        var response = await fetch(`/user/myCart/${productId}`, { method: 'POST' });
+        var data = await response.json();
+        alert('i')
+        console.log(data.productName)
+        var cartNotification = button.querySelector('.cartNotification');
+        cartNotification.textContent = 'Item added to cart: ' + data.productName;
+        cartNotification.style.display = 'block';
+
+        setTimeout(function() {
+          cartNotification.style.display = 'none';
+        }, 3000);
+      } catch (error) {
+        console.error('Error adding item to cart:', error);
+      }
+    });
+  });

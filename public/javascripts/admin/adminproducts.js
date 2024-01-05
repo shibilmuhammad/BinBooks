@@ -130,16 +130,10 @@ async function  editProduct(element){
 function hideEditProductPopup(){
     document.getElementById("productEditPopup").style.display="none"
 }
-// function capitalizeFirstLetter(str) {
-//     if (str.length === 0) {
-//       return str;
-//     }
-//     return str.charAt(0).toUpperCase() + str.slice(1);
-//   }
 
 document.getElementById('productEditPopup').addEventListener('submit',function(){
     document.getElementById('loadingEdit').style.display='flex'
-    document.getElementById('saveSpanEdit').style.display='non'
+    document.getElementById('saveSpanEdit').style.display='none'
 })
 // filter 
 

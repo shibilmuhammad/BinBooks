@@ -32,16 +32,25 @@ router.get('/createAccount',createAccountController.get);
 router.get('/home',homeController.get);
 router.get('/loginPassword',loginpswdController.get);
 router.get('/myAccount',myAccountController.get);
-router.get('/myCart',myCartController.get);
+
 router.get('/orderSuccessful',ordersuccessfulController.get);
 router.get('/orderSummery',orderSummeryController.get)
 router.get('/otp',otpController.get);
 router.get('/payment',paymentController.get);
 router.get('/placeOrder',placeOrderController.get);
-router.get('/product',productController.get);
-router.get('/products',productsController.get);
+
+router.get('/product/:productId',productController.get);
+router.get('/products/:categoryName',productsController.get);
+//My cart
+router.get('/myCart/',myCartController.get);
+router.post('/myCart/:productId',myCartController.post);
+
+
 router.get('/resetPassword',resetpswdController.get);
-router.get('/searchResult',searchResultController.get);
+//Search 
+router.get('/search',searchResultController.getSearch)
+
+
 router.get('/wishList',wishListController.get);
 router.get('/yourOrders',yourOrderControllers.get);
 module.exports = router;
