@@ -1,0 +1,31 @@
+<div class="mb-3"> <!--Novel conatiner-->
+    <div class="grid-cols-2 md:grid-cols-5 lg:grid-cols-4 xl:grid-cols-5 lg:gap-x-10 xl:gap-x-6 gap-x-3  sm:grid-cols-4 mt-3 w-full grid px-5 gap-y-4 lg:mt-12"> <!--Books group container-->
+        <!--item-->
+        <% if(searchResults.length===0){%>
+            <div class="my-auto mx-auto absolute inset-0 flex items-center justify-center mb-52 md:mb-0 ">
+                <img class="w-2/3 md:w-72 mx-auto opacity-30" src="/images/No_Product_Found.png" alt="No products found">
+              </div>
+         <% }%>
+        <!--item2-->
+        <!--item3-->
+        <% searchResults.forEach(function(data){ %>
+            <a href="/user/product/<%= encodeURIComponent(data._id)%>" class="bg-white hover:bg-slate-50 hover:drop-shadow-md hover:scale-105 md:min-w-[135px] md:max-w-[135px]  min-w-[150px] max-w-[150px] min-h-[180px]  rounded-md drop-shadow-sm  pt-2 pb-1 relative lg:min-h-[200px] lg:min-w-[160px] w-3  "> 
+                <div class="flex items-center justify-center"> 
+                    <img class="rounded-t-md w-[160px] md:w-[135px] h-[120px] md:h-[100px] object-contain pb-2 border-b lg:min-h-[120px] lg:min-w-[150px]" src="<%= data.imageUrl %>" alt="">
+                </div>
+                <div class="flex flex-col items-center ">
+                    <p class="mt-2 text-[#4B727A] font-semibold text-[13px] max-w-[130px] lg:max-w-[140px] truncate lg:text-sm"><%= data.bookName %></p>
+                    <p class="text-[#5E8E99] font-normal text-[11px] max-w-[120px] lg:max-w-[130px] truncate lg:text-xs"><%= data.author %> </p>
+                    <div class="mt-[-5px] lg:mt-[1px]">
+                        <span class="text-xs py-1 font-bold text-[#008000] lg:text-sm"><%= data.discount %>% off</span> <span class="text-xs text-[#666666] line-through lg:text-sm"><%= data.MRP %></span> <span class="text-xs font-bold lg:text-sm"><%= data.salePrice %></span></div>
+                </div>
+                <div class="w-full px-3 my-2">
+                    <button class="flex justify-center bg-[#DAA520]  hover:bg-[#c4951d] items-center px-2 py-[2px] rounded-lg text-white space-x-[2px] w-full lg:px-2 lg:py-1">
+                        <p class="text-xs lg:text-sm font-medium ">Add to cart</p>
+                        <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                    </button>
+                </div>
+            </a>
+        <% })%>
+    </div>
+</div>  

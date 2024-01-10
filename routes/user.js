@@ -41,6 +41,7 @@ router.get('/placeOrder',placeOrderController.get);
 
 router.get('/product/:productId',productController.get);
 router.get('/products/:categoryName',productsController.get);
+router.post('/products/filter',productsController.filterPost)
 //My cart
 router.get('/myCart/',myCartController.get);
 router.post('/myCart/:productId',myCartController.post);

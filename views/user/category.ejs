@@ -4,6 +4,8 @@
 <body class="bg-[#F2F2F2] flex flex-col h-screen">
     <%-include('../partials/user/headerPhone.ejs')%>
     <%-include('../partials/user/HeaderDesktopUser.ejs')%>
+    <div class="searchResult-Container">
+    </div>
     <main class="px-3 lg:px-10">
         <div id="TopCategorycontainer" class="grid grid-cols-2  gap-4 space-x-2 md:space-x-4   overflow-auto relative mt-6 lg:mt-20"> <!--Top category sldier -->
             <%categories.forEach(function(data){%>

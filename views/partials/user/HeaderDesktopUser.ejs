@@ -1,4 +1,4 @@
-<header class="bg-[#5E8E99] md:px-10 px-2 py-2 lg:py-0  hidden lg:block ">
+<header class="bg-[#5E8E99] md:px-10 px-2 py-2 lg:py-0  hidden lg:block z-10 ">
     <div class="flex justify-between lg:justify-around  items-center"> <!--Top logo sign in cart-->
         <div class="flex items-center space-x-3 lg:space-x-1 xl:space-x-5 md:space-x-5"> <!--left-->
                 <a id="menuButton" onclick="openNav();return false;" href="" class="flex items-center"><!--menu-->
@@ -8,8 +8,8 @@
                 <img class="h-7 md:h-8 lg:h-10" src="/images/Logo.png" alt="">
             </a> 
             <!--Search on Desktop-->
-            <form id="searchDesktopHeader"  class="hidden outline-none  mb-3 lg:flex lg:items-center  rounded-md py-2 mt-3">
-                <input  placeholder="Search books here "  class="md:py-2   placeholder:text-sm  w-full lg:w-[25rem] xl:w-[30rem]  rounded-l-md px-2 outline-none  text-sm bg-blue-50" type="text" name="" id="searchHeaderInput">
+            <form  class="hidden outline-none  mb-3 lg:flex lg:items-center  rounded-md py-2 mt-3 searchDesktopHeader">
+                <input  placeholder="Search books here "  class="md:py-2   placeholder:text-sm  w-full lg:w-[25rem] xl:w-[30rem]  rounded-l-md px-2 outline-none  text-sm bg-blue-50 searchHeaderInput" type="text" name="" id="searchHeaderInput">
                 <button type="submit" class="bg-[#DAA520] w-fit px-2 py-[6px] rounded-r-md">
                     <img class="h-5 md:h-6 object-contain lg:h-6" src="/images/search.png"     alt="">
                 </button>
