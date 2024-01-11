@@ -1,4 +1,4 @@
-<header class="bg-[#5E8E99] flex items-center justify-between px-3 py-2 lg:hidden z-10">
+<header id="phoneHeader" class="bg-[#5E8E99] flex items-center justify-between px-3 py-2 lg:hidden z-10">
     <div class="flex items-center space-x-2"><!--Categories and back--> 
         <span onclick="history.back()" class="space-x-2 material-symbols-outlined text-white text-2xl font-medium %>">
             arrow_back
@@ -10,8 +10,54 @@
 
     </div>
     <div class="flex items-center space-x-5 "><!--Search Cart user-->
-        <img class="h-5" src="/images/search white.png" alt="">
+        <button id="Search-button">
+            <img class="h-5" src="/images/search white.png" alt="">
+        </button>
+        
         <img class="h-5" src="/images/shopping-cart white.png" alt="">
         <img class="h-5" src="/images/user white filled .png" alt="">
     </div>
+   
 </header>
+<form  class="py-[3px] w-full hidden flex justify-between items-center bg-white border-b-[.1px] border-b-[#666666] px-3 "id="searchUserHeader">
+    <span id="searchHidden" onclick="" class="space-x-2 material-symbols-outlined text-[#333333] text-2xl font-medium %>">
+        arrow_back
+    </span>
+    <input class="w-full py-2 px-5 outline-none "  type="text" name="" id="searchUserInput">
+    <button >
+        <img class="h-6 object-contain" src="/images/search.png" alt="">
+    </button>
+    <!-- <div class="bg-white h-screen w-full">
+        
+    </div> -->
+</form>
+<script>
+    document.getElementById('Search-button').addEventListener("click",function(){
+        document.getElementById('phoneHeader').style.display='none';
+        document.getElementById('searchUserHeader').style.display='flex'
+    })
+    document.getElementById('searchHidden').addEventListener('click',function(){
+        document.getElementById('phoneHeader').style.display='flex';
+        document.getElementById('searchUserHeader').style.display='none'
+    })
+
+const searchUserHeader= document.getElementById('searchUserHeader')
+
+    searchUserHeader.addEventListener('submit',async function(event){
+
+        event.preventDefault()
+        let searchValue = document.getElementById('searchUserInput').value;
+        if(searchValue===''){
+            window.location.href='/user/home'
+        }
+       
+        const response = await fetch(`/user/search?q=${encodeURIComponent(searchValue)}`);
+        const result = await response.text();
+            // document.body.innerHTML = result;
+            document.getElementsByTagName('main')[0].style.display = 'none';
+            document.querySelector('.searchResult-Container').innerHTML=result
+            
+    })
+
+</script>
+

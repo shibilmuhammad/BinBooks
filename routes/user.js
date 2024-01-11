@@ -22,8 +22,10 @@ const resetpswdController = require('../controllers/user/resetpswdController');
 const searchResultController = require('../controllers/user/searchResultController');
 const wishListController = require('../controllers/user/wishListController');
 const yourOrderControllers = require('../controllers/user/yourOrdersController');
-
+// Login 
 router.get('/login',logincontroller.get);
+router.post('/login',logincontroller.post)
+
 router.get('/aboutUs',aboutuscontroller.get);
 router.get('/address',addressController.get);
 router.get('/buynow',buynowController.get);

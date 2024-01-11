@@ -1,3 +1,4 @@
+
 const searchHeaderDesks= document.querySelectorAll('.searchDesktopHeader')
 searchHeaderDesks.forEach(function(element){
     element.addEventListener('submit',async function(event){

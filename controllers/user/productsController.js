@@ -27,7 +27,6 @@ module.exports = {
             query.condition = condition;
         }
         if (discount) {
-            console.log(discount)
             if (Array.isArray(discount) && discount.length > 0) {
                 query.$or = discount.map(data => {
                     return { discount: { $gte: parseInt(data) } };
@@ -36,7 +35,6 @@ module.exports = {
                 query.discount = { $gte: parseInt(discount) };
             }
         }
-        console.log(query)
         try {
             const searchResults = await prodectModel.find({ category: categoryName, ...query });
             res.render('partials/user/searchResultInnerData.ejs', { searchResults });
