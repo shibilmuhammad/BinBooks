@@ -13,6 +13,7 @@ const ordersSchema = new mongoose.Schema({
 const customerSchema = mongoose.Schema({
    name:String,
    phone:Number,
+   email:String,
    gender:String,
    password:String,
     myCart : [cartItemSchema],

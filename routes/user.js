@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authMiddleware = require('../middlewares/authMiddleWare')
 
 const aboutuscontroller = require('../controllers/user/aboutUsController');
 const addressController = require('../controllers/user/addressController');
@@ -23,17 +24,22 @@ const searchResultController = require('../controllers/user/searchResultControll
 const wishListController = require('../controllers/user/wishListController');
 const yourOrderControllers = require('../controllers/user/yourOrdersController');
 // Login 
-router.get('/login',logincontroller.get);
-router.post('/login',logincontroller.post)
+router.get('/login',authMiddleware.isAuthenticated,logincontroller.get);
+router.post('/login',authMiddleware.isAuthenticated,logincontroller.post)
+
+router.get('/loginpassword',authMiddleware.isAuthenticated,loginpswdController.get)
+router.post('/loginpswd',authMiddleware.isAuthenticated,loginpswdController.post)
 
 router.get('/aboutUs',aboutuscontroller.get);
 router.get('/address',addressController.get);
 router.get('/buynow',buynowController.get);
 router.get('/category',categoryController.get);
-router.get('/createAccount',createAccountController.get);
+//Create account
+router.post('/createAccount',createAccountController.post);
+
 router.get('/home',homeController.get);
-router.get('/loginPassword',loginpswdController.get);
-router.get('/myAccount',myAccountController.get);
+//myAccount
+router.get('/myAccount',authMiddleware.requireLogin,myAccountController.get);
 
 router.get('/orderSuccessful',ordersuccessfulController.get);
 router.get('/orderSummery',orderSummeryController.get)
@@ -45,7 +51,7 @@ router.get('/product/:productId',productController.get);
 router.get('/products/:categoryName',productsController.get);
 router.post('/products/filter',productsController.filterPost)
 //My cart
-router.get('/myCart/',myCartController.get);
+router.get('/myCart/',authMiddleware.requireLogin,myCartController.get);
 router.post('/myCart/:productId',myCartController.post);
 
 

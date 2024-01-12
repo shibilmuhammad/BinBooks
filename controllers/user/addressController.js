@@ -1,5 +1,11 @@
+const customerModel = require('../../models/customers')
 module.exports = {
-    get: function (req,res){
-        res.render('user/address')
+    
+    get: async function (req,res){
+        if (req.session.user) {
+            let user = await customerModel.findOne({phone:req.session.user})
+            res.locals.user = user.name;
+        }
+        res.render('user/address',{user:res.locals.user})
     }
 }

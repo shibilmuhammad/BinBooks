@@ -18,17 +18,26 @@
                         <p class="font-semibold text-lg">Turn the page to membership</p>
                         <p class="text-[#666666] text-xs pl-2 -mt-1 font-medium"> Uncover Hidden Tales in Every Book !!</p>
                     </div>
-                    <form action="" class="w-full mt-7">
-                        <input class="w-full rounded-md lg:bg-white bg-[#F2F2F2] border-[.2px] outline-none border-[#666666] px-2 py-[6px] placeholder:text-xs text-sm " placeholder="Password here" type="text" name="" id="">
+                    <form action="/user/loginpswd" method="post" class="w-full mt-7" id="loginpswdForm">
+                        <div class="w-full rounded-md flex justify-between items-center lg:bg-white bg-[#F2F2F2] border-[.2px] border-[#666666] px-2 py-[6px] ">
+                            <input class="outline-none w-full placeholder:text-xs text-sm bg-inherit bg-none  select-none" placeholder="Password here" type="text" name="password" id="password">
+                            <span id="visibilityIcon" class="material-symbols-outlined cursor-pointer text-lg select-none"onclick="togglePasswordVisibility()">
+                                visibility_off
+                                </span>
+                        </div>
+                        <p id="pswdError" class="text-xs text-red-800 mx-2 mt-2 hidden"></p>
+                        <% if (typeof error !== 'undefined') { %>
+                            <p id="incorrectError" class="text-xs text-red-800 mx-2 mt-2"><%= error %></p>
+                        <% } %>
                         <button type="submit" class="hidden" id="loginPhoneSubmit"></button>
                     </form>
                     <a class="text-[10px] text-blue-500 mt-4 ml-2 cursor-pointer font-medium">Forgotten password?
                     </a>
                 </div>
                 <div class="hidden lg:block">
-                    <button class="bg-[#DAA520] text-white w-full py-2 font-medium  mt-10 rounded-md" >
+                    <label for="loginPhoneSubmit" class="bg-[#DAA520] hover:bg-[#c4951d] flex justify-center items-center text-white w-full py-2 font-medium  mt-10 rounded-md" >
                         Continue
-                    </button>
+                    </label>
                 </div>
                
             </div>
@@ -37,11 +46,11 @@
     <div class="lg:hidden flex-grow">
     </div>
     <div class="px-2 py-2 border-t-[.1px] border-t-[#666666] lg:hidden">
-        <label for="loginPhoneSubmit" class="w-full  " >
-            <button class="w-full py-1 text-white rounded-md font-semibold bg-[#C0C0C0]">
+        <div for="loginPhoneSubmit" class="w-full  " >
+            <label for="loginPhoneSubmit" class="w-full py-1 cursor-pointer text-white rounded-md font-semibold bg-[#565656] flex justify-center items-center">
                 Continue
-            </button>
-        </label>
+            </label>
+        </div>
     </div>
     
     <div class="hidden lg:block">
@@ -49,5 +58,19 @@
     </div>
    
 </body>
-<script src="/javascripts/user/myAccount.js"></script>
+<script>
+     function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('password');
+        var visibilityIcon = document.querySelector('#visibilityIcon');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            visibilityIcon.textContent = 'visibility';
+        } else {
+            passwordInput.type = 'password';
+            visibilityIcon.textContent = 'visibility_off';
+        }
+    }
+</script>
+<script src="/javascripts/user/loginpswd.js"></script>
 </html>

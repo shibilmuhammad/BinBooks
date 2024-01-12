@@ -1,4 +1,5 @@
-const prodectModel = require('../../models/products')
+const prodectModel = require('../../models/products');
+const customerModel = require('../../models/customers')
 module.exports = {
     getSearch:async function(req,res){
         const searchTerm = req.query.q;
@@ -26,6 +27,10 @@ module.exports = {
                 return 1;
             }
         });
-          res.render('partials/user/searchResult', { searchResults })
+        if (req.session.user) {
+            let user = await customerModel.findOne({phone:req.session.user})
+            res.locals.user = user.name;
+        }
+          res.render('partials/user/searchResult', { searchResults ,user:res.locals.user})
     }
 }

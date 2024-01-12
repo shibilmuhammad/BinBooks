@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const path = require('path')
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,'public')))
+app.use(session({
+    secret: 'your-secret-key', // Replace with a secure and unique key
+    resave: false,
+    saveUninitialized: true
+}));
 app.listen(3000,()=>{
     console.log("listening to port 3000")
 })

@@ -1,10 +1,14 @@
 const prodectModel = require('../../models/products');
-
+const customerModel = require('../../models/customers')
 module.exports = {
     get: async function (req, res) {
         categoryName = req.params.categoryName;
         let products = await prodectModel.find({ category: categoryName });
-        res.render('user/products', { products, categoryName });
+        if (req.session.user) {
+            let user = await customerModel.findOne({phone:req.session.user})
+            res.locals.user = user.name;
+        }
+        res.render('user/products', { products, categoryName ,user:res.locals.user});
     },
 
     filterPost: async function (req, res) {
