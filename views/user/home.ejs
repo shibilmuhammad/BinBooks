@@ -53,27 +53,37 @@
                             <img class="h-4" src="/images/shopping-cart blue.png" alt="">
                             <p class="text-sm text-[#666666]">My Cart</p>
                         </a>
-                        <a href="/admin/banner" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
+                        <a href="/user/wishList" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
                             <img class="h-4" src="/images/heart fill blue.png" alt="">
                             <p class="text-sm text-[#666666]">Wish List</p>
                         </a>
-                        <a href="/admin/banner" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
+                        <a href="/user/yourOrders" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
                             <img class="h-4" src="/images/location blue filled.png" alt="">
                             <p class="text-sm text-[#666666]">My Orders</p>
                         </a>
-                        <a href="/admin/banner" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
+                        <a href="/user/aboutUs" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
                             <img class="h-4" src="/images/open-book blue.png" alt="">
                             <p class="text-sm text-[#666666]">About Us</p>
                         </a>
-                        <a href="/admin/banner" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 rounded-b-md ">
+                        <a href="/admin/banner" class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100  ">
                             <img class="h-4" src="/images/phone blue filled.png" alt="">
                             <p class="text-sm text-[#666666]">Contact Us</p>
                         </a>
+                        <form action="/user/logOut" id="logOutForm">
+                            <div onclick="logOut()"  class="flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 rounded-b-md ">   
+                                <img    class="h-4" src="/images/logout (1) blue.png" alt="">
+                                <p  class="text-sm text-[#666666]">Log Out</p>
+                            </div>
+                           
+                        </form>
                     </div>
                </button>
             </div>
         </div>
-        <form class="lg:hidden searchDesktopHeader"> <!--Search-->
+        <form
+        
+        
+        class="lg:hidden searchDesktopHeader"> <!--Search-->
             <div class="flex px-7 sm:px-16 rounded-md py-2 mt-3">
                 <input placeholder="Search books here "  class="md:py-2 searchHeaderInput placeholder:text-xs  w-full rounded-l-md px-2 outline-none text-sm" type="text" name="" id="">
                 <button type="submit" class="bg-[#DAA520] flex items-center w-fit px-2 py-1 rounded-r-md">
@@ -200,7 +210,7 @@
     </div>
     <%-include("../partials/user/userFooter.ejs")%>
         <div  id="SidebarContainerr" class="h-full w-full absolute inset-0 bg-[rgba(0,0,0,0.6)] invisible   transition-all duration-75">
-            <div id="Sidebar" class="-translate-x-[250px] w-[250px] h-full  overflow-hidden fixed top-0 left-0 transition-all duration-300 ease-in "><!--Side bar Mobile-->
+            <div id="Sidebar" class="flex flex-col -translate-x-[250px] w-[250px] h-full  overflow-hidden fixed top-0 left-0 transition-all duration-300 ease-in "><!--Side bar Mobile-->
                 <div class="bg-[#5E8E99] min-h-[100px] max-h-[100px] py-5 flex justify-between items-center ">
                     <div class="space-y-2 whitespace-nowrap ">
                         <div href="" class="px-3 flex items-center space-x-1 text-white">
@@ -221,31 +231,45 @@
                         
                </div>
                <div class="h-full  bg-white">
-               <a href="/user/myaccount" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 rounded-t-sm">
-                   <img class="h-4" src="/images/user blue filled.png" alt="">
-                   <p class="text-sm text-[#666666]">My Account</p>
-               </a>
-               <a href="/admin/banner" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
-                   <img class="h-4" src="/images/shopping-cart blue.png" alt="">
-                   <p class="text-sm text-[#666666]">My Cart</p>
-               </a>
-               <a href="/admin/banner" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
-                   <img class="h-4" src="/images/heart fill blue.png" alt="">
-                   <p class="text-sm text-[#666666]">Wish List</p>
-               </a>
-               <a href="/admin/banner" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
-                   <img class="h-4" src="/images/location blue filled.png" alt="">
-                   <p class="text-sm text-[#666666]">My Orders</p>
-               </a>
-               <a href="/admin/banner" class=" whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
-                   <img class="h-4" src="/images/open-book blue.png" alt="">
-                   <p class="text-sm text-[#666666]">About Us</p>
-               </a>
-               <a href="/admin/banner" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100  ">
-                   <img class="h-4" src="/images/phone blue filled.png" alt="">
-                   <p class="text-sm text-[#666666]">Contact Us</p>
-               </a>
-           </div>
+                <div>
+                    <a href="/user/myaccount" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 rounded-t-sm">
+                        <img class="h-4" src="/images/user blue filled.png" alt="">
+                        <p class="text-sm text-[#666666]">My Account</p>
+                    </a>
+                    <a href="/user/myCart" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
+                        <img class="h-4" src="/images/shopping-cart blue.png" alt="">
+                        <p class="text-sm text-[#666666]">My Cart</p>
+                    </a>
+                    <a href="/user/wishList" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
+                        <img class="h-4" src="/images/heart fill blue.png" alt="">
+                        <p class="text-sm text-[#666666]">Wish List</p>
+                    </a>
+                    <a href="/user/yourOrders" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
+                        <img class="h-4" src="/images/location blue filled.png" alt="">
+                        <p class="text-sm text-[#666666]">My Orders</p>
+                    </a>
+                    <a href="/user/aboutUs" class=" whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100 ">
+                        <img class="h-4" src="/images/open-book blue.png" alt="">
+                        <p class="text-sm text-[#666666]">About Us</p>
+                    </a>
+                    <a href="/admin/banner" class="whitespace-nowrap flex bg-white items-center space-x-5 px-2 py-3 border-b-[.2px] border-b-[#666666] hover:bg-gray-100  ">
+                        <img class="h-4" src="/images/phone blue filled.png" alt="">
+                        <p class="text-sm text-[#666666]">Contact Us</p>
+                    </a>
+                </div>
+              
+               
+               
+                </div>
+                <div class="flex-grow">
+
+                </div>
+                <div class="px-2 bg-white pb-5">
+                    <a href="/user/logOut" class="whitespace-nowrap  rounded-md flex  bg-red-600 border justify-center items-center space-x-2 px-2 py-3  hover:bg-gray-100  ">
+                        <img class="h-4" src="/images/logoutwhite.png" alt="">
+                        <p class="text-sm  font-medium text-white">Log Out</p>
+                    </a>
+                </div>
            </div>
         </div>
    

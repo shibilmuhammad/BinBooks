@@ -58,15 +58,11 @@ var addToCartButtons = document.querySelectorAll('.add-to-cart-button');
       event.preventDefault();
       var productId = this.dataset.productId;
       try {
-        alert('h')
         var response = await fetch(`/user/myCart/${productId}`, { method: 'POST' });
         var data = await response.json();
-        alert('i')
-        console.log(data.productName)
         var cartNotification = button.querySelector('.cartNotification');
         cartNotification.textContent = 'Item added to cart: ' + data.productName;
         cartNotification.style.display = 'block';
-
         setTimeout(function() {
           cartNotification.style.display = 'none';
         }, 3000);
@@ -75,3 +71,6 @@ var addToCartButtons = document.querySelectorAll('.add-to-cart-button');
       }
     });
   });
+function logOut(){
+  document.getElementById('logOutForm').submit()
+}
