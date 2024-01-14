@@ -14,15 +14,38 @@
                 <div class="flex justify-center py-5 border-b-gray-500 border-b-[.1px] lg:border-0 w-full lg:min-w-1/2
             relative">
                     <img class="h-80 w-full object-contain lg:w-96" src="<%=product.imageUrl%>" alt="">
-                    <button onclick="favorite()" id="favButton"  class="material-symbols-outlined  absolute top-3 right-[-10px] favFill text-[#666666] lg:right-20 lg:top-5">
+                    <button data-product-id="<%= product._id %>" data-tooltip-target="tooltip-bottom" data-tooltip-placement="bottom" type="button" onclick="favorite(this)" id="favButton"  class="material-symbols-outlined  absolute top-3 right-[-10px]   lg:right-20 lg:top-5 <%= isProductInWishlist ? 'favFill' : 'text-[#666666]' %>">
                         favorite
                     </button>
+                    
+
+
+                    <div  id="tooltip-bottom" role="tooltip" class="absolute  z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        Add to Wish List
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    
                 </div>
                 <div class="flex lg:mt-5 fixed lg:relative  bottom-0 right-0 w-full lg:flex lg:flex-col lg:items-center lg:space-y-5 "><!--Fixed buttons-->
-                    <button class="w-1/2 lg:w-7/12 lg:py-2 bg-white border-[#C4951D] border py-4 font-semibold lg:rounded-md">
+                    <button data-product-id="<%= product._id %>" class="main-add-to-cart-button  w-1/2 lg:w-7/12 lg:py-2 hover:border-[#c4951d] hover:drop-shadow-sm hover:scale-105 bg-white border-[#daa520] border py-4 font-semibold lg:rounded-md">
                         Add to cart 
                     </button>
-                    <button class="w-1/2  lg:w-7/12 lg:py-2 bg-[#C4951D] py-4 text-white font-semibold lg:rounded-md">
+                    <div id="toast-success" class="flex absolute opacity-0 transition-all duration-300 top-6 invisible  items-center w-full max-w-sm p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                        <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                            </svg>
+                            <span class="sr-only">Check icon</span>
+                        </div>
+                        <div class="ms-3 text-sm font-normal">Item Added to Cart</div>
+                        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                            <span class="sr-only">Close</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="w-1/2  lg:w-7/12 lg:py-2 bg-[#daa520] hover:drop-shadow-sm hover:bg-[#c4951d] hover:scale-105 py-4 text-white font-semibold lg:rounded-md">
                         Buy now
                     </button>
                 </div>
@@ -98,12 +121,12 @@
                         <div class="mt-[-5px] lg:mt-[1px]">
                             <span class="text-[11px] font-bold text-[#008000] lg:text-sm "><%=data.discount %>% off</span> <span class="text-[11px] text-[#666666] line-through lg:text-sm"><%=data.MRP %></span> <span class="text-[11px] font-bold lg:text-sm"><%=data.salePrice %></span></div>
                     </div>
-                    <div class="absolute top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20">
-                        <button class="flex bg-[#DAA520] items-center px-1 py-[1px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
-                            <p class="text-xs lg:text-sm font-medium">Add</p>
-                            <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
-                        </button>
-                    </div>
+                    <button  data-product-id="<%= data._id %>" class="absolute rounded-lg hover:bg-[#c4951d] hover:scale-105  bg-[#DAA520] items-center top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20 add-to-cart-button">
+                        <div class=" px-1 py-[1px]  flex text-white space-x-[2px] lg:px-2 lg:py-1 ">
+                            <p class="text-xs lg:text-sm font-medium cartNotification">Add</p>
+                            <img class="h-3 lg:h-4 cart-image" src="/images/shopping-cart white.png" alt="">
+                        </div>
+                    </button>
                 </a>
              <%  })%> 
                
@@ -111,11 +134,16 @@
         </div>
     
     </main>
+  
     <div class="flex-grow">
     </div> 
     <div class="hidden lg:block">  
         <%-include("../partials/user/userFooter.ejs")%>
     </div>
    
+   
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="/javascripts/user/product.js"></script>
+<script src="../../javascripts/user/common.js"></script>

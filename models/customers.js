@@ -18,7 +18,8 @@ const customerSchema = mongoose.Schema({
    password:String,
     myCart : [cartItemSchema],
     wishList:[wishListSchema],
-    orders:[ordersSchema]
+    orders:[ordersSchema],
+    status:String,
 })
 
 module.exports = mongoose.model("customers",customerSchema);

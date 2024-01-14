@@ -62,8 +62,11 @@ router.get('/myCart/removeProduct/:productId',myCartController.removeget)
 router.get('/resetPassword',resetpswdController.get);
 //Search 
 router.get('/search',searchResultController.getSearch)
-
-
+//WishList
 router.get('/wishList',authMiddleware.requireLogin,wishListController.get);
+router.post('/wishlist/:productId',authMiddleware.requireLoginMyCart,wishListController.post)
+router.get('/wishlist/remove/:productId',wishListController.getremove)
+
+
 router.get('/yourOrders',authMiddleware.requireLogin,yourOrderControllers.get);
 module.exports = router;

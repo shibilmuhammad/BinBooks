@@ -35,9 +35,13 @@ input:-webkit-autofill {
                         <p class="text-xs text-red-700  m-1 mx-2 hidden " id="loginError"> phone number can't be empty</p>
                         <button type="submit" class="hidden" id="loginPhoneSubmit"></button>
                     </form>
+                    <% if (locals.error && typeof error !== 'undefined') { %>
+                        <p id="incorrectError" class="text-xs text-red-800 mx-2 mt-2"><%= error %></p>
+                    <% } %>
                     <p class="text-[10px] text-[#666666] mt-6 ml-2">By continuing, you agree to Binbook's <span class="text-blue-600">Terms of Use </span>and <span class="text-blue-600">Privacy Policy.</span> 
                     </p>
                 </div>
+            
                 <div class="hidden lg:block">
                     <label for="loginPhoneSubmit"  class="bg-[#DAA520] cursor-pointer hover:bg-[#c4951d] flex justify-center items-center text-white w-full py-2 font-medium  mt-10 rounded-md" >
                         Continue

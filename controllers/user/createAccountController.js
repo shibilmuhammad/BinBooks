@@ -13,6 +13,7 @@ module.exports = {
             email:req.body.email,
             gender:req.body.gender,
             password : hashedPassword,
+            status:'Active',
         })
         delete req.session.phoneNumber
         req.session.user = phoneNumber

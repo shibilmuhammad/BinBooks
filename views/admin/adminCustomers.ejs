@@ -35,35 +35,30 @@
                 <div class="flex space-x-6">
                     <form action="">
                         <label class="text-xs text-[#333333]" for="">sort</label>
-                        <select name="" id="" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
-                            <option  value="">username</option>
-                            <option value="">Orders</option>
+                        <select name="" id="sortSelect" class="rounded-md px-2 py-1 text-xs text-[#666666 outline outline-[.1px] outline-gray-400">
+                            <option  value="username">username</option>
+                            <option value="orders">Orders</option>
                         </select>
                         <label class="text-xs text-[#333333]" for="">by</label>
-                        <select name="" id="" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
-                            <option value="">All</option>
-                            <option value="">A-Z
-                            </option>
-                            <option value="">Z-A</option>
-                            <option value="">Newset first</option>
-                            <option value="">Oldesr first</option>
+                        <select name="" id="sortHow" class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                           
                         </select>
     
                     </form>
                     <form action="">
-                        <select name="" id=""  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
-                            <option value="">All</option>
-                            <option value="">Active</option>
-                            <option value="">Blocked</option>
+                        <select name="" id="filterValues"  class=" outline outline-[.1px] outline-gray-400 rounded-md px-2 py-1 text-xs text-[#666666]">
+                            <option value="All">All</option>
+                            <option value="Active">Active</option>
+                            <option value="Blocked">Blocked</option>
                         </select>
                     </form>
                 </div>
-                <form action="">
+                <form action="" id="searchProductForm">
                     <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
-                        <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search customers.. ">
-                        <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
+                        <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="searchValue" placeholder="Search customers.. ">
+                        <button type="submit" class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
                             <img src="/images/search white.png" class="h-4" alt="">
-                        </div>
+                        </button>
                     </div>
                     
                 </form>
@@ -79,36 +74,9 @@
                     <th class="font-medium text-center">Status</th>
                     <th class="rounded-tr-md font-medium text-center">Action</th>
                 </tr>
-                
-                <tr class="bg-white  text-sm  ">
-                    <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                    <td class="max-w-[14rem] truncate pr-6 ">shibilmuhammad678@gmail.com</td>
-                    <td>8086812602</td>
-                    <td class="text-center">22</td>
-                    <td class="flex justify-center items-center mt-1">
-                        <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2">Active</div>
-                    </td>
-                    <td>
-                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showCustomerEdit()">
-                            <img class="h-4" src="/images/edit blue.png" alt="">
-                        </div>
-                    </td>
-                </tr>
-                <tr class="bg-white  text-sm  ">
-                    <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                    <td class="max-w-[14rem] truncate pr-6 ">shibilmuhammad678@gmail.com</td>
-                    <td>8086812602</td>
-                    <td class="text-center">22</td>
-                    <td class="flex justify-center items-center mt-1">
-                        <div class="bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 px-2">Blocked</div>
-                    </td>
-                    <td>
-                        <div class="flex justify-center space-x-4 cursor-pointer">
-                            <img class="h-4" src="/images/edit blue.png" alt="" onclick="showCustomerEdit()">
-                        </div>
-                    </td>
-                </tr>
-               
+                <tbody id="table-container">
+                    <%-include('../partials/admin/customersTabledata.ejs')%>
+                </tbody>
             </table>
            
 

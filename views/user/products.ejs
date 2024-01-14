@@ -33,12 +33,12 @@
                                     <span class="text-xs py-1 font-bold text-[#008000] lg:text-sm"><%=data.discount%>% off</span> <span class="text-xs text-[#666666] line-through lg:text-sm"><%=data.MRP%></span> <span class="text-xs font-bold lg:text-sm"><%=data.salePrice%></span></div>
                             </div>
                             <!--my cart-->
-                            <div class="absolute top-2 -right-[12%] md:-right-[12%] lg:-right-[10%] z-50">
-                                <button class="flex z-50 bg-[#DAA520] hover:bg-[#c4951d] items-center px-2 py-[3px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
-                                    <p class="text-xs lg:text-sm font-medium ">Add</p>
-                                    <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
-                                </button>
-                            </div>
+                            <button  data-product-id="<%= data._id %>"  class=" add-to-cart-button  bg-[#DAA520] rounded-lg hover:bg-[#c4951d] absolute top-2 -right-[12%] md:-right-[12%] lg:-right-[10%] z-50">
+                                <div class="flex z-50 items-center px-2 py-[3px]  text-white space-x-[2px] lg:px-2 lg:py-1">
+                                    <p class="cartNotification text-xs lg:text-sm font-medium ">Add</p>
+                                    <img class="cart-image h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                                </div>
+                            </button>
                         </a>
                     <%})%>
                 <% } %> 
@@ -51,3 +51,4 @@
     <%-include("../partials/user/userFooter.ejs")%>
 </body>
 <script src="../../javascripts/user/products.js"></script>
+<script src="../../javascripts/user/common.js"></script>

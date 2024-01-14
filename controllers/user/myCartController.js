@@ -36,7 +36,7 @@ module.exports = {
 
 
     },
-    post:async function(req,res){
+post:async function(req,res){
     //    res.json({ success: true, productName: productSelected.bookName });
    
        const userPhone = req.session.user;
@@ -84,7 +84,7 @@ module.exports = {
               
               myCart = productsInCart.map(item => ({
                   ...item.toObject(),
-                  quantity: quantityMap.get(item._id.toString()) || 0, // Default to 0 if quantity is not found
+                  quantity: quantityMap.get(item._id.toString()) || 0,
               }));
               res.json({
                 success: true,

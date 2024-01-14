@@ -36,7 +36,14 @@ router.get('/banner',bannerController.get)
 router.post('/banner',bannerController.post)
 router.get('/banner/:bannerId',bannerController.getEdit)
 
+//customers
 router.get('/customers',customersController.get)
+router.get('/customer/edit/:customerId',customersController.getEdit);
+router.post('/customer/edit',customersController.postEdit)
+router.post('/customers/search',customersController.postSearch)
+router.post('/customers/sort',customersController.postSort)
+router.post('/customers/filter',customersController.postFilter)
+
 router.get('/dashboard',dashboardController.get)
 router.get('/orders',ordersController.get);
 

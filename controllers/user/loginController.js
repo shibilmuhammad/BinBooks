@@ -15,7 +15,14 @@ module.exports = {
                 res.locals.user = user.name;
             }
             if (userExists) {
-                res.redirect('/user/loginpassword')
+                let user = await customerModel.findOne({ phone: customerNumber });
+
+                if (user.status === 'Active') {
+                    res.redirect('/user/loginpassword');
+                }else{
+                    let error = 'This account has blocked by admin';
+                    res.render('user/login', { error});
+                }
             } else {
                 res.render('user/createAccount')
             }

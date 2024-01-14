@@ -1,0 +1,18 @@
+<% if(customers.length > 0) { %>
+    <% customers.forEach(function(data) { %>
+        <tr class="bg-white  text-sm">
+            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold capitalize"><%= data.name %> </td>
+            <td class="max-w-[14rem] truncate pr-6"><%=data.email %></td>
+            <td><%=data.phone %></td>
+            <td class="text-center">22</td>
+            <td class="flex justify-center items-center mt-1">
+                <div   <% if(data.status==="Active"){%>class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 px-2"<%}else{%>class="bg-[#fbebec] text-[#b16d70] rounded-full text-center w-2/3 px-2"<%}%>><%=data.status %></div>
+            </td>
+            <td>
+                <div class="flex justify-center space-x-4 cursor-pointer "  id="<%=data._id%>"  onclick="showCustomerEdit(this)">
+                    <img class="h-4" src="/images/edit blue.png" alt="">
+                </div>
+            </td>
+        </tr>
+    <% }); %>
+<% } %>
