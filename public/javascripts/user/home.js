@@ -51,26 +51,7 @@ function hideSidebar(){
   document.getElementById("SidebarContainerr").style.visibility="hidden"
 } 
 
-var addToCartButtons = document.querySelectorAll('.add-to-cart-button');
 
-  addToCartButtons.forEach(function(button) {
-    button.addEventListener('click', async function(event) {
-      event.preventDefault();
-      var productId = this.dataset.productId;
-      try {
-        var response = await fetch(`/user/myCart/${productId}`, { method: 'POST' });
-        var data = await response.json();
-        var cartNotification = button.querySelector('.cartNotification');
-        cartNotification.textContent = 'Item added to cart: ' + data.productName;
-        cartNotification.style.display = 'block';
-        setTimeout(function() {
-          cartNotification.style.display = 'none';
-        }, 3000);
-      } catch (error) {
-        console.error('Error adding item to cart:', error);
-      }
-    });
-  });
 function logOut(){
   document.getElementById('logOutForm').submit()
 }

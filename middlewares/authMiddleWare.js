@@ -5,6 +5,12 @@ function requireLogin(req, res, next) {
     }
     next();
 }
+function requireLoginMyCart(req, res, next) {
+    if (!req.session.user) {
+        return res.redirect('/user/login');
+    }
+    next();
+}
 function isAuthenticated(req, res, next) {
     if (req.session && req.session.user) {
         return res.redirect('/user/home');
@@ -14,5 +20,5 @@ function isAuthenticated(req, res, next) {
 
 
 module.exports = {
-    requireLogin,isAuthenticated,
+    requireLogin,isAuthenticated, requireLoginMyCart
 };

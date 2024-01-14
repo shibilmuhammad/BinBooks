@@ -165,12 +165,12 @@
                                     <div class="mt-[-5px] lg:mt-[1px]">
                                         <span class="text-[11px] font-semibold text-[#008000] lg:text-sm"><%=product.discount%>% off</span> <span class="text-[11px] text-[#666666] line-through lg:text-xs"><%=product.MRP%></span> <span class="text-[11px] font-bold lg:text-sm">₹<%=product.salePrice%></span></div>
                                 </div>
-                                <button id="addtoCart" data-product-id="<%= product._id %>" class="absolute top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20 add-to-cart-button ">
-                                    <div class="flex bg-[#DAA520] hover:bg-[#c4951d] items-center px-1 py-[1px] rounded-lg text-white space-x-[2px] lg:px-2 lg:py-1">
-                                        <p class="text-xs lg:text-sm font-medium">Add</p>
-                                        <img class="h-3 lg:h-4" src="/images/shopping-cart white.png" alt="">
+                                <button id="addtoCart" data-product-id="<%= product._id %>" class="absolute rounded-lg bg-[#DAA520] hover:bg-[#c4951d] top-2 -right-[8%] md:-right-[12%] lg:-right-[10%] z-20 add-to-cart-button ">
+                                    <div class="flex  items-center px-1 py-[1px]  text-white space-x-[2px] lg:px-2 lg:py-1 ">
+                                        <p  class="text-xs lg:text-sm font-medium cartNotification">Add</p>
+                                        <img class="h-3 lg:h-4 cart-image" src="/images/shopping-cart white.png" alt="">
                                     </div>
-                                    <div id="cartNotification" style="display: none; color: #008000; margin-top: 10px;"></div>
+
                                 </button>
                             </a>
                             <% }); %>
@@ -277,3 +277,4 @@
 </body>
 <script src="/javascripts/user/home.js" ></script>
 <script src="../../../javascripts/admin/adminHeader.js"></script>
+<script src="../../javascripts/user/common.js"></script>

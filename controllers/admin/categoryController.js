@@ -134,7 +134,24 @@ module.exports = {
   },
   postSort:async function(req,res){
     const sortStatus =req.body.sort
-    categoriesInDb = await categoryModel.find()
+    const categoriesinDb = await categoryModel.find();
+      let categories = categoriesinDb.reverse()
+    const categoryCounts = await prodectModel.aggregate([
+      {
+        $group: {
+          _id: "$category", 
+          productCount: { $sum: 1 } 
+        }
+      }
+    ]);
+    const categoriesWithCounts = categories.map(category => {
+      const categoryCount = categoryCounts.find(count => count._id === category.categoryName);
+      return {
+        ...category.toObject(),
+        productCount: categoryCount ? categoryCount.productCount : 0
+      };
+    });
+    let categoriesInDb =categoriesWithCounts
     if(sortStatus=="z-a"){
      let categories =  categoriesInDb.sort(sortArrayZtoA)
      res.render('partials/admin/CategoryTabledata',{ categories:categories})
@@ -145,11 +162,17 @@ module.exports = {
     }
    
     if(sortStatus=="Newest first"){
-      let categories =  categoriesInDb.reverse()
+      let categories =  categoriesInDb
       res.render('partials/admin/CategoryTabledata',{ categories:categories})
     }
     if(sortStatus=="Oldest First"){
-      let categories =  categoriesInDb
+      let categories =  categoriesInDb.reverse()
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
+    }if(sortStatus=="Ascending"){
+      let categories =  categoriesInDb.sort(sortAscending)
+      res.render('partials/admin/CategoryTabledata',{ categories:categories})
+    }if(sortStatus=='Descending'){
+      let categories = categoriesInDb.sort(sortDescending)
       res.render('partials/admin/CategoryTabledata',{ categories:categories})
     }
   },
@@ -168,6 +191,24 @@ function sortArrayAtoZ(a,b){
     return-1
   }
   if(a.categoryName > b.categoryName){
+    return 1
+  }
+  return 0;
+}
+function sortAscending(a,b){
+  if(a.productCount > b.productCount){
+    return 1
+  }
+  if(a.productCount < b.productCount){
+    return -1
+  }
+  return 0;
+}
+function sortDescending(a,b){
+  if(a.productCount > b.productCount){
+    return -1
+  }
+  if(a.productCount < b.productCount){
     return 1
   }
   return 0;

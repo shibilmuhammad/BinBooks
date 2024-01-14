@@ -38,6 +38,7 @@ module.exports = {
     },
     post:async function(req,res){
     //    res.json({ success: true, productName: productSelected.bookName });
+   
        const userPhone = req.session.user;
        const productId = req.params.productId;
        const count = parseInt(req.body.count) || 1;

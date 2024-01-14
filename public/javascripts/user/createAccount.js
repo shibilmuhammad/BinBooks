@@ -7,6 +7,8 @@ let createAcecountError = document.querySelector('.createAccountError')
 let password = document.getElementById('CApassword');
 let confirmPassword = document.getElementById('CAconfirmPassword');
 let createAccountError = document.querySelectorAll('.createAccountError');
+const passwordRegex = /^(?=.*[a-z])(?=.*[!@#?])(?=.*[A-Za-z]).{8,100}$/;
+
 
 document.getElementById('createAccountForm').addEventListener('submit',function(event){
     event.preventDefault();
@@ -31,12 +33,18 @@ document.getElementById('createAccountForm').addEventListener('submit',function(
             element.innerText = 'Password cannot be empty!! '
             element.style.display = 'flex'
         })
-    } else if (password.value.length<8) {
+    }   else if (!passwordRegex.test(password.value.trim())) {
         createAccountError.forEach(function(element){
             element.innerText = 'Password must be more than 8 letters!! '
-            element.style.display = 'flex'
+            element.style.display = 'none'
         })
-    }else if (password.value !== confirmPassword.value) {
+        document.getElementById('passwordregxError').style.visibility='visible'
+        document.getElementById('passwordregxError').style.opacity = 1;
+        setTimeout(() => {
+            document.getElementById('passwordregxError').style.visibility = 'hidden';
+            document.getElementById('passwordregxError').style.opacity = 0;
+        }, 5000);
+    } else if (password.value !== confirmPassword.value) {
         createAccountError.forEach(function(element){
             element.innerText = 'Pasword do not match '
             element.style.display = 'flex'

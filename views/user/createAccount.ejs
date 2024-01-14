@@ -46,13 +46,27 @@
                                     visibility_off
                                     </span>
                             </div>
+                            <div id="passwordregxError" class="absolute invisible opacity-0   transition-all duration-300 mt-2 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                </svg>
+                                <span class="sr-only">Danger</span>
+                                <div>
+                                  <span class="font-medium">Ensure that these requirements are met:</span>
+                                    <ul class="mt-1.5 list-disc list-inside">
+                                      <li>At least 8 characters </li>
+                                      <li>At least one lowercase character</li>
+                                      <li>Inclusion of at least one special character, e.g., ! @ # ?</li>
+                                  </ul>
+                                </div>
+                              </div>
                             <div class="w-full mt-5 bg-inherit rounded-md lg:bg-white bg-[#F2F2F2] border-[.2px] border-[#666666] flex justify-between items-center pl-1 pr-2">
                                 <input class="w-full outline-none bg-inherit  px-2 py-[6px] placeholder:text-xs text-sm " placeholder="Confirm password" type="password" name="password" id="CAconfirmPassword">
                                 <span id="VisibilityConfirmPassword" class="material-symbols-outlined cursor-pointer text-lg select-none"onclick="togglePasswordVisibilityConfirm()">
                                     visibility_off
                                     </span>
                             </div>
-                        
+                         
                         <button type="submit" class="hidden" id="loginPhoneSubmit"></button>
                         
                     </form> 

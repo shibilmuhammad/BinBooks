@@ -55,7 +55,7 @@ router.get('/products/:categoryName',productsController.get);
 router.post('/products/filter',productsController.filterPost)
 //My cart
 router.get('/myCart/',authMiddleware.requireLogin,myCartController.get);
-router.post('/myCart/:productId',authMiddleware.requireLogin,myCartController.post);
+router.post('/myCart/:productId',authMiddleware.requireLoginMyCart,myCartController.post);
 router.post('/myCart/updateQuantity/:productId',myCartController.postUpdate)
 router.get('/myCart/removeProduct/:productId',myCartController.removeget)
 

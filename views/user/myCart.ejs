@@ -39,7 +39,7 @@
                                      </div>
                                 
                                 <div class="w-full  lg:w-fit space-x-3 flex lg:flex-col lg:justify-center lg:space-y-3 lg:items-center text-white product"   data-product-id="<%=product._id %>">
-                                    <a href="/user/myCart/removeProduct/<%- product._id %>" class="w-1/2  lg:ml-3 lg:w-fit lg:px-8 text-black border-[#DAA520] border-[.1px] py-1 rounded-md font-medium">
+                                    <a href="/user/myCart/removeProduct/<%-product._id %>" class="w-1/2  lg:ml-3 lg:w-fit lg:px-8 text-black border-[#DAA520] border-[.1px] py-1 rounded-md font-medium">
                                         Remove
                                     </a>
                                     <div class="w-1/2 lg:w-fit lg:px-6 select-none  bg-[#DAA520] py-2 rounded-md flex-col font-semibold flex items-center  text-white   px-3  text-xs space-x-1">
@@ -66,7 +66,13 @@
                     let totalMRP = 0;
                     let totalDiscount = 0;
                     let totalProductsCount = 0;
-                    const deliveryCharge = 40;
+                    let deliveryCharge
+                    if(Mycart.length<1){
+                         deliveryCharge = 0
+                    }else{
+                        deliveryCharge = 40;
+                    }
+                   
                     
                     Mycart.forEach(function(product) {
                         const totalPriceForProduct = product.salePrice * product.quantity;
