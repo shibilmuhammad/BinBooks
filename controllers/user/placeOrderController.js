@@ -1,5 +1,6 @@
 const customerModel = require('../../models/customers')
 const productsModel = require('../../models/products');
+let productsWithCount = [];
 module.exports = {
     get:async function (req,res){
         let username;
@@ -12,33 +13,75 @@ module.exports = {
             }else if (!req.session.paymentSubmitted){
                 res.redirect('/user/payment')
             }else{
-                console.log(req.session);
                 let addressIdToFind = req.session.addressId
                 let productsIds = req.session.productsIds
                 let foundAddress = user.address.find(address => address._id.toString() === addressIdToFind);
-                let productsWithCount = [];
-                console.log('prodcut ids '+productsIds[0]);
-                for (const productEntry of productsIds) {
-                    const productId = productEntry.product;
-                    const count = productEntry.count;
-                    const foundProduct = await productsModel.findById(productId);
-                    if (foundProduct) {
-                        const productWithCount = {
-                            product: foundProduct,
-                            count: count
-                        };
-                        productsWithCount.push(productWithCount);
+              
+                const allProductIdsMatch = productsIds.every(productEntry => {
+                    return productsWithCount.some(productWithCount => productWithCount.product.toString() === productEntry.product.toString());
+                });
+    
+                if (!allProductIdsMatch) {
+                    productsWithCount = [];
+                }
+                if (!productsWithCount.length) {        
+                    for (const productEntry of productsIds) {
+                        const productId = productEntry.product;
+                        const count = productEntry.count;
+                        const foundProduct = await productsModel.findById(productId);
+        
+                        if (foundProduct) {
+                            const productWithCount = {
+                                product: foundProduct,
+                                count: count,
+                                
+                            };
+                            productsWithCount.push(productWithCount);
+                        }
                     }
                 }
-                productsWithCount.forEach(function(data){
-                    console.log('data is '+data.product.bookName);
-                    console.log('count is '+data.count);
-                })
-                console.log(' found addres is '+foundAddress);
-                const currentDate = new Date();
+                res.render('user/placeOrder',{user:username,address:foundAddress,products:productsWithCount,getDeliveryDate,categoryName:'Place Order',paymentMethod:req.session.paymentSubmitted})
+            }
+        }else{
+            res.redirect('/user/login')
+        }
+        
+    }, postUpdate:async function(req,res) {
+      const userPhone = req.session.user;
+      try {
+          const productId = req.params.productId;
+          const newQuantity = req.body.quantity;
+          const productIndex = productsWithCount.findIndex(item => item.product._id.equals(productId));
+          if (productIndex !== -1) {
+            
+            await updateProductCount(productIndex, newQuantity)
+            console.log('post prdocucts count '+productsWithCount[productIndex].product+ 'count is '+productsWithCount[productIndex].count);
+              res.json({
+                success: true,
+                message: 'Quantity updated successfully',
+                productsWithCount: productsWithCount,
+            });
+          } else {
+              res.status(404).json({ success: false, message: 'Product not found in the cart' });
+          }
+      } catch (error) {
+          console.error('Error updating quantity:', error);
+          res.status(500).json({ success: false, message: 'Internal Server Error' });
+      }
+    },
+    getProceedTopay: async function(req,res){
+      if(req.session.paymentSubmitted==='Cash on delivery'){
+        console.log('Cash on delivery');
+      }else if(req.session.paymentSubmitted===' Credit or debit Card'){
+        console.log('credit');
+      }else{
+        console.log('otherupi');
+      }
+    }
+}
 
-// Function to get the delivery date after a given number of days
 function getDeliveryDate(days) {
+    const currentDate = new Date();
     const deliveryDate = new Date(currentDate);
     deliveryDate.setDate(currentDate.getDate() + days);
 
@@ -47,11 +90,11 @@ function getDeliveryDate(days) {
     
     return formattedDate;
 }
-                res.render('user/placeOrder',{user:username,address:foundAddress,products:productsWithCount,getDeliveryDate})
-            }
-        }else{
-            res.redirect('/user/login')
-        }
-        
-    }
+async function updateProductCount(index, newQuantity) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            productsWithCount[index].count = newQuantity;
+            resolve();
+        }, 0);
+    });
 }

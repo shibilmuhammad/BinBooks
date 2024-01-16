@@ -6,7 +6,7 @@ module.exports = {
             let user = await customerModel.findOne({phone:req.session.user})
             res.locals.user = user.name;
         }
-        res.render('user/buynow',{user:res.locals.user})
+        res.render('user/buynow',{user:res.locals.user,categoryName:'Address'})
     },getBuy :async function(req,res){
         let productId = req.params.productId;
         let productObject = {
@@ -15,8 +15,7 @@ module.exports = {
           };
         delete req.session.productIds;
         req.session.productsIds =  [];
-        req.session.productsIds.push(productObject);
-        console.log(req.session);
+        req.session.productsIds = [productObject]
         if(req.session.user){
             let user = await customerModel.findOne({phone:req.session.user});
             if(user.address.length<1){
@@ -38,6 +37,29 @@ module.exports = {
             state:req.body.state,         
         })
         await user.save()
+        res.redirect('/user/address')
+    },postAddress :async function(req,res){
+        let addressId = req.params.addressId;
+        const user = await customerModel.findOneAndUpdate(
+            { 
+                phone: req.session.user, 
+                'address._id': addressId 
+            },
+            {
+                $set: {
+                    'address.$.name': req.body.name,
+                    'address.$.number': req.body.number,
+                    'address.$.house': req.body.house,
+                    'address.$.area': req.body.area,
+                    'address.$.landMark': req.body.landMark,
+                    'address.$.pinCode': req.body.pinCode,
+                    'address.$.town': req.body.town,
+                    'address.$.state': req.body.state,
+                }
+            },
+            { new: true } 
+        );
+        console.log(user.address);
         res.redirect('/user/address')
     }
 }

@@ -53,38 +53,38 @@
         </div>   
         <div class="px-4 mt-5 lg:px-52">
             <p class='font-medium text-xl'>Enter your address</p>
-            <form action="/user/newAddress" method="post" class="my-3 mt-5 space-y-3">
+            <form <% if(locals.address){ %> action="/user/address/edit/<%=address.id%>" <% }else{%>action="/user/newAddress" <% }  %> method="post" class="my-3 mt-5 space-y-3">
                 <div class="space-y-1">
                     <p class="px-2 font-medium text-sm" >Full name</p>
-                    <input required name="name" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter first name and last name">
+                    <input <% if (locals.address) { %> value="<%= address.name %>" <% } %> required name="name" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter first name and last name">
                 </div>
                 <div class="space-y-1 ">
                     <p class="px-2 font-medium text-sm">Phone number</p>
-                    <input required name="number" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter your mobile number">
+                    <input  <% if (locals.address) { %> value="<%= address.phone %>" <% } %> required name="number" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter your mobile number">
                 </div>
                 <div class="space-y-1 ">
                     <p class="px-2 font-medium text-sm">Flat, House no., Building, Company, Apartment</p>
-                    <input required name="house" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" >
+                    <input  <% if (locals.address) { %> value="<%= address.house %>" <% } %> required name="house" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" >
                 </div>
                 <div class="space-y-1 ">
                     <p  class="px-2 font-medium text-sm">Area, Street, Sector, Village</p>
-                    <input required name="area" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" >
+                    <input  <% if (locals.address) { %> value="<%= address.area %>" <% } %> required name="area" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" >
                 </div>
                 <div class="space-y-1 ">
                     <p class="px-2 font-medium text-sm">Land mark</p>
-                    <input required name="landMark" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Nearby Landmark">
+                    <input  <% if (locals.address) { %> value="<%= address.landMark %>" <% } %> required name="landMark" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Nearby Landmark">
                 </div>
                 <div class="space-y-1 ">
                     <p class="px-2 font-medium text-sm">PIN code</p>
-                    <input required name="pinCode" type="number" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter 6-digit PIN code">
+                    <input  <% if (locals.address) { %> value="<%= address.pinCode %>" <% } %> required name="pinCode" type="number" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="Enter 6-digit PIN code">
                 </div>
                 <div class="space-y-1 ">
                     <p class="px-2 font-medium text-sm">Town/City </p>
-                    <input required name="town" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="">
+                    <input  <% if (locals.address) { %> value="<%= address.town %>" <% } %> required name="town" type="text" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600" placeholder="">
                 </div>
                 <div class="space-y-1 ">
                     <label for="state" class="px-2 font-medium text-sm">State </p>
-                    <select required name="state" id="state" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600 ">
+                    <select  <% if (locals.address) { %> value="<%= address.state %>" <% } %> required name="state" id="state" class="w-full rounded-lg px-4 py-2 text-xs border-[.1px] border-gray-600 ">
                     </select>
                 </div>
                 <button id="submit" type="submit" class="hidden"></button>
@@ -99,4 +99,5 @@
     </div>
     
     <script src="/javascripts/user/stateLoad.js"></script>
+    <script src="../../javascripts/user/common.js"></script>
 </body>

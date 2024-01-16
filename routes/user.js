@@ -34,13 +34,15 @@ router.get('/loginpassword',authMiddleware.isAuthenticated,authMiddleware.isPhon
 router.post('/loginpswd',authMiddleware.isAuthenticated,loginpswdController.post)
 
 router.get('/aboutUs',aboutuscontroller.get);
-router.get('/address',authMiddleware.requireLogin,addressController.get);
-router.get('/user/address/:adressId',addressController.getaddress)
+router.get('/address',authMiddleware.requireLogin,authMiddleware.okeyForDeliver,addressController.get);
+router.get('/user/address/:adressId',authMiddleware.okeyForDeliver,addressController.getaddress)
+router.get('/address/edit/:addressId',addressController.getEdit)
 
 //Buy now
 router.get('/buynow',authMiddleware.requireLogin,buynowController.get);
 router.post('/newAddress',authMiddleware.requireLogin,buynowController.post)
 router.get('/buynow/:productId',authMiddleware.requireLogin,buynowController.getBuy)
+router.post('/address/edit/:addressId',buynowController.postAddress)
 
 router.get('/category',categoryController.get);
 //Create account
@@ -57,18 +59,20 @@ router.get('/orderSummery',orderSummeryController.get)
 router.get('/forgetPassword',authMiddleware.isAuthenticated,authMiddleware.isPhonenumber,otpController.get);
 router.post('/otp/confirmation',otpController.post)
 
-router.get('/payment',paymentController.get);
+router.get('/payment',authMiddleware.requireLogin,authMiddleware.okeyForDeliver,paymentController.get);
 router.post('/payment',paymentController.post)
 
 
-router.get('/placeOrder',placeOrderController.get);
+router.get('/placeOrder',authMiddleware.requireLogin,authMiddleware.okeyForDeliver,placeOrderController.get);
+router.post('/placeOrder/updateQuantity/:productId',placeOrderController.postUpdate)
+router.get('/proceedtoPay',placeOrderController.getProceedTopay)
 
 router.get('/product/:productId',productController.get);
 router.get('/products/:categoryName',productsController.get);
 router.post('/products/filter',productsController.filterPost)
 //My cart
 router.get('/myCart/',authMiddleware.requireLogin,myCartController.get);
-router.post('/myCart/:productId',authMiddleware.requireLoginMyCart,myCartController.post);
+router.post('/myCart/:productId',myCartController.post);
 router.post('/myCart/updateQuantity/:productId',myCartController.postUpdate)
 router.get('/myCart/removeProduct/:productId',myCartController.removeget)
 router.get('/mycart/placeOrder',myCartController.placeOrderget)

@@ -99,7 +99,7 @@
 
     <main class="px-2 py-3">
         <div id="TopCategorycontainer" class=" flex space-x-2 md:space-x-4   overflow-auto relative"> <!--Top category sldier -->
-            <%categories.slice(0, 7).forEach(function(data){%>
+            <%categories.slice(0, 8).forEach(function(data){%>
                 <a href="/user/products/<%= encodeURIComponent(data.categoryName)%>" class="bg-gray-200  border-b-[#333333] border-[.1px] hover:drop-shadow-md hover:border lg:min-w-[150px]  min-w-[92px] md:min-w-[102px] rounded-md drop-shadow-sm ">
                     <img class="rounded-t-md lg:w-[150px] lg:h-[120px] w-[92px] md:w-[102px] h-[88px] object-cover grayscale-[40%]" src="<%=data.imageUrl%>" alt="">
                     <div class="flex justify-center items-center  ">
@@ -154,7 +154,7 @@
                         <span class="text-[#565656]  font-semibold lg:text-base"><%=data.categoryName%></span>
                     </div>
                     <div class="flex space-x-[10px] mb-3 md:space-x-4 lg:space-x-7 px-2 lg:px-5 mt-3 w-full overflow-auto"> <!--Books group container-->
-                        <% products.filter(function(product) { return product.category === data.categoryName; }).slice(0, 6).forEach(function(product) { %>
+                        <% products.filter(function(product) { return product.category === data.categoryName; }).slice(0, 7).forEach(function(product) { %>
                             <a href="/user/product/<%= encodeURIComponent(product._id)%>" class="bg-white hover:scale-105 hover:bg-slate-50 md:min-w-[135px] md:max-w-[135px]  min-w-[119px] max-w-[119px] max-h-44  rounded-md drop-shadow-sm  pt-2 pb-1 relative lg:min-h-[200px] lg:min-w-[160px] w-3 lg:pb-52 hover:drop-shadow-xl"> 
                                 <div class="flex items-center justify-center"> 
                                     <img class="rounded-t-md w-[115px] md:w-[135px] h-[93px] md:h-[100px] object-contain pb-2 border-b lg:min-h-[120px] lg:min-w-[150px]" src="<%=product.imageUrl %>" alt="">

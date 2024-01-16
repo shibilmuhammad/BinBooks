@@ -68,14 +68,19 @@ var addToCartButtons = document.querySelectorAll('.main-add-to-cart-button');
       try {
         var response = await fetch(`/user/myCart/${productId}`, { method: 'POST' });
         var data = await response.json();
-        var cartNotification = document.getElementById('toast-success')
-        cartNotification.style.visibility='visible'
-        cartNotification.style.opacity = 1
-        setTimeout(function() {
-            cartNotification.style.visibility='hidden'
-            cartNotification.style.opacity = 0;
-        }, 3000);
-      } catch (error) {
+        if (data.success === true) {
+          var cartNotification = document.getElementById('toast-success')
+          cartNotification.style.visibility='visible'
+          cartNotification.style.opacity = 1
+          setTimeout(function() {
+              cartNotification.style.visibility='hidden'
+              cartNotification.style.opacity = 0;
+          }, 3000);
+        }else{
+          window.location.href='/user/login'
+        }
+        }
+         catch (error) {
         console.error('Error adding item to cart:', error);
       }
     });

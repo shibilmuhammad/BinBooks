@@ -56,8 +56,8 @@
                     </div>
                     <div>
                         <div class="flex flex-col space-y-2 lg:space-y-9">
-                            <a href="user/address/<%-data._id %>" class="bg-[#EBEBEB] hover:bg-[#5e8e99] hover:text-[#EBEBEB] hover:scale-105 text-sm px-2 lg:px-4 lg:py-3 py-1 rounded-md font-medium text-[#5e8e99] border-[.2px] border-[#666666] " >Use this</a>
-                            <button class="bg-[#F6F6F6] hover:text-[#F6F6F6] hover:bg-[#476B73] text-sm px-4 lg:px-4 lg:py-3  py-1 rounded-md font-semibold text-[#476B73] border-[.2px] border-[#666666]">Edit</button>
+                            <a href="user/address/<%-data._id %>" class="bg-[#EBEBEB] hover:bg-[#476b73] hover:text-[#EBEBEB] hover:scale-105 lg:text-sm px-2 lg:px-4 lg:py-3 py-1 rounded-md font-medium text-[#476b73] border-[.2px] border-[#666666] text-xs " >Deliver here</a>
+                            <a href="/user/address/edit/<%-data._id %>" class="bg-[#F6F6F6] hover:text-[#F6F6F6] hover:bg-[#476B73] lg:text-sm px-4 lg:px-4 lg:py-3  py-1 rounded-md font-semibold text-[#476B73] border-[.2px] border-[#666666] flex justify-center items-center text-xs">Edit</a>
                         </div>
                         
                     </div>
@@ -78,4 +78,5 @@
     </main>
 
     <script src="/javascripts/user/stateLoad.js"></script>
+    <script src="../../javascripts/user/common.js"></script>
 </body>

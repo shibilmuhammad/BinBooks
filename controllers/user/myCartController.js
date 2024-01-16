@@ -107,11 +107,8 @@ post:async function(req,res){
     res.redirect('/user/myCart')
   },placeOrderget: async function(req,res){
     let user = await customerModel.findOne({phone:req.session.user});
-    const singleObject = {};
     let arrayData = user.myCart.map(item => ({ product: item.product, count: item.count }));
     console.log('array data = '+arrayData);
-    delete req.session.productIds;
-    req.session.productsIds =  [];
     req.session.productsIds = arrayData;
     res.redirect('/user/address')
   }

@@ -45,34 +45,54 @@
 
             </div>            
         </div>  
+
+        <%
+                    let totalAmount = 0;
+                    let totalMRP = 0;
+                    let totalDiscount = 0;
+                    let totalProductsCount = 0;
+                    let deliveryCharge
+                  
+                        deliveryCharge = 40;
+                   
+                    
+                    products.forEach(function(data) {
+                        const totalPriceForProduct = data.product.salePrice * data.product.count;
+                        totalAmount += totalPriceForProduct;
+                        totalMRP += data.product.MRP * data.count;
+                        totalDiscount += (data.product.MRP - data.product.salePrice) * data.count;
+                        totalProductsCount += data.count;
+                    });
+                    const finalDiscountedPrice = totalMRP - totalDiscount;
+                    const totalPriceIncludingDelivery = finalDiscountedPrice + deliveryCharge;
+                    %>
         <div class="px-4 mt-5 lg:px-52">
             <p class='font-medium text-xl'>Place Order</p>
-            <form action="" class="my-3 mt-5 space-y-3">
+            <form action="/user/proceedtoPay" class="my-3 mt-5 space-y-3">
                 <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--order detais-->
                     <p class="text-base font-semibold">Order Details</p>
                     <div class="flex space-x-20 ">
                         <div class="text-sm  space-y-3 text-[#666666]">
-                            <p>Price(2 items)</p>
+                            <p >Price (<span id="totalProductsCount"><%=totalProductsCount %></span> items)</p>
+                            <p class="text-green-700">Discount Price</p>
                             <p class="text-red-700">Delivery</p>
-                            <p class="text-green-700">Discount</p>
                             
                         </div>
                         <div class="text-sm  space-y-3 text-[#666666]">
-                            <p>₹500</p>
-                            <p class="text-red-700">₹40</p>
-                            <p class="text-green-700">₹250</p>
-                            
+                            <p id="totalMRP"><%=totalMRP %></p>
+                            <p id="finalDiscountedPrice" class="text-green-700"><%=finalDiscountedPrice %></p>
+                            <p id="deliveryCharge" class="text-red-700">₹<%=deliveryCharge %></p>
                         </div>
                     </div>
                     <div class="flex space-x-20 border-t text-sm font-semibold  py-2">
                         <p>Total Amount</p>
-                        <p>₹290</p>
+                        <p id="totalPriceIncludingDelivery">₹<%=totalPriceIncludingDelivery %></p>
                     </div>
                 </div>
                 <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--Payment method-->
                     <p class="text-base font-semibold">Payment Method</p>
-                    <a href="" class="flex items-center justify-between">
-                        <p class="text-[#666666] text-sm">Cash on delivery</p>
+                    <a href="/user/payment" class="flex items-center justify-between">
+                        <p class="text-[#666666] text-sm"> <%=paymentMethod %></p>
                         <div class=" rounded-[50%] cursor-pointer bg-gray-100 m-[5px] inline-block">
                             <span class="material-symbols-outlined  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
                                 chevron_right
@@ -81,7 +101,7 @@
                     </a>
                 </div>
                 <div class="bg-white rounded-md px-5 py-3 space-y-3"> <!--Deliver to-->
-                    <div href="" class="flex items-center justify-between">
+                    <div onclick="displayaddress()" href="/user/home" class="flex items-center justify-between cursor-pointer">
                         <div>
                             <p class="text-base font-semibold pb-3">Deliver to</p>
                             <p class="text-[#333333] font-semibold text-sm"><%=address.name %></p>
@@ -99,8 +119,8 @@
                 </div>
                 <div class=" "><!--get it by -->
                     <div class="space-y-1 bg-white rounded-t-md  px-5 py-3"> 
-                        <p class="text-base font-semibold">Get it by</p>
-                        <p class="text-xs text-green-700"><%= getDeliveryDate(3) %></p>
+                        <p class="text-sm lg:text-lg font-semibold">Get it by</p>
+                        <p class="text-xs font-medium lg:text-sm text-green-700"><%= getDeliveryDate(3) %></p>
                     </div>
                         <% products.forEach(function(data){%>
                             <div class="flex space-x-3 mb-3 bg-white rounded-md  px-5 py-3 first:mt-0 first:rounded-t-none">
@@ -121,19 +141,18 @@
                                         <p class="text-xs text-[#666666] line-through">MRP <%=data.product.MRP %></p>
                                     </div>
                                     <P class="font-semibold text-lg">₹<%=data.product.salePrice %></P>
-                                    <div class="flex items-center bg-[#DAA520] text-white rounded-md w-fit px-3 py-2 text-xs space-x-1">
-                                        <p>Qty</p>
-                                        <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
-                                            <span class="material-symbols-outlined text-[12px]">
-                                                remove
-                                            </span>
+                                    <div  data-product-id="<%=data.product._id %>" class="w-fit lg:w-fit product lg:px-6 select-none  bg-[#DAA520] py-2 rounded-md flex-col font-semibold flex items-center  text-white   px-3  text-xs space-x-1">
+                                        <div class="flex space-x-1 md:space-x-3 lg:space-x-1">
+                                            <p class="font-semibold">Qty</p>
+                                            <button  data-product-id="<%=data.product._id %>" type="button" class="quantity-minus bg-white rounded-full h-fit w px-[2px] py-[2px] text-black flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-[12px]">remove</span>
+                                            </button>
+                                            <span class="quantity-display" id="quantity-display-<%-data.product._id %>"><%= data.count %></span>
+                                            <button  data-product-id="<%=data.product._id %>" type="button" class="quantity-plus bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-[12px]">add</span>
+                                            </button>
                                         </div>
-                                        <span><%=data.count %></span>
-                                        <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
-                                            <span class="material-symbols-outlined text-[12px]">
-                                                add
-                                            </span>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -151,5 +170,11 @@
     <div class="px-3  lg:px-52 fixed bottom-0  w-full bg-white pt-2">
         <label for="submit"  class="bg-[#DAA520] mb-2 text-white font-semibold py-[6px] rounded-lg w-full text-center cursor-pointer flex flex-col ">Confirm </button>
     </div>
-    <script src="/javascripts/user/stateLoad.js"></script>
+    <script src="/javascripts//user/placeOrder.js"></script>
 </body>
+<script>
+    function displayaddress(){
+        window.location.href='/user/address'
+    }
+</script>
+<script src="../../javascripts/user/common.js"></script>

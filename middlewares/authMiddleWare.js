@@ -23,7 +23,12 @@ function isPhonenumber(req,res,next) {
     }
     next()
 }
-
+function okeyForDeliver(req,res,next){
+    if(!req.session.productsIds){
+        return res.redirect('/user/home')
+    }
+    next()
+}
 module.exports = {
-    requireLogin,isAuthenticated, requireLoginMyCart,isPhonenumber
+    requireLogin,isAuthenticated, requireLoginMyCart,isPhonenumber,okeyForDeliver
 };

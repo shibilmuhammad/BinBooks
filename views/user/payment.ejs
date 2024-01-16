@@ -50,19 +50,19 @@
             <form action="/user/payment" method="post" class="my-3 mt-5 space-y-3">
                 <div class="bg-white border-[.2px] border-gray-700 rounded-md ">
                    <div class="flex justify-center py-3 space-x-2 border-b-[.3px] border-b-gray-600"> 
-                    <input required  type="radio" name="payment" id="Credit">
+                    <input <% if(locals.selectedPaymentMethod === 'Credit or debit Card') { %>checked<% } %>   value="Credit or debit Card" required  type="radio" name="payment" id="Credit">
                          <label for="Credit" class="text-sm">
                              Credit or debit Card
                          </label>
                     </div>
                     <div class="flex justify-center py-3 space-x-2 border-b-[.3px] border-b-gray-600"> 
-                        <input  type="radio" name="payment" id="cod">
+                        <input <% if(locals.selectedPaymentMethod === 'Cash on delivery') { %>checked<% } %> value="Cash on delivery"  type="radio" name="payment" id="cod">
                              <label for="cod" class="text-sm">
                                  Cash on delivery
                              </label>
                         </div>
                         <div class="flex justify-center py-3 space-x-2 border-b-[.3px] "> 
-                            <input  type="radio" name="payment" id="otherUPI">
+                            <input  <% if(locals.selectedPaymentMethod === 'Other UPI apps') { %>checked<% } %>  value="Other UPI apps" type="radio" name="payment" id="otherUPI">
                                  <label for="otherUPI" class="text-sm">
                                      Other UPI apps
                                  </label>
@@ -79,4 +79,5 @@
     </div>
     
     <script src="/javascripts/user/stateLoad.js"></script>
+    <script src="../../javascripts/user/common.js"></script>
 </body>
