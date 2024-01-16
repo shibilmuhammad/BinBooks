@@ -26,11 +26,11 @@
                     </div>
                     
                 </div>
-                <div class="flex lg:mt-5 fixed lg:relative  bottom-0 right-0 w-full lg:flex lg:flex-col lg:items-center lg:space-y-5 "><!--Fixed buttons-->
+                <div class="flex lg:mt-5 fixed z-30 lg:relative  bottom-0 right-0 w-full lg:flex lg:flex-col lg:items-center lg:space-y-5 "><!--Fixed buttons-->
                     <button data-product-id="<%= product._id %>" class="main-add-to-cart-button  w-1/2 lg:w-7/12 lg:py-2 hover:border-[#c4951d] hover:drop-shadow-sm hover:scale-105 bg-white border-[#daa520] border py-4 font-semibold lg:rounded-md">
                         Add to cart 
                     </button>
-                    <div id="toast-success" class="flex absolute opacity-0 transition-all duration-300 top-6 invisible  items-center w-full max-w-sm p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                    <div id="toast-success" class="flex absolute opacity-0 transition-all duration-300  lg:top-6 invisible  items-center w-full max-w-sm p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
                         <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
@@ -45,9 +45,9 @@
                             </svg>
                         </button>
                     </div>
-                    <button class="w-1/2  lg:w-7/12 lg:py-2 bg-[#daa520] hover:drop-shadow-sm hover:bg-[#c4951d] hover:scale-105 py-4 text-white font-semibold lg:rounded-md">
+                    <a href="/user/buynow/<%-product._id %>" class="w-1/2 flex justify-center items-center lg:w-7/12 lg:py-2 bg-[#daa520]  hover:drop-shadow-sm hover:bg-[#c4951d] hover:scale-105 py-4 text-white font-semibold lg:rounded-md">
                         Buy now
-                    </button>
+                    </a>
                 </div>
             </div>
            <div class="lg:w-1/2 mt-3 lg:m-6 lg:mt-0 lg:flex lg:flex-col lg:justify-center"><!--Desktop flex second part-->

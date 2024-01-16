@@ -11,7 +11,7 @@
         <div class="bg-white py-5 lg:px-52"><!--Top address progress-->
             <div class="flex justify-between px-5">
                 <div class="flex  w-full " id="address">
-                    <a href="/user/buynow" class="flex flex-col items-center space-y-1">
+                    <a href="/user/address" class="flex flex-col items-center space-y-1">
                         <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
                             <div id="addressSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden "></div> <!--insdie Circle-->
                         </div>
@@ -47,10 +47,10 @@
         </div>  
         <div class="px-4 mt-5 lg:px-52">
             <p class='font-medium text-xl'>Select a payment method</p>
-            <form action="" class="my-3 mt-5 space-y-3">
+            <form action="/user/payment" method="post" class="my-3 mt-5 space-y-3">
                 <div class="bg-white border-[.2px] border-gray-700 rounded-md ">
                    <div class="flex justify-center py-3 space-x-2 border-b-[.3px] border-b-gray-600"> 
-                    <input  type="radio" name="payment" id="Credit">
+                    <input required  type="radio" name="payment" id="Credit">
                          <label for="Credit" class="text-sm">
                              Credit or debit Card
                          </label>

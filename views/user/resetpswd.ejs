@@ -21,18 +21,43 @@
                         <p class="font-semibold text-lg">Reset your password</p>
                         <p class="text-[#666666] text-xs pl-1 -mt-1 font-medium"> Create a strong password</p>
                     </div>
-                    <form action="" class="w-full mt-7">
-                        <input class="w-full rounded-md lg:bg-white bg-[#F2F2F2] border-[.2px] outline-none border-[#666666] px-2 py-[6px] placeholder:text-xs text-sm " placeholder="Create password" type="text" name="" id="">
-                        <input class="w-full mt-7 rounded-md lg:bg-white bg-[#F2F2F2] border-[.2px] outline-none border-[#666666] px-2 py-[6px] placeholder:text-xs text-sm " placeholder="Confirm password" type="text" name="" id="">
+                    <form method="post" id="resetpswdForm" action="/user/resetpassword" class="w-full mt-7">
+                        <div class="w-full mt-5 rounded-md lg:bg-white bg-inherit border-[.2px]  border-[#666666] flex justify-between items-center pl-1 pr-2 ">
+                            <input class=" outline-none bg-inherit px-2 py-[6px] placeholder:text-xs text-sm w-full" placeholder="New Password" type="password" name="" id="CApassword">
+                            <span id="VisibilityPassword" class="material-symbols-outlined cursor-pointer text-lg select-none"onclick="togglePasswordVisibility()">
+                                visibility_off
+                                </span>
+                        </div>
+                        <div id="passwordregxError" class="absolute invisible opacity-0   transition-all duration-300 mt-2 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                            </svg>
+                            <span class="sr-only">Danger</span>
+                            <div>
+                              <span class="font-medium">Ensure that these requirements are met:</span>
+                                <ul class="mt-1.5 list-disc list-inside">
+                                  <li>At least 8 characters </li>
+                                  <li>At least one lowercase character</li>
+                                  <li>Inclusion of at least one special character, e.g., ! @ # ?</li>
+                              </ul>
+                            </div>
+                          </div>
+                        <div class="w-full mt-5 bg-inherit rounded-md lg:bg-white bg-[#F2F2F2] border-[.2px] border-[#666666] flex justify-between items-center pl-1 pr-2">
+                            <input class="w-full outline-none bg-inherit  px-2 py-[6px] placeholder:text-xs text-sm " placeholder="Confirm password" type="password" name="password" id="CAconfirmPassword">
+                            <span id="VisibilityConfirmPassword" class="material-symbols-outlined cursor-pointer text-lg select-none"onclick="togglePasswordVisibilityConfirm()">
+                                visibility_off
+                                </span>
+                        </div>
                         <button type="submit" class="hidden" id="loginPhoneSubmit"></button>
                     </form>
                     <!-- <a class="text-xs text-[#66666] mt-4 ml-2 cursor-pointer font-medium">We've sent an otp to ******2602
                     </a> -->
                 </div>
-                <div class="hidden lg:block">
-                    <button class="bg-[#DAA520] text-white w-full py-2 font-medium  mt-10 rounded-md" >
+                <div class="hidden lg:block mt-2">
+                    <p class="text-xs text-red-700  flex justify-center items-center hidden    createAccountError">invalid phone number</p>
+                    <label for="loginPhoneSubmit" class="bg-[#DAA520] flex justify-center items-center text-white w-full py-2 font-medium  mt-10 rounded-md" >
                         Continue
-                    </button>
+                    </label>
                 </div>
                
             </div>
@@ -40,11 +65,14 @@
     </main>
     <div class="lg:hidden flex-grow">
     </div>
+    <div class="lg:hidden">
+        <p class="text-xs text-red-700  flex justify-center items-center   my-2 lg:hidden hidden createAccountError">invalid phone number</p>
+    </div>
     <div class="px-2 py-2 border-t-[.1px] border-t-[#666666] lg:hidden">
         <label for="loginPhoneSubmit" class="w-full  " >
-            <button class="w-full py-1 text-white rounded-md font-semibold bg-[#C0C0C0]">
+            <label for="loginPhoneSubmit" class="w-full py-1 flex text-white rounded-md justify-center items-center font-semibold bg-[#C0C0C0]">
                 Continue
-            </button>
+            </label>
         </label>
     </div>
     
@@ -53,5 +81,5 @@
     </div>
    
 </body>
-<script src="/javascripts/user/myAccount.js"></script>
+<script src="/javascripts/user/resetpassword.js"></script>
 </html>

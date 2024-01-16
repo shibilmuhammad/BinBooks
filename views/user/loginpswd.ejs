@@ -1,4 +1,14 @@
-<%-include("../partials/user/head.ejs")%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate, max-age=0">
+       
+    </head>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" href="/css/user/header.css">
 <style>
@@ -27,7 +37,7 @@ input:-webkit-autofill {
                     </div>
                     <form action="/user/loginpswd" method="post" class="w-full mt-7" id="loginpswdForm">
                         <div class="w-full rounded-md flex justify-between items-center lg:bg-white bg-[#F2F2F2] border-[.2px] border-[#666666] px-2 py-[6px] ">
-                            <input class="outline-none w-full h-full bg-white placeholder:text-xs text-sm bg-inherit bg-none  select-none" placeholder="Password here" type="text" name="password" id="password">
+                            <input class="outline-none w-full  bg-white placeholder:text-xs text-sm bg-inherit bg-none  select-none" placeholder="Password here" type="text" name="password" id="password">
                             <span id="visibilityIcon" class="material-symbols-outlined cursor-pointer text-lg select-none"onclick="togglePasswordVisibility()">
                                 visibility_off
                                 </span>
@@ -38,7 +48,7 @@ input:-webkit-autofill {
                         <% } %>
                         <button type="submit" class="hidden" id="loginPhoneSubmit"></button>
                     </form>
-                    <a class="text-[10px] text-blue-500 mt-4 ml-2 cursor-pointer font-medium">Forgotten password?
+                    <a href="/user/forgetPassword" class="text-[10px] text-blue-500 mt-4 ml-2 cursor-pointer font-medium">Forgotten password?
                     </a>
                 </div>
                 <div class="hidden lg:block">

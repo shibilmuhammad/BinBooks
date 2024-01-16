@@ -20,15 +20,19 @@
                         <p class="font-semibold text-lg">Did you get an OTP ??</p>
                         <p class="text-[#666666] text-xs pl-1 -mt-1 font-medium"> Enter the OTP below</p>
                     </div>
-                    <form action="" class="w-full mt-7">
-                        <input class="w-full rounded-md lg:bg-white bg-[#F2F2F2] border-[.2px] outline-none border-[#666666] px-2 py-[6px] placeholder:text-xs text-sm " placeholder="Enter the otp here" type="text" name="" id="">
+                    <form  action="/user/otp/confirmation" method="post" class="w-full mt-7">
+                        <input class="w-full rounded-md lg:bg-white bg-[#F2F2F2] border-[.2px] outline-none border-[#666666] px-2 py-[6px] placeholder:text-xs text-sm " placeholder="Enter the otp here" type="text" name="otp" id="">
                         <button type="submit" class="hidden" id="loginPhoneSubmit"></button>
                     </form>
-                    <a class="text-xs text-[#66666] mt-4 ml-2 cursor-pointer font-medium">We've sent an otp to ******2602
-                    </a>
+                    <% if (locals.email) { %>
+                        <p class="text-xs text-[#66666] mt-4 ml-2 cursor-pointer font-medium">We've sent an OTP to <%= email %>.</p>
+                    <% } %>
+                     <% if (typeof error !== 'undefined') { %> 
+                            <p id="incorrectError" class="text-xs text-red-800 mx-2 mt-2"><%= error %></p>
+                        <% } %>
                 </div>
                 <div class="hidden lg:block">
-                    <button class="bg-[#DAA520] text-white w-full py-2 font-medium  mt-10 rounded-md" >
+                    <label for="loginPhoneSubmit" class="bg-[#DAA520] flex justify-center items-center hover:bg-[#c4951d] text-white w-full py-2 font-medium  mt-10 rounded-md" >
                         Continue
                     </button>
                 </div>
@@ -40,9 +44,9 @@
     </div>
     <div class="px-2 py-2 border-t-[.1px] border-t-[#666666] lg:hidden">
         <label for="loginPhoneSubmit" class="w-full  " >
-            <button class="w-full py-1 text-white rounded-md font-semibold bg-[#C0C0C0]">
+            <label for="loginPhoneSubmit" class="w-full py-1 text-white rounded-md font-semibold bg-[#C0C0C0] justify-center items-center">
                 Continue
-            </button>
+            </label>
         </label>
     </div>
     

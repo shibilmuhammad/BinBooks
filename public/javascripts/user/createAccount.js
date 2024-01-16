@@ -12,7 +12,6 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[!@#?])(?=.*[A-Za-z]).{8,100}$/;
 
 document.getElementById('createAccountForm').addEventListener('submit',function(event){
     event.preventDefault();
-    console.log(userName.value.trim())
     if(userName.value.trim()===''){
         createAccountError.forEach(function(element){
             element.innerText = 'Name cannot be empty!!';

@@ -1,0 +1,60 @@
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById('CApassword');
+    var visibilityIcon = document.getElementById('VisibilityPassword');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        visibilityIcon.innerText = 'visibility';
+    } else {
+        passwordInput.type = 'password';
+        visibilityIcon.innerText = 'visibility_off';
+    }
+}
+function togglePasswordVisibilityConfirm(){
+    var passwordInput = document.getElementById('CAconfirmPassword');
+    var visibilityIcon = document.getElementById('VisibilityConfirmPassword');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        visibilityIcon.innerText = 'visibility';
+    } else {
+        passwordInput.type = 'password';
+        visibilityIcon.innerText = 'visibility_off';
+    }
+}
+
+let password = document.getElementById('CApassword');
+let confirmPassword = document.getElementById('CAconfirmPassword');
+let createAccountError = document.querySelectorAll('.createAccountError');
+const passwordRegex = /^(?=.*[a-z])(?=.*[!@#?])(?=.*[A-Za-z]).{8,100}$/;
+
+document.getElementById('resetpswdForm').addEventListener('submit',function(event){
+    event.preventDefault();
+     if (password.value.trim() === '') {
+        createAccountError.forEach(function(element){
+            element.innerText = 'Password cannot be empty!! '
+            element.style.display = 'flex'
+        })
+    }   else if (!passwordRegex.test(password.value.trim())) {
+        createAccountError.forEach(function(element){
+            element.innerText = 'Password must be more than 8 letters!! '
+            element.style.display = 'none'
+        })
+        document.getElementById('passwordregxError').style.visibility='visible'
+        document.getElementById('passwordregxError').style.opacity = 1;
+        setTimeout(() => {
+            document.getElementById('passwordregxError').style.visibility = 'hidden';
+            document.getElementById('passwordregxError').style.opacity = 0;
+        }, 5000);
+    } else if (password.value !== confirmPassword.value) {
+        createAccountError.forEach(function(element){
+            element.innerText = 'Pasword do not match '
+            element.style.display = 'flex'
+        })
+    }else{
+        createAccountError.forEach(function(element){
+            element.style.display = 'none'
+        })
+        document.getElementById('resetpswdForm').submit()
+    }
+})

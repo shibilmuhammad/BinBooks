@@ -20,7 +20,7 @@
                 <img class="h-4 md:h-6" src="/images/user white filled .png"  alt="">
                 <% if(locals.user) {%>
                     <% const firstName = user.split(' ')[0]; %>
-                    <p class="text-sm font-medium md:text-base capitalize"><%= firstName %></p>
+                    <a href="/user/myAccount" class="text-sm font-medium md:text-base capitalize"><%= firstName %></a>
                 <%  }else{%>
                     <a href="/user/login" class="text-sm font-medium md:text-base">Sign in</a>
                 <% } %>

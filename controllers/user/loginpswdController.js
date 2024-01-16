@@ -20,6 +20,8 @@ module.exports = {
                 req.session.user = phoneNumber
                 const returnTo = req.session.returnTo || '/user/home';
                 delete req.session.returnTo;
+                res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+
                 res.redirect(returnTo);
             } else {
                 res.render('user/loginpswd', { error: 'Incorrect password' });

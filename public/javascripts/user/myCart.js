@@ -23,7 +23,8 @@ const updateQuantity = async (productId, newQuantity) => {
     }
 };
 document.querySelectorAll('.quantity-minus').forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault()
         const productId = button.closest('.product').dataset.productId;
         const currentQuantity = parseInt(button.nextElementSibling.innerText);
         if (currentQuantity > 1) {
@@ -33,7 +34,8 @@ document.querySelectorAll('.quantity-minus').forEach(button => {
 });
 document.querySelectorAll('.quantity-plus').forEach(button => {
    
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault()
         const productId = button.closest('.product').dataset.productId;
         const currentQuantity = parseInt(button.previousElementSibling.innerText);
         updateQuantity(productId, currentQuantity + 1);
@@ -67,3 +69,8 @@ const updateTotalAmount = (myCart) => {
 document.addEventListener('DOMContentLoaded', function () {
    updateQuantity()
 });
+function removeproduct(element){
+    let productId = element.id
+
+    window.location.href = `/user/myCart/removeProduct/${productId}`
+}

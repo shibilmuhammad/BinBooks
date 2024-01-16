@@ -19,7 +19,7 @@ module.exports = {
             res.locals.user = userDetails.name;
             username = res.locals.user;
 
-            res.render('user/wishList', { wishList, user: res.locals.user });
+            res.render('user/wishList', { wishList, user: res.locals.user,categoryName:'Wish List' });
         }
     },
 

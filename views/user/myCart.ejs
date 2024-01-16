@@ -19,7 +19,7 @@
                     <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-md cursor-pointer lg:first:rounded-t-none"><!--get it by -->
                         <a href="/user/product/<%= encodeURIComponent(product._id)%>" class="block w-full">
                             <div class="flex space-x-3 w-full">
-                                <div class="w-4/12 flex flex-col items-center  border-r pr-3 ">
+                                <div class="lg:w-4/12 w-3/12 flex flex-col items-center  border-r pr-3 ">
                                     <div class="w-full ">
                                         <img class="w-full h-28 object-contain" src="<%=product.imageUrl %>" alt="">
                                     </div>
@@ -41,9 +41,10 @@
                                          </div>
                                     
                                     <div class="w-full  lg:w-fit space-x-3 flex lg:flex-col lg:justify-center lg:space-y-3 lg:items-center text-white product"   data-product-id="<%=product._id %>">
-                                        <a href="/user/myCart/removeProduct/<%-product._id %>" class="w-1/2  lg:ml-3 lg:w-fit lg:px-8 text-black border-[#DAA520] border-[.1px] py-1 rounded-md font-medium">
+                                        <button onclick="removeproduct(this)" id="<%-product._id %>"  class="w-1/2 text-sm lg:text-base px-4  flex justify-center items-center  lg:ml-3 lg:w-fit lg:px-8 text-black border-[#DAA520] py-[7px] border-[.1px] rounded-md font-medium">
                                             Remove
-                                        </a>
+                                        </button>
+                                           
                                         <div class="w-1/2 lg:w-fit lg:px-6 select-none  bg-[#DAA520] py-2 rounded-md flex-col font-semibold flex items-center  text-white   px-3  text-xs space-x-1">
                                             <div class="flex space-x-1 md:space-x-3 lg:space-x-1">
                                                 <p class="font-semibold">Qty</p>
@@ -113,7 +114,7 @@
                                 <p id="totalPriceIncludingDelivery">₹<%=totalPriceIncludingDelivery %></p>
                             </div>
                             <div>
-                                <label for="submit"  class="bg-[#DAA520] hidden lg:flexr  text-white font-semibold py-[6px] rounded-lg px-5 text-center cursor-pointer  flex flex-col ">Place Order </button>
+                                <a href="/user/mycart/placeOrder"  class="bg-[#DAA520] hidden lg:flexr  text-white font-semibold py-[6px] rounded-lg px-5 text-center cursor-pointer  flex flex-col ">Place Order </a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +131,7 @@
             <p class="text-sm text-[#666666] line-through" id="finalMRP">₹<%=totalMRP %></p>
             <p class="font-bold text-xl" id="finalsaleprice">₹<%=totalPriceIncludingDelivery %></p>
         </div>
-        <label for="submit"  class="bg-[#DAA520] mb-2 text-white font-semibold py-[6px] rounded-lg px-5 text-center cursor-pointer  flex flex-col ">Place Order </button>
+        <a href="/user/mycart/placeOrder"  class="bg-[#DAA520] mb-2 text-white font-semibold py-[6px] rounded-lg px-5 text-center cursor-pointer  flex flex-col ">Place Order </a>
     </div>
     <script src="/javascripts/user/myCart.js"></script>
     

@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const customerModel = require('../../models/customers')
 module.exports = {
     post: async function(req,res){
-        console.log('hi');
+
         const phoneNumber = req.session.phoneNumber;
         try {
         const saltRounds = 10;

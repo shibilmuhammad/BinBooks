@@ -11,7 +11,7 @@
             <div class="flex justify-between">
                 <div class="flex items-center space-x-2">
                     <img class="h-5 lg:h-8" src="/images/user blue filled.png" alt="">
-                     <p class="font-medium lg:text-2xl ">Shibil Muhammad</p>
+                     <p class="font-medium lg:text-2xl "><%=customer.name %></p>
                 </div>
                 <div class="flex items-center justify-end hidden" id="labelEditButton" >
                     <label for="editSubmit" class="bg-[#DAA520] px-3 text-sm py-[2px] lg:px-5 rounded-md text-white font-medium ">Edit</label>
@@ -20,16 +20,16 @@
             </div>
             <div class="flex items-center lg:space-x-9 space-x-6 mt-3 text-sm lg:text-base text-[#666666]">
                 <div class="">
-                    <p  class="mt-2 lg:mt-5">phone:</p>
+                    <p  class="mt-2 lg:mt-5">Phone:</p>
                     <p class="mt-2 lg:mt-5">Email:</p>
                     <p class="mt-2 lg:mt-5">Gender:</p>
                 </div>
-                <form class=" w-full">
-                    <p id="number" class="lg:mt-5 mt-2">8086812602</p>
-                    <input  class="bg-[#E7EEF0] lg:mt-5 rounded-md h-[20px]  mt-2 hidden px-2 w-11/12 outline-none lg:py-3" type="text" name="" id="numberChange" >
-                    <p id="email" class=" mt-2 lg:mt-5">shibilmuhammad678@gmail.com</p>
-                    <input class="bg-[#E7EEF0] lg:mt-5 rounded-md h-[20px] mt-2 hidden px-2 w-11/12 outline-none lg:py-3" type="text" name="" id="emailChange">
-                    <p class="mt-2 lg:mt-5">Male</p>
+                <form method="post" action="/user/myAccount/edit" class=" w-full">
+                    <p id="number" class="lg:mt-5 mt-2"><%= customer.phone %></p>
+                    <input  class="bg-[#E7EEF0] lg:mt-5 rounded-md h-[20px]  mt-2 hidden px-2 w-11/12 outline-none lg:py-3" type="text" name="number" id="numberChange" >
+                    <p id="email" class=" mt-2 lg:mt-5"><%=customer.email %></p>
+                    <input class="bg-[#E7EEF0] lg:mt-5 rounded-md h-[20px] mt-2 hidden px-2 w-11/12 outline-none lg:py-3" type="text" name="email" id="emailChange">
+                    <p class="mt-2 lg:mt-5 capitalize"><%= customer.gender %></p>
                     <button type="submit" class="hidden " id="editSubmit"></button>
                 </form>
             </div>
@@ -43,46 +43,46 @@
                     </span>
                 </div>
             </div>
-            <div class="flex items-center justify-between px-3 bg-white rounded-md py-1 ">
+            <a href="/user/myCart" class="flex items-center justify-between px-3 bg-white rounded-md py-1 ">
                 <p class="text-sm font-semibold text-[#333333]">My Cart</p>
                 <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
                     <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
                         chevron_right
                     </span>
                 </div>
-            </div>
-            <div class="flex items-center justify-between px-3 bg-white rounded-md py-1">
+            </a>
+            <a href="/user/wishList" class="flex items-center justify-between px-3 bg-white rounded-md py-1">
                 <p class="text-sm font-semibold text-[#333333]">Wish List</p>
                 <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
                     <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
                         chevron_right
                     </span>
                 </div>
-            </div>
-            <div class="flex items-center justify-between px-3 bg-white rounded-md py-1">
+            </a>
+            <a href="/user/aboutUs" class="flex items-center justify-between px-3 bg-white rounded-md py-1">
                 <p class="text-sm font-semibold text-[#333333]">About Us</p>
                 <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
                     <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
                         chevron_right
                     </span>
                 </div>
-            </div>
-            <div class="flex items-center justify-between px-3 bg-white rounded-md py-1">
+            </a>
+            <a class="flex items-center justify-between px-3 bg-white rounded-md py-1">
                 <p class="text-sm font-semibold text-[#333333]">Contact Us</p>
                 <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
                     <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
                         chevron_right
                     </span>
                 </div>
-            </div>
-            <div class="flex items-center justify-between px-3 bg-white rounded-md py-1">
+            </a>
+            <a href="/  user/logOut" class="flex items-center justify-between px-3 bg-white rounded-md py-1">
                 <p class="text-sm font-semibold text-[#333333]">Log Out</p>
                 <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
                     <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
                         chevron_right
                     </span>
                 </div>
-            </div>
+            </a>
        </div>
     </main>
     <div class=" flex-grow">

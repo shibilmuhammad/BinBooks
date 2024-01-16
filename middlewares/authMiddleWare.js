@@ -17,8 +17,13 @@ function isAuthenticated(req, res, next) {
     }
     next();
 }
-
+function isPhonenumber(req,res,next) {
+    if(!req.session.phoneNumber){
+        return res.redirect('/user/login')
+    }
+    next()
+}
 
 module.exports = {
-    requireLogin,isAuthenticated, requireLoginMyCart
+    requireLogin,isAuthenticated, requireLoginMyCart,isPhonenumber
 };

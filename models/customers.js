@@ -6,9 +6,21 @@ const cartItemSchema = new mongoose.Schema({
 const wishListSchema = new mongoose.Schema({
     product:{type:mongoose.Schema.Types.ObjectId,ref:'product'}
 })
+
+const addressSchema = new mongoose.Schema({
+    name:String,
+    phone:Number,
+    house:String,
+    area:String,
+    landMark:String,
+    pinCode:Number,
+    town:String,
+    state:String,
+})
 const ordersSchema = new mongoose.Schema({
     product:{type:mongoose.Schema.Types.ObjectId,ref:'product'},
-    date:Date
+    date:Date,
+    address:addressSchema
 })
 const customerSchema = mongoose.Schema({
    name:String,
@@ -18,8 +30,10 @@ const customerSchema = mongoose.Schema({
    password:String,
     myCart : [cartItemSchema],
     wishList:[wishListSchema],
+    address:[addressSchema],
     orders:[ordersSchema],
     status:String,
+    forgotPasswordOTP: Number, 
 })
 
 module.exports = mongoose.model("customers",customerSchema);

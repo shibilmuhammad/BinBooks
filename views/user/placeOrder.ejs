@@ -11,7 +11,7 @@
         <div class="bg-white py-5 lg:px-52"><!--Top address progress-->
             <div class="flex justify-between px-5">
                 <div class="flex  w-full " id="address">
-                    <a href="/user/buynow" class="flex flex-col items-center space-y-1">
+                    <a href="/user/address" class="flex flex-col items-center space-y-1">
                         <div class=" rounded-full h-5 w-5 border border-[#476B73] flex justify-center items-center "> 
                             <div id="addressSelected" class="h-[14px] w-[14px] bg-[#476B73] rounded-full hidden "></div> <!--insdie Circle-->
                         </div>
@@ -84,11 +84,11 @@
                     <div href="" class="flex items-center justify-between">
                         <div>
                             <p class="text-base font-semibold pb-3">Deliver to</p>
-                            <p class="text-[#333333] font-semibold text-sm">Shibil Muhammad</p>
-                             <p class="text-[#333333] text-sm">Maadin Edupark </p>
-                            <p class="text-[#333333] text-sm">Alathur padi </p>
-                            <p class="text-[#333333] text-sm">Manjeri, 676121 </p>
-                            <p class="text-[#333333] text-sm">Phone no: 8086812602</p>
+                            <p class="text-[#333333] font-semibold text-sm"><%=address.name %></p>
+                             <p class="text-[#333333] text-sm"><%=address.house %> </p>
+                            <p class="text-[#333333] text-sm"><%=address.area %> </p>
+                            <p class="text-[#333333] text-sm"><%=address.town %>, <%=address.pinCode %> </p>
+                            <p class="text-[#333333] text-sm">Phone no: <%=address.phone %></p>
                         </div>
                         <a class=" rounded-[50%] cursor-pointer bg-gray-100 m-[5px] inline-block">
                             <span class="material-symbols-outlined  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
@@ -97,45 +97,50 @@
                         </a>
                     </div>
                 </div>
-                <div class="bg-white rounded-md px-5 py-3 space-y-3"><!--get it by -->
-                    <div class="space-y-1"> 
+                <div class=" "><!--get it by -->
+                    <div class="space-y-1 bg-white rounded-t-md  px-5 py-3"> 
                         <p class="text-base font-semibold">Get it by</p>
-                        <p class="text-xs text-green-700">Sunday 3 january</p>
+                        <p class="text-xs text-green-700"><%= getDeliveryDate(3) %></p>
                     </div>
-                    <div class="flex space-x-3">
-                        <div class="w-4/12   border-r pr-3 ">
-                            <div class="w-full ">
-                                <img class="w-full h-28 object-contain" src="/images/alchemist.jpeg" alt="">
-                            </div>
-                           
-                            <p class="whitespace-nowrap text-xs text-center mt-2 text-[#4B727A] font-semibold w-24  truncate lg:w-full">My Grandmother Asked Me to Tell You She’s Sorry </p>
-                        </div>
-                        <div class=" space-y-1">
-                            <p class="text-[#4B727A] mb-[-5px] font-semibold text-base">My Grandmother Asked Me to Tell You She’s Sorry </p>
-                            <p class="text-[#5E8E99] font-light text-sm">Paulo Coelho</p>
-                            <div class="flex items-center space-x-1">
-                                <div class="bg-[#008000] w-fit px-1 py-1 text-xs text-white rounded-md">
-                                    <p>15% off</p>
+                        <% products.forEach(function(data){%>
+                            <div class="flex space-x-3 mb-3 bg-white rounded-md  px-5 py-3 first:mt-0 first:rounded-t-none">
+                                <div class="w-4/12   border-r pr-3 ">
+                                    <div class="w-full ">
+                                        <img class="w-full h-28 object-contain" src="<%=data.product.imageUrl %>" alt="">
+                                    </div>
+                                   
+                                    <p class="whitespace-nowrap text-xs text-center mt-2 text-[#4B727A] font-semibold w-24  truncate lg:w-full"><%=data.product.bookName %></p>
                                 </div>
-                                <p class="text-xs text-[#666666] line-through">MRP 250</p>
-                            </div>
-                            <P class="font-semibold text-lg">₹150</P>
-                            <div class="flex items-center bg-[#DAA520] text-white rounded-md w-fit px-3 py-2 text-xs space-x-1">
-                                <p>Qty</p>
-                                <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
-                                    <span class="material-symbols-outlined text-[12px]">
-                                        remove
-                                    </span>
+                                <div class=" space-y-1">
+                                    <p class="text-[#4B727A] mb-[-5px] font-semibold text-base"><%=data.product.bookName %></p>
+                                    <p class="text-[#5E8E99] font-light text-sm"><%=data.product.author %></p>
+                                    <div class="flex items-center space-x-1">
+                                        <div class="bg-[#008000] w-fit px-1 py-1 text-xs text-white rounded-md">
+                                            <p><%=data.product.discount %>% off</p>
+                                        </div>
+                                        <p class="text-xs text-[#666666] line-through">MRP <%=data.product.MRP %></p>
+                                    </div>
+                                    <P class="font-semibold text-lg">₹<%=data.product.salePrice %></P>
+                                    <div class="flex items-center bg-[#DAA520] text-white rounded-md w-fit px-3 py-2 text-xs space-x-1">
+                                        <p>Qty</p>
+                                        <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-[12px]">
+                                                remove
+                                            </span>
+                                        </div>
+                                        <span><%=data.count %></span>
+                                        <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-[12px]">
+                                                add
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span>1</span>
-                                <div class="bg-white rounded-full h-fit w-fit px-[2px] py-[2px] text-black flex items-center justify-center">
-                                    <span class="material-symbols-outlined text-[12px]">
-                                        add
-                                    </span>
-                                </div>
                             </div>
-                        </div>
-                    </div>
+                       <% }) %>
+
+                   
+                   
                     
                 </div>
                 <button id="submit" type="submit" class="hidden"></button>
