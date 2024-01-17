@@ -18,9 +18,15 @@ const addressSchema = new mongoose.Schema({
     state:String,
 })
 const ordersSchema = new mongoose.Schema({
-    product:{type:mongoose.Schema.Types.ObjectId,ref:'product'},
-    date:Date,
-    address:addressSchema
+    products: [
+        {
+            product: { type: mongoose.Schema.Types.ObjectId, ref: 'product' },
+            count: Number,
+        }
+    ],
+    date: Date,
+    paymentMethod:String,
+    address: addressSchema,
 })
 const customerSchema = mongoose.Schema({
    name:String,

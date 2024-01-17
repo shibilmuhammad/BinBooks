@@ -1,5 +1,6 @@
 const customerModel = require('../../models/customers')
 const productsModel = require('../../models/products');
+
 let productsWithCount = [];
 module.exports = {
     get:async function (req,res){
@@ -70,8 +71,34 @@ module.exports = {
       }
     },
     getProceedTopay: async function(req,res){
+        let user = await customerModel.findOne({phone:req.session.user})
       if(req.session.paymentSubmitted==='Cash on delivery'){
-        console.log('Cash on delivery');
+        const orderProducts = productsWithCount.map(item => ({
+            product: item.product._id, 
+            count: item.count
+        }));
+        let addressIdToFind = req.session.addressId
+        let foundAddress = user.address.find(address => address._id.toString() === addressIdToFind);
+        const newOrder = {
+            products: orderProducts,
+            address: foundAddress,
+            date: new Date(),
+            paymentMethod:req.session.paymentSubmitted
+        };
+        user.orders.push(newOrder);
+        delete req.session.addressId;
+        delete req.session.addressSubmitted;
+        delete req.session.paymentSubmitted
+        if(req.session.productsIds.length>1){
+            user.myCart=[]
+        }
+        delete req.session.productsIds
+        await user.save();
+        console.log('session is',req.session);
+        res.locals.user = user.name;
+        let  username = res.locals.user
+        req.session.orderSuccessful = true;
+        res.redirect('/user/orderSuccessful');
       }else if(req.session.paymentSubmitted===' Credit or debit Card'){
         console.log('credit');
       }else{
@@ -87,7 +114,6 @@ function getDeliveryDate(days) {
 
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     const formattedDate = deliveryDate.toLocaleDateString('en-US', options);
-    
     return formattedDate;
 }
 async function updateProductCount(index, newQuantity) {

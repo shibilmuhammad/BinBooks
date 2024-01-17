@@ -20,7 +20,6 @@ module.exports = {
         req.session.addressSubmitted = true;
         res.redirect('/user/payment')
     },getEdit :async function(req,res){
-        console.log(req.params.addressId);
         let user = await customerModel.findOne({phone:req.session.user})
         let addresses = user.address.filter(addr => addr._id == req.params.addressId);
         let address = addresses.length > 0 ? addresses[0] : null;
