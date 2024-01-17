@@ -27,6 +27,7 @@ const ordersSchema = new mongoose.Schema({
     date: Date,
     paymentMethod:String,
     address: addressSchema,
+    status:String
 })
 const customerSchema = mongoose.Schema({
    name:String,

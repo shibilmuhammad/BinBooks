@@ -71,102 +71,37 @@
                     <th class="font-medium ps-3 rounded-tl-md py-2">Order ID </th>
                     <TH class="font-medium  ">Address</TH>
                     <th class="font-medium">Phone</th>
-                    <th class="font-medium text-center">Date</th>
+                    <th class="font-medium text-center">Date & Time</th>
                     <th class="font-medium text-center">Price</th>
                     <th class="font-medium text-center">Status</th>
                     <th class="rounded-tr-md font-medium text-center">Action</th>
                 </tr>
+                <%orders.forEach(function(data){%>
+                    <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
+                        <td class="ps-3 py-2 max-w-[14rem]  pr-6"><%=data.orderId %> </td>
+                        <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium"><%=data.address.name %>
+                            <%=data.address.house %>,<%=data.address.area %>
+                            <%=data.address.town %>  ,<%=data.address.pinCode %>
+                        </td>
+                        <td><%=data.phone %></td>
+                        <td class="text-center "><%=data.date %></td>
+                        <td class="text-center">₹<%=data.totalOrderPrice %></td>
+                        <td class= "">
+                            <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-5 ">
+                                <div>
+                                    <%=data.status%>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
+                                <img class="h-4" src="/images/edit blue.png" alt="">
+                            </div>
+                        </td>
+                    </tr>
+                    
+               <%  })  %>
                 
-                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
-                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
-                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
-                        Ma’adin,Edupark alathurpadi 
-                        Manjeri  ,676121
-                    </td>
-                    <td>8086812602</td>
-                    <td class="text-center ">dd/mm/yyyy</td>
-                    <td class="text-center">₹599</td>
-                    <td class= "">
-                        <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-5 ">
-                            <div>
-                                Cancelled
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
-                            <img class="h-4" src="/images/edit blue.png" alt="">
-                        </div>
-                    </td>
-                </tr>
-                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
-                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
-                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
-                        Ma’adin,Edupark alathurpadi 
-                        Manjeri ,676121
-                    </td>
-                    <td>8086812602</td>
-                    <td class="text-center ">dd/mm/yyyy</td>
-                    <td class="text-center">₹599</td>
-                    <td class= "">
-                        <div class="flex justify-center items-center bg-[#FEF1E2] text-[#FCB547] rounded-full text-center w-2/3 ml-5 ">
-                            <div>
-                                Shipped
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
-                            <img  class="h-4" src="/images/edit blue.png" alt="">
-                        </div>
-                    </td>
-                </tr>
-                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
-                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
-                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
-                        Ma’adin,Edupark alathurpadi 
-                        Manjeri ,676121
-                    </td>
-                    <td>8086812602</td>
-                    <td class="text-center ">dd/mm/yyyy</td>
-                    <td class="text-center">₹599</td>
-                    <td class= "">
-                        <div class="flex justify-center items-center bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 ml-5 ">
-                            <div>
-                                Active
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
-                            <img class="h-4" src="/images/edit blue.png" alt="">
-                        </div>
-                    </td>
-                </tr>
-                <tr class="bg-white  text-sm border-b-[.1px] border-b-[#666666] ">
-                    <td class="ps-3 py-2 max-w-[14rem]  pr-6">#3233223 </td>
-                    <td class="max-w-[14rem] whitespace-pre-line pr-6 font-medium">Shibil Muhammad
-                        Ma’adin,Edupark alathurpadi 
-                        Manjeri ,676121
-                    </td>
-                    <td>8086812602</td>
-                    <td class="text-center ">dd/mm/yyyy</td>
-                    <td class="text-center">₹599</td>
-                    <td class= "">
-                        <div class="flex justify-center items-center bg-[#DBFCDF] text-[#189E34] rounded-full text-center w-2/3 ml-5 ">
-                            <div>
-                                Delivered
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
-                            <img class="h-4" src="/images/edit blue.png" alt="">
-                        </div>
-                    </td>
-                </tr>
-               
-               
             </table>
            
 
