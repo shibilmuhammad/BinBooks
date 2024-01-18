@@ -9,88 +9,51 @@
     </div>
     <main class="pb-16">
         <div class="px-4 mt-5 lg:px-52 space-y-3 lg:space-y-4">
-            <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-md" >
-                <div class="flex space-x-3 items-center border-b ">
-                    <div class="lg:w-4/12  w-5/12 border-r pr-3 pb-2">
-                        <div class="w-full ">
-                            <img class="w-full h-[9rem] object-contain" src="/images/alchemist.jpeg" alt="">
+           <% populatedOrders.forEach(function (order) {
+            order.products.forEach(function (product) { %> 
+                    <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-md" >
+                        <div class="flex space-x-3 items-center border-b ">
+                            <div class="lg:w-4/12  w-5/12 border-r pr-3 pb-2">
+                                <div class="w-full ">
+                                    <img class="w-full h-[9rem] object-contain" src="<%=product.product.imageUrl %>" alt="">
+                                </div>
+                               
+                            </div>
+                            <div class=" space-y-2 lg:space-y-3 w-full">
+                                <p class="text-[#4B727A] mb-[-5px] font-semibold text-base lg:text-xl lg:max-w-[700px] max-w-[200px] truncate"><%=product.product.bookName %> </p>
+                                <p class="text-[#5E8E99] font-light text-sm lg:text-base max-w-[200px] lg:max-w-[700px] truncate"><%=product.product.author %></p>
+                                <div class="flex items-center space-x-1 ">
+                                    <P class="font-semibold text-lg lg:text-xl mt-[-6px]">₹<%=product.product.salePrice %></P>
+                                    <p class="text-sm text-[#666666] line-through mt-[-6px]">MRP <%=product.product.MRP %></p>
+                                </div>
+                                <% if (order.status === 'Shipped') { %>
+                                    <% const arrivalDate = new Date(order.date); %>
+                                    <% arrivalDate.setDate(arrivalDate.getDate() + 3); %>
+                                    <p class="text-green-700 text-sm font-semibold mt-3">
+                                        Arrival on <%= arrivalDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) %>
+                                    </p>
+                                <% } else { %>
+                                    <p class="text-green-700 text-sm font-semibold mt-3 <%= order.status === 'Cancelled' ? 'text-red-600' : order.status === 'Delivered' ? 'text-red-400' : '' %>">
+
+                                        <%= order.status %>
+                                    </p>
+                                <% } %>
+                            </div>
                         </div>
-                       
+                        <a href="/user/orderSummery/<%=order._id%>-<%=product.product._id%>" class="flex justify-between items-center w-full">
+                            <p class="font-semibold">See details</p>
+                            <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
+                                <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
+                                    chevron_right
+                                </span>
+                            </div>
+                        </a>
                     </div>
-                    <div class=" space-y-2 lg:space-y-3 w-full">
-                        <p class="text-[#4B727A] mb-[-5px] font-semibold text-base lg:text-xl lg:max-w-[700px] max-w-[200px] truncate">The alchemist </p>
-                        <p class="text-[#5E8E99] font-light text-sm lg:text-base max-w-[200px] lg:max-w-[700px] truncate">Paulo Coelho sir arhte conon doyal</p>
-                        <div class="flex items-center space-x-1 ">
-                            <P class="font-semibold text-lg lg:text-xl mt-[-6px]">₹150</P>
-                            <p class="text-sm text-[#666666] line-through mt-[-6px]">MRP 250</p>
-                        </div>
-                        <p class="text-green-700 text-sm font-semibold mt-3">Arrival on Sunday</p>
-                    </div>
-                </div>
-                <button class="flex justify-between items-center w-full">
-                    <p class="font-semibold">See details</p>
-                    <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
-                        <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
-                            chevron_right
-                        </span>
-                    </div>
-                </button>
-            </div>
+             <%  });%>  
+          <%  }) %>  
+           
             
-            <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-md" >
-                <div class="flex space-x-3 items-center border-b ">
-                    <div class="lg:w-4/12  w-5/12 border-r pr-3 pb-2">
-                        <div class="w-full ">
-                            <img class="w-full h-[9rem] object-contain" src="/images/alchemist.jpeg" alt="">
-                        </div>
-                       
-                    </div>
-                    <div class=" space-y-2 lg:space-y-3 w-full">
-                        <p class="text-[#4B727A] mb-[-5px] font-semibold text-base lg:text-xl lg:max-w-[700px] max-w-[200px] truncate">The alchemist </p>
-                        <p class="text-[#5E8E99] font-light text-sm lg:text-base max-w-[200px] lg:max-w-[700px] truncate">Paulo Coelho sir arhte conon doyal</p>
-                        <div class="flex items-center space-x-1 ">
-                            <P class="font-semibold text-lg lg:text-xl mt-[-6px]">₹150</P>
-                            <p class="text-sm text-[#666666] line-through mt-[-6px]">MRP 250</p>
-                        </div>
-                        <p class="text-green-700 text-sm font-semibold mt-3">Arrival on Sunday</p>
-                    </div>
-                </div>
-                <button class="flex justify-between items-center w-full">
-                    <p class="font-semibold">See details</p>
-                    <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
-                        <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
-                            chevron_right
-                        </span>
-                    </div>
-                </button>
-            </div>
-            <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-md" >
-                <div class="flex space-x-3 items-center border-b ">
-                    <div class="lg:w-4/12  w-5/12 border-r pr-3 pb-2">
-                        <div class="w-full ">
-                            <img class="w-full h-[9rem] object-contain" src="/images/alchemist.jpeg" alt="">
-                        </div>
-                       
-                    </div>
-                    <div class=" space-y-2 lg:space-y-3 w-full">
-                        <p class="text-[#4B727A] mb-[-5px] font-semibold text-base lg:text-xl lg:max-w-[700px] max-w-[200px] truncate">The alchemist </p>
-                        <p class="text-[#5E8E99] font-light text-sm lg:text-base max-w-[200px] lg:max-w-[700px] truncate">Paulo Coelho sir arhte conon doyal</p>
-                        <div class="flex items-center space-x-1 ">
-                            <P class="font-semibold text-lg lg:text-xl mt-[-6px]">₹150</P>
-                            <p class="text-sm text-[#666666] line-through mt-[-6px]">MRP 250</p>
-                        </div>
-                        <p class="text-green-700 text-sm font-semibold mt-3">Arrival on Sunday</p>
-                    </div>
-                </div>
-                <button class="flex justify-between items-center w-full">
-                    <p class="font-semibold">See details</p>
-                    <div class=" rounded-[50%] cursor-pointer bg-gray-100  inline-block">
-                        <span class="material-symbols-outlined font-semibold  text-center h-5 w-5 align-middle table-cell text-[#666666] ">
-                            chevron_right
-                        </span>
-                    </div>
-                </button>
-            </div>
+            
         </div>
     </main>
 </body>

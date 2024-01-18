@@ -84,7 +84,7 @@ module.exports = {
             address: foundAddress,
             date: new Date(),
             paymentMethod:req.session.paymentSubmitted,
-            status:'Ordered'
+            status:'ordered'
         };
         user.orders.push(newOrder);
         delete req.session.addressId;

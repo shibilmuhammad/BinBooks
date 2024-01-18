@@ -45,7 +45,11 @@ router.post('/customers/sort',customersController.postSort)
 router.post('/customers/filter',customersController.postFilter)
 
 router.get('/dashboard',dashboardController.get)
+
+//Orders
 router.get('/orders',ordersController.get);
+router.get('/orders/edit/:ids',ordersController.getEdit)
+router.post('/orders/update/:ids',ordersController.postEdit)
 
 
 

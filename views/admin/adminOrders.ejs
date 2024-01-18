@@ -87,14 +87,20 @@
                         <td class="text-center "><%=data.date %></td>
                         <td class="text-center">₹<%=data.totalOrderPrice %></td>
                         <td class= "">
-                            <div class="flex justify-center items-center bg-[#FBEBEC] text-[#B16D70] rounded-full text-center w-2/3 ml-5 ">
+                            <div class="flex justify-center items-center  rounded-full text-center w-2/3 ml-5 <%=  data.status === 'Cancelled' ? 'bg-[#FBEBEC] text-[#B16D70]' :
+                            data.status === 'Packed' ? 'bg-[#FDE68A] text-[#6B7280]' :
+                            data.status === 'Shipped' ? 'bg-[#93C5FD] text-[#1E3A8A]' :
+                            data.status === 'ordered' ? 'bg-[#FFD700] text-[#4F772D]'  :
+                            data.status === 'Delivered' ? 'bg-[#C6F6D5] text-[#065F46]' :
+                            ''  %>">
+                                <!-- Content goes here -->
                                 <div>
                                     <%=data.status%>
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <div class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder()">
+                            <div id="<%=data.userId%>-<%=data.orderId%>"  class="flex justify-center space-x-4 cursor-pointer" onclick="showEditOrder(this)">
                                 <img class="h-4" src="/images/edit blue.png" alt="">
                             </div>
                         </td>

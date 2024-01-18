@@ -62,8 +62,8 @@ const get = async function (req, res) {
         );
 
 
-        let orders = transformedOrders.flat()
-            console.log(orders);
+        let orders = transformedOrders.flat().reverse()
+
 
         res.render('admin/adminOrders',{orders});
     } catch (error) {
@@ -71,5 +71,63 @@ const get = async function (req, res) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+const getEdit = async function(req,res){
+    try {
+        let [userId, orderId] = req.params.ids.split('-');
 
-module.exports = { get };
+        let customer = await Customer.findOne({ _id: userId });
+        
+        let order = customer.orders.find(order => order._id.toString() === orderId);
+        const populatedProducts = await Promise.all(order.products.map(async (product) => {
+            const populatedProduct = await Product.findById(product.product).exec();
+            return {
+                ...product.toObject(),
+                product: populatedProduct
+            };
+        }));
+        order.products = populatedProducts;
+       
+        res.json({order,userId,orderId})
+
+
+
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+const postEdit = async function(req,res){
+    let [userId, orderId] = req.params.ids.split('-');
+    console.log('userId:', userId);
+    console.log('orderId:', orderId);
+    
+    try {
+        const user = await Customer.findOneAndUpdate(
+            { 
+                _id: userId, 
+                'orders._id': orderId 
+            },
+            {
+                $set: {
+                    'orders.$.status': req.body.status,
+                }
+            },
+            { new: true } 
+        );
+    
+        console.log('user after update:', user);
+    
+        if (!user) {
+            console.log('User not found');
+            return res.status(404).json({ error: 'User not found' });
+        }
+    
+        // Assuming this redirection is appropriate after the update
+        res.redirect('/admin/orders');
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+module.exports = { get ,getEdit,postEdit};

@@ -22,7 +22,7 @@
             Ordered <span class="hidden sm:inline-flex sm:ms-2"></span>
         </span>
     </li>
-    <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+    <li class="flex <%= order.status === 'Packed' || order.status === 'Shipped' || order.status === 'Delivered' ? 'text-blue-600' : '' %> md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
         <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
@@ -31,7 +31,7 @@
         </span>
     </li>
 
-    <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+    <li class="flex <%= order.status === 'Shipped' || order.status === 'Delivered' ? 'text-blue-600' : '' %> md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
         <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
@@ -40,7 +40,7 @@
         </span>
     </li>
     
-    <li class="flex items-center">
+    <li class="flex items-center <%=  order.status === 'Delivered' ? 'text-blue-600' : '' %>">
         <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
         </svg>
@@ -50,64 +50,91 @@
 
             </div>
         </div>
-        <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-sm mt-3" ><!--Product show--> <div class="flex space-x-3 items-center border-b "> <div class="lg:w-4/12  w-5/12 border-r pr-3 pb-2">
-                    <div class="w-full ">
-                        <img class="w-full h-[9rem] object-contain" src="/images/alchemist.jpeg" alt="">
+        <% order.products.forEach(function(data){%>
+            <div class="bg-white rounded-md px-5 py-3 space-y-3 drop-shadow-sm mt-3" ><!--Product show--> 
+                <div class="flex space-x-3 items-center border-b "> 
+                    <div class="lg:w-4/12  w-5/12 border-r pr-3 pb-2">
+                        <div class="w-full ">
+                            <img class="w-full h-[9rem] object-contain" src="<%=data.product.imageUrl %>" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class=" space-y-2 lg:space-y-3 w-full">
-                    <p class="text-[#4B727A] mb-[-5px] font-semibold text-base lg:text-xl lg:max-w-[700px] max-w-[200px] truncate">The alchemist </p>
-                    <p class="text-[#5E8E99] font-light text-sm lg:text-base max-w-[200px] lg:max-w-[700px] truncate">Paulo Coelho sir arhte conon doyal</p>
-                    <div class="flex items-center space-x-1 ">
-                        <P class="font-semibold text-lg lg:text-xl mt-[-6px]">₹150</P>
-                        <p class="text-sm text-[#666666] line-through mt-[-6px]">MRP 250</p>
+                    <div class=" space-y-2 lg:space-y-3 w-full">
+                        <p class="text-[#4B727A] mb-[-5px] font-semibold text-base lg:text-xl lg:max-w-[700px] max-w-[200px] truncate"><%=data.product.bookName %> </p>
+                        <p class="text-[#5E8E99] font-light text-sm lg:text-base max-w-[200px] lg:max-w-[700px] truncate"><%=data.product.author %></p>
+                        <div class="flex items-center space-x-1 ">
+                            <P class="font-semibold text-lg lg:text-xl mt-[-6px]">₹<%=data.product.salePrice %></P>
+                            <p class="text-sm text-[#666666] line-through mt-[-6px]">MRP <%=data.product.MRP %></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+       <%  })%> 
+        <%   let totalAmount = 0;
+        let totalMRP = 0;
+        let totalDiscount = 0;
+        let totalProductsCount = 0;
+        const deliveryCharge = 40;
+        order.products.forEach(function(product) {
+        const totalPriceForProduct = product.product.salePrice * product.count;
+        totalAmount += totalPriceForProduct;
+        totalMRP +=  product.product.MRP *  product.count;
+        totalDiscount += ( product.product.MRP -  product.product.salePrice) *  product.count;
+        totalProductsCount +=  product.count;
+        
+    });
+    const finalDiscountedPrice = totalMRP - totalDiscount;
+    const totalPriceIncludingDelivery = finalDiscountedPrice + deliveryCharge;
+    %>
+        
         <div class="bg-white rounded-md px-5 py-3 space-y-3 mt-3 drop-shadow-sm"><!--order detais-->
             <p class="text-base font-semibold">Order Details</p>
             <div class="flex space-x-20 ">
                 <div class="text-sm  space-y-3 text-[#666666]">
-                    <p>Price(2 items)</p>
-                    <p class="text-red-700">Delivery</p>
+                    <p>Price(<span><%=totalProductsCount %></span> items)</p>
+                    
                     <p class="text-green-700">Discount</p>
+                    <p class="text-red-700">Delivery</p>
                     
                 </div>
                 <div class="text-sm  space-y-3 text-[#666666]">
-                    <p>₹500</p>
+                    <p>₹<%=totalMRP %></p>
+                    
+                    <p class="text-green-700">₹<%= totalDiscount %></p>
                     <p class="text-red-700">₹40</p>
-                    <p class="text-green-700">₹250</p>
                     
                 </div>
             </div>
             <div class="flex space-x-20 border-t text-sm font-semibold  py-2">
                 <p>Total Amount</p>
-                <p>₹290</p>
+                <p>₹<%=totalPriceIncludingDelivery %></p>
             </div>
         </div>
         <div class="bg-white rounded-md px-5 py-3 space-y-3 mt-3 drop-shadow-sm"><!--Payment method-->
             <p class="text-base font-semibold">Payment Method</p>
             <a href="" class="flex items-center justify-between">
-                <p class="text-[#666666] text-sm">Cash on delivery</p>
+                <p class="text-[#666666] text-sm"><%=order.paymentMethod %></p>
             </a>
         </div>
         <div class="bg-white rounded-md px-5 py-3 space-y-3 mt-3 drop-shadow-sm"> <!--Deliver to-->
             <div href="" class="flex items-center justify-between">
                 <div>
                     <p class="text-base font-semibold pb-3">Deliver to</p>
-                    <p class="text-[#333333] font-semibold text-sm">Shibil Muhammad</p>
-                     <p class="text-[#333333] text-sm">Maadin Edupark </p>
-                    <p class="text-[#333333] text-sm">Alathur padi </p>
-                    <p class="text-[#333333] text-sm">Manjeri, 676121 </p>
-                    <p class="text-[#333333] text-sm">Phone no: 8086812602</p>
+                    <p class="text-[#333333] font-semibold text-sm"><%=order.address.name %></p>
+                     <p class="text-[#333333] text-sm"><%=order.address.house %> </p>
+                    <p class="text-[#333333] text-sm"><%=order.address.area %> </p>
+                    <p class="text-[#333333] text-sm"><%=order.address.town %>, <%=order.address.pinCode %> </p>
+                    <p class="text-[#333333] text-sm">Phone no: <%=order.address.phone %></p>
                 </div>
             </div>
         </div>
-        <button class="bg-gray-200 font-medium mt-3 mb-6 text-red-700 w-full py-2 rounded-full">
-            Cancel Order 
-        </button>
-
+        <% if (order.status !== 'Delivered' && order.status !== 'Cancelled') { %>
+            <a href="/user/yourOrderes/CancelOrder/<%= order._id%>" class="bg-gray-200  flex justify-center items-center font-medium mt-3 mb-6 text-red-700 w-full py-2 rounded-full">
+                Cancel Order 
+            </a>
+        <% } else { %>
+            <div class="my-7"></div>
+        <% } %>
+        
     </div>
     
 </body>

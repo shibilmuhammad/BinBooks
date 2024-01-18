@@ -54,7 +54,7 @@ router.get('/myAccount',authMiddleware.requireLogin,myAccountController.get);
 router.post('/myAccount/edit',myAccountController.post)
 
 router.get('/orderSuccessful',ordersuccessfulController.get);
-router.get('/orderSummery',orderSummeryController.get)
+router.get('/orderSummery/:orderId',authMiddleware.requireLogin,orderSummeryController.get)
 //Otp 
 router.get('/forgetPassword',authMiddleware.isAuthenticated,authMiddleware.isPhonenumber,otpController.get);
 router.post('/otp/confirmation',otpController.post)
@@ -88,4 +88,5 @@ router.get('/wishlist/remove/:productId',wishListController.getremove)
 
 
 router.get('/yourOrders',authMiddleware.requireLogin,yourOrderControllers.get);
+router.get('/yourOrderes/CancelOrder/:orderId',yourOrderControllers.getCancel)
 module.exports = router;
