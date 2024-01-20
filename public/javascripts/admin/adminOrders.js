@@ -137,3 +137,110 @@ document.getElementById('orderStatusUpdateForm').addEventListener('submit',funct
     form.submit()
 
 })
+//Search orders
+document.getElementById('searchProductForm').addEventListener('submit',function(event){
+    event.preventDefault()
+    searchProducts()
+  })
+  
+  async function searchProducts(){
+    const searchValue = document.getElementById('searchValue').value;
+    try {
+      const response = await fetch('/admin/orders/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'searchValue=' + searchValue,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.text();
+      document.getElementById('table-container').innerHTML = data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+
+  // Sort 
+ //change second sort tag respect to first sortchooses
+ function updateSortHowOptions() {
+    const sortWhatSelect = document.getElementById("sortSelect");
+    const selectedSortWhat = sortWhatSelect.value;
+    const sortHowSelect = document.getElementById("sortHow");
+    
+    sortHowSelect.innerHTML = "";
+    addOption(sortHowSelect, "Sort type", "sortType");
+    // sortHowSelect.appendChild(initialOption);
+    if (selectedSortWhat === "Date") {
+      addOption(sortHowSelect, "Newest first", "Newest first");
+      addOption(sortHowSelect, "Oldest First", "Oldest First");
+    } else if (selectedSortWhat === "Price") {
+      addOption(sortHowSelect, "Ascending", "Ascending");
+      addOption(sortHowSelect, "Descending", "Descending");
+    }
+  }
+  function addOption(selectElement, text, value) {
+    const option = document.createElement("option");
+    option.text = text;
+    option.value = value;
+    selectElement.add(option);
+  }
+  
+  updateSortHowOptions()
+  const sortWhatSelect = document.getElementById("sortSelect");
+  sortWhatSelect.addEventListener('change',updateSortHowOptions)
+  const sortHowSelect = document.getElementById("sortHow");
+  //fetch data and sort on change sortvalues 
+  sortHowSelect.addEventListener('change',function(){
+    sortProduct()
+  })
+  
+  async function sortProduct() {
+    const selectedOption = document.getElementById('sortHow').value;
+    try {
+      const response = await fetch('/admin/orders/sort', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'sort=' + selectedOption,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.text();
+      document.getElementById('table-container').innerHTML = data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+  // filter 
+
+document.getElementById('filterValues').addEventListener('change',function(){
+    filterProduct()
+})
+
+async function filterProduct(){
+    let selectedValue = document.getElementById('filterValues').value;
+    try {
+        const response = await fetch('/admin/orders/filter', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'filterValue=' + selectedValue,
+        });
+  
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.text();
+        document.getElementById('table-container').innerHTML = data;
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
+}

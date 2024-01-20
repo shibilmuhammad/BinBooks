@@ -50,6 +50,9 @@ router.get('/dashboard',dashboardController.get)
 router.get('/orders',ordersController.get);
 router.get('/orders/edit/:ids',ordersController.getEdit)
 router.post('/orders/update/:ids',ordersController.postEdit)
+router.post('/orders/search',ordersController.postSearch)
+router.post('/orders/sort',ordersController.postSort)
+router.post('/orders/filter',ordersController.postFilter)
 
 
 

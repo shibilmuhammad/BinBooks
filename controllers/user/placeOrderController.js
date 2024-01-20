@@ -105,6 +105,8 @@ module.exports = {
       }else{
         console.log('otherupi');
       }
+    },getInvoice : async function(req,res){
+        res.render('user/invoice')
     }
 }
 

@@ -1,0 +1,214 @@
+<%-include("../partials/user/head.ejs")%>
+<body id="invoiceBody">
+    <div>
+      <div class="py-4">
+        <div class="px-14 py-6 bg-[#5E8E99]">
+          <table class="w-full border-collapse border-spacing-0 ">
+            <tbody class="">
+              <tr class="">
+                <td class="w-full align-top">
+                  <div>
+                    <img src="/images//Logo.png" class="h-8" />
+                  </div>
+                </td>
+  
+                <td class="align-top">
+                  <div class="text-sm">
+                    <table class="border-collapse border-spacing-0">
+                      <tbody>
+                        <tr>
+                          <td class="border-r pr-4">
+                            <div>
+                              <p class="whitespace-nowrap text-white text-right">Date</p>
+                              <% order.forEach(function(order) { %>
+                                <p class="whitespace-nowrap font-bold text-white text-main text-right">
+                                    <%= order.date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
+                                </p>
+                            <% }); %>
+                            
+                            </div>
+                          </td>
+                          <td class="pl-4">
+                            <div>
+                              <p class="whitespace-nowrap text-white text-right">Invoice #</p>
+                              <p class="whitespace-nowrap font-bold text-main text-right text-white">BRA-00335</p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="bg-slate-100 px-14 py-6 text-sm">
+          <table class="w-full border-collapse border-spacing-0">
+            <tbody>
+              <tr class="flex justify-between  mx-3">
+                <td class="w-1/2 align-top">
+                  <div class="text-sm text-neutral-600">
+                    <p class="font-bold">BinBooks Private Limited</p>
+                    <p>Number: 8086812602</p>
+                    <p>Pin: 673541</p>
+                    <p>221 B backer street</p>
+                    <p>Vadakara,Calicut</p>
+                    <p>Kerala</p>
+                  </div>
+                </td>
+                <td class="w-1/2 align-top text-right">
+                  <div class="text-sm text-neutral-600">
+                 
+                    <% order.forEach(function(order) { %>
+                        <p class="font-bold capitalize"><%=order.address.name %></p>
+                        <p> <%=order.address.phone %></p>
+                        <p><%=order.address.house %>,<%=order.address.area %> </p>
+                        <p><%=order.address.town %>, <%=order.address.pinCode %></p>
+                        <p><%=order.address.state %></p>
+                            
+                        <%  }); %>
+                   
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="px-14 py-10 text-sm text-neutral-700">
+          <table class="w-full border-collapse border-spacing-0">
+            <thead>
+              <tr>
+                <td class="border-b-2 border-main pb-3 pl-3 font-bold text-main">#</td>
+                <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Product details</td>
+                <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Price</td>
+                <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Qty.</td>
+                <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Discount</td>
+                <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Discount Price</td>
+                <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Subtotal</td>
+              </tr>
+            </thead>
+            <tbody>
+                
+
+
+
+                <% order.forEach(order => { %>
+                    <% order.products.forEach(product => { %>
+                        <% let num = 1 %>
+                        <tr>
+                            <td class="border-b py-3 pl-3"><%= num %></td>
+                            <td class="border-b py-3 pl-2"><%= product.product.bookName %></td>
+                            <td class="border-b py-3 pl-2 text-right">₹<%= product.product.MRP %></td>
+                            <td class="border-b py-3 pl-2 text-center"><%= product.count %></td>
+                            <td class="border-b py-3 pl-2 text-center"><%= product.product.discount %>%</td>
+                            <td class="border-b py-3 pl-2 text-center">₹<%= product.product.salePrice%>.00</td>
+                            <td class="border-b py-3 pl-2 text-right">₹<%= product.product.salePrice*product.count%>.00</td>
+                        </tr>
+                        <% num++ %>
+                    <% }) %>
+                <% }) %>
+
+                <% 
+                let totalAmount = 0;
+                let totalMRP = 0;
+                let totalDiscount = 0;
+                let totalProductsCount = 0;
+                const deliveryCharge = 40;
+                
+                order.forEach(order => {
+                    order.products.forEach(product => {
+                        const totalPriceForProduct = product.product.salePrice * product.count;
+                        totalAmount += totalPriceForProduct;
+                        totalMRP +=  product.product.MRP *  product.count;
+                        totalDiscount += ( product.product.MRP -  product.product.salePrice) *  product.count;
+                        totalProductsCount +=  product.count;
+                    });
+                });
+                
+                const finalDiscountedPrice = totalMRP - totalDiscount;
+                const totalPriceIncludingDelivery = finalDiscountedPrice + deliveryCharge;
+                %>
+                
+                
+              <tr>
+                <td colspan="7">
+                  <table class="w-full border-collapse border-spacing-0">
+                    <tbody>
+                      <tr>
+                        <td class="w-full"></td>
+                        <td>
+                          <table class="w-full border-collapse border-spacing-0">
+                            <tbody>
+                              <tr>
+                                <td class="border-b p-3">
+                                  <div class="whitespace-nowrap text-slate-400">Net total:</div>
+                                </td>
+                                
+                                <td class="border-b p-3 text-right">
+                                  <div class="whitespace-nowrap font-bold text-main">₹<%= finalDiscountedPrice%>.00</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="border-b p-3">
+                                  <div class="whitespace-nowrap text-slate-400">Deliver Charge:</div>
+                                </td>
+                                
+                                <td class="border-b p-3 text-right">
+                                  <div class="whitespace-nowrap font-bold text-main">₹40.00</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="p-3">
+                                  <div class="whitespace-nowrap text-slate-400">Total Amount:</div>
+                                </td>
+                                <td class="p-3 text-right">
+                                  <div class="whitespace-nowrap font-bold text-main">₹<%=totalPriceIncludingDelivery %>.00</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="bg-main p-3">
+                                  <div class="whitespace-nowrap font-bold text-white">Total:</div>
+                                </td>
+                                <td class="bg-main p-3 text-right">
+                                  <div class="whitespace-nowrap font-bold text-white">$384.00</div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="px-14 text-sm text-neutral-700">
+          <p class="text-main font-bold">PAYMENT DETAILS</p>
+          <% order.forEach(function(order) { %>
+            <p> <%=order.paymentMethod %></p>
+            <%  }); %>
+        </div>
+  
+        <div class="px-14 py-10 text-sm text-neutral-700">
+          <p class="text-main font-bold">Notes</p>
+          <p class="italic">Kindly keep this invoice for your future reference and any potential needs that may arise.</p>
+          </dvi>
+  
+          <footer class="fixed bottom-0 left-0 bg-slate-100 w-full text-neutral-600 text-center text-xs py-3">
+            Book selling  platform
+            <span class="text-slate-300 px-2">|</span>
+            binbookskeral@gmail.com
+            <span class="text-slate-300 px-2">|</span>
+            +918086812602
+          </footer>
+        </div>
+      </div>
+
+  </body>
+  
