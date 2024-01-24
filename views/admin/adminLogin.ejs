@@ -12,18 +12,21 @@
         <img class="w-44" src="/images/Logo.png" alt="">
     </header>
    <main class="mt-[19rem]">
-     <form action="" class="flex flex-col items-center justify-center space-y-5  ">
+     <form action="/admin/login" method="post" class="flex flex-col items-center justify-center space-y-7  ">
         <div class="flex items-center   border-b-2 w-2/12 space-x-2 pb-1 pl-2">
             <img src="/images/user blue filled.png" alt="" class="h-5">
-            <input type="text" name="" id="" placeholder="username"  class="bg-[#F2F2F2] outline-none placeholder:font-thin w-full">
+            <input type="text" name="userName" id="" placeholder="username"  class="bg-[#F2F2F2] outline-none placeholder:font-light w-full">
         </div>
         <div class="flex border-b-2 w-2/12 space-x-2 pb-1 pl-2">
             <img src="/images/lock blue.png" alt="" class="h-5">
-            <input type="text" name="" id="" placeholder="password" class="bg-[#F2F2F2] outline-none placeholder:font-thin w-full">
+            <input type="text" name="password" id="" placeholder="password" class="bg-[#F2F2F2] outline-none placeholder:font-light w-full">
             <span class="material-symbols-outlined text-gray-400 text-[22px] cursorp">
                 visibility
             </span>   
         </div>
+        <%if(locals.error){ %>
+            <p class="text-xs text-red-600">Invalid username or password</p>
+            <% } %>
         <button type="submit" class="bg-[#5E8E99]  w-2/12 rounded-sm text-white font-bold py-1">
             Login
         </button>

@@ -40,7 +40,7 @@
                     </div>
                     <div class="flex flex-col items-center ">
                         <p class="text-[#666666] text-sm font-medium">Total Sales</p>
-                        <p class="font-semibold text-xl">₹10,800</p>
+                        <p class="font-semibold text-xl">₹<%= totalSales %></p>
                     </div>
                 </div>
                 <div class="bg-white px-10 pr-24  py-4 w-full flex items-center space-x-8 rounded-xl drop-shadow-lg">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="flex flex-col items-center ">
                         <p class="text-[#666666] text-sm font-medium">Total Orders</p>
-                        <p class="font-semibold text-xl">1200</p>
+                        <p class="font-semibold text-xl"><%=ordersCount %></p>
                     </div>
                 </div>
                 <div class="bg-white px-10 pr-24  py-4 w-full flex items-center space-x-8 rounded-xl drop-shadow-lg">
@@ -58,7 +58,7 @@
                     </div>
                     <div class="flex flex-col items-center ">
                         <p class="text-[#666666] text-sm font-medium">Total Products</p>
-                        <p class="font-semibold text-xl">320</p>
+                        <p class="font-semibold text-xl"><%=productsCount %></p>
                     </div>
                 </div>
                 <section class="mt-6 col-start-1 col-end-3"> <!--chart-->
@@ -147,118 +147,30 @@
                 <section class="mt-5 col-start-1 col-end-4 pb-20"> <!--Latest orders-->
                     <div class="bg-white pl-6 rounded-t-lg py-3 pb-5  font-semibold flex justify-between px-3">
                         <p>Latest Orders</p>
-                        <form action=""> <!--search-->
-                            <div class="flex items-center rounded-md bg-white    text-[#666666] outline outline-[.1px] outline-gray-400">
-                                <input type="text" class="outline-none rounded-md pl-3 text-xs w-80 placeholder:text-xs" name="" id="" placeholder="Search customer.. ">
-                                <div class="bg-[#DAA520] px-1 py-1 rounded-md h-full">
-                                    <img src="/images/search white.png" class="h-4" alt="">
-                                </div>
-                            </div>
-                            
-                        </form>
-                        
-                    </div>
-                    <table class=" w-full drop-shadow-xl ">
 
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
-                        <tr class="bg-white  text-sm border-b-[.2px] border-b-[#666666] w-full flex justify-between px-3 items-center last:rounded-b-lg last:border-b-0">
-                            <td class="ps-3 py-2 max-w-[14rem] truncate pr-6 font-semibold">Shibil Muhammad </td>
-                            <td class="max-w-[18rem] truncate pr-6  text-center">shibilmuhammad678@gmail.com </td>
-                            <td class="text-center">₹2000</td>
-                            <td class="flex justify-center items-center mt-1">
-                                <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs  px-2">Delivered</div>
-                            </td>
-                            <td class="text-sm text-[#666666]">
-                               01.02.2024 01.12 pm
-                            </td>
-                        </tr>
+                    </div>
+                    <table class=" w-full drop-shadow-xl " >
+                        <% orders.slice(0, 10).forEach(function(data) { %>
+                            <tr class="bg-white text-sm border-b-[.2px] border-b-[#666666] w-full  px-3 items-center last:rounded-b-lg last:border-b-0">
+                                <td class="ps-3 py-2 max-w-[14rem] text-left truncate pr-6 font-semibold"><%= data.address.name %> </td>
+                                <td class="max-w-[18rem] truncate pr-6 text-center"><%= data.phone %> </td>
+                                <td class="text-left max-w-[10rem]">₹<%=data.totalOrderPrice %></td>
+                                <td class="flex justify-center items-center mt-1">
+                                    <div class="bg-[#DBFCDF] text-[#189E34] rounded-full text-center text-xs px-2 <%=  data.status === 'Cancelled' ? 'bg-[#FBEBEC] text-[#B16D70]' :
+                                    data.status === 'Packed' ? 'bg-[#FDE68A] text-[#6B7280]' :
+                                    data.status === 'Shipped' ? 'bg-[#93C5FD] text-[#1E3A8A]' :
+                                    data.status === 'ordered' ? 'bg-[#FFD700] text-[#4F772D]'  :
+                                    data.status === 'Delivered' ? 'bg-[#C6F6D5] text-[#065F46]' :
+                                    ''  %>"><%= data.status %></div>
+                                </td>
+                                <td class="text-sm text-[#666666]">
+                                    <%= data.date.toLocaleString() %> <!-- Fix: Correct method name toLocaleString() -->
+                                </td>
+                            </tr>
+                            
+                        <% }); %>
+                        
+                       
                         
                        
                         

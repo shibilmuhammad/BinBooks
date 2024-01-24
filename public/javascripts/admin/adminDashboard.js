@@ -5,7 +5,7 @@
             colors: ["#EDEDED", "#6D6D6D"],
             series: [
               {
-                name: "Organic",
+                name: "Male",
                 color: "#EDEDED",
                 data: [
                   { x: "Jan", y: 231 },
@@ -24,7 +24,7 @@
                 ],
               },
               {
-                name: "Social media",
+                name: "Female .",
                 color: "#6D6D6D",
                 data: [
                     { x: "Jan", y: 231 },
@@ -124,127 +124,143 @@
     });
 //male and female chart 
 
-    // ApexCharts options and config
-    window.addEventListener("load", function() {
-      const getChartOptions = () => {
-          return {
-            series: [35.1, 23.5],
-            colors: ["#5F27CD", "#D61F8D", ],
-            chart: {
+   // Function to fetch gender counts from the server
+async function fetchGenderCounts() {
+  try {
+      const response = await fetch('/admin/gender-counts'); // Replace with your API endpoint
+      const data = await response.json();
+      const male = parseInt(data.maleCount, 10);
+        const female = parseInt(data.femaleCount, 10);
+
+        return { male, female };
+  } catch (error) {
+      console.error('Error fetching gender counts:', error);
+      return { male: 0, female: 0 };
+  }
+}
+
+window.addEventListener("load", async function () {
+  // Function to get chart options
+  const getChartOptions = (maleCount, femaleCount) => {
+      return {
+          series: [maleCount, femaleCount],
+          colors: ["#5F27CD", "#D61F8D"],
+          chart: {
               height: 320,
               width: "100%",
               type: "donut",
-            },
-            stroke: {
+          },
+          stroke: {
               colors: ["transparent"],
               lineCap: "",
-            },
-            plotOptions: {
+          },
+          plotOptions: {
               pie: {
-                donut: {
-                  labels: {
-                    show: true,
-                    name: {
-                      show: true,
-                      fontFamily: "Inter, sans-serif",
-                      offsetY: 20,
-                    },
-                    total: {
-                      showAlways: true,
-                      show: true,
-                      label: "Total Users",
-                      fontFamily: "Inter, sans-serif",
-                      formatter: function (w) {
-                        const sum = w.globals.seriesTotals.reduce((a, b) => {
-                          return a + b
-                        }, 0)
-                        return `${sum}k`
+                  donut: {
+                      labels: {
+                          show: true,
+                          name: {
+                              show: true,
+                              fontFamily: "Inter, sans-serif",
+                              offsetY: 20,
+                          },
+                          total: {
+                              showAlways: true,
+                              show: true,
+                              label: "Total Users",
+                              fontFamily: "Inter, sans-serif",
+                              formatter: function (w) {
+                                  const sum = w.globals.seriesTotals.reduce((a, b) => a + b, 0);
+                                  return `${sum}`;
+                              },
+                          },
+                          value: {
+                              show: true,
+                              fontFamily: "Inter, sans-serif",
+                              offsetY: -20,
+                              formatter: function (value) {
+                                  return value + "";
+                              },
+                          },
                       },
-                    },
-                    value: {
-                      show: true,
-                      fontFamily: "Inter, sans-serif",
-                      offsetY: -20,
-                      formatter: function (value) {
-                        return value + "k"
-                      },
-                    },
+                      size: "80%",
                   },
-                  size: "80%",
-                },
               },
-            },
-            grid: {
+          },
+          grid: {
               padding: {
-                top: -2,
+                  top: -2,
               },
-            },
-            labels: ["Male", "Female"],
-            dataLabels: {
+          },
+          labels: ["Male", "Female"],
+          dataLabels: {
               enabled: false,
-            },
-            legend: {
+          },
+          legend: {
               position: "bottom",
               fontFamily: "Inter, sans-serif",
-            },
-            yaxis: {
+          },
+          yaxis: {
               labels: {
-                formatter: function (value) {
-                  return value + "k"
-                },
+                  formatter: function (value) {
+                      return value + "";
+                  },
               },
-            },
-            xaxis: {
+          },
+          xaxis: {
               labels: {
-                formatter: function (value) {
-                  return value  + "k"
-                },
+                  formatter: function (value) {
+                      return value + "";
+                  },
               },
               axisTicks: {
-                show: false,
+                  show: false,
               },
               axisBorder: {
-                show: false,
+                  show: false,
               },
-            },
-          }
-        }
-  
-        if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
-          const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
-          chart.render();
-  
-          // Get all the checkboxes by their class name
-          const checkboxes = document.querySelectorAll('#devices input[type="checkbox"]');
-  
-          // Function to handle the checkbox change event
-          function handleCheckboxChange(event, chart) {
-              const checkbox = event.target;
-              if (checkbox.checked) {
-                  switch(checkbox.value) {
-                    case 'desktop':
+          },
+      };
+  };
+
+  if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
+      // Fetch gender counts
+      const { male, female } = await fetchGenderCounts();
+
+      // Initialize chart with fetched counts
+      const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions(male, female));
+      chart.render();
+
+      // Get all the checkboxes by their class name
+      const checkboxes = document.querySelectorAll('#devices input[type="checkbox"]');
+
+      // Function to handle the checkbox change event
+      function handleCheckboxChange(event, chart) {
+          const checkbox = event.target;
+          if (checkbox.checked) {
+              switch (checkbox.value) {
+                  // Update chart series based on the checkbox value
+                  case 'desktop':
                       chart.updateSeries([15.1, 22.5, 4.4, 8.4]);
                       break;
-                    case 'tablet':
+                  case 'tablet':
                       chart.updateSeries([25.1, 26.5, 1.4, 3.4]);
                       break;
-                    case 'mobile':
+                  case 'mobile':
                       chart.updateSeries([45.1, 27.5, 8.4, 2.4]);
                       break;
-                    default:
+                  default:
                       chart.updateSeries([55.1, 28.5, 1.4, 5.4]);
-                  }
-  
-              } else {
-                  chart.updateSeries([35.1, 23.5, 2.4, 5.4]);
               }
+          } else {
+              // Update chart series with fetched male and female counts
+              chart.updateSeries([male, female]);
           }
-  
-          // Attach the event listener to each checkbox
-          checkboxes.forEach((checkbox) => {
-              checkbox.addEventListener('change', (event) => handleCheckboxChange(event, chart));
-          });
-        }
-    });
+      }
 
-  
+      // Attach the event listener to each checkbox
+      checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener('change', (event) => handleCheckboxChange(event, chart));
+      });
+  }
+});

@@ -1,5 +1,8 @@
 const customerModel = require('../../models/customers')
 const productsModel = require('../../models/products');
+const Razorpay = require('razorpay');
+var instance = new Razorpay({ key_id: 'rzp_test_QfPZ4R4jhKFmna', key_secret: 'Kgvk8R04wASBxxMdnxR3CVZN' })
+
 
 let productsWithCount = [];
 module.exports = {
@@ -71,8 +74,10 @@ module.exports = {
       }
     },
     getProceedTopay: async function(req,res){
+        if(req.params.paymentId ==='paymentId'){
+
+        }
         let user = await customerModel.findOne({phone:req.session.user})
-      if(req.session.paymentSubmitted==='Cash on delivery'){
         const orderProducts = productsWithCount.map(item => ({
             product: item.product._id, 
             count: item.count
@@ -84,7 +89,8 @@ module.exports = {
             address: foundAddress,
             date: new Date(),
             paymentMethod:req.session.paymentSubmitted,
-            status:'ordered'
+            status:'ordered',
+            paymentId: req.params.paymentId !== 'paymentId' ? req.params.paymentId : undefined
         };
         user.orders.push(newOrder);
         delete req.session.addressId;
@@ -100,13 +106,57 @@ module.exports = {
         let  username = res.locals.user
         req.session.orderSuccessful = true;
         res.redirect('/user/orderSuccessful');
-      }else if(req.session.paymentSubmitted===' Credit or debit Card'){
-        console.log('credit');
-      }else{
-        console.log('otherupi');
-      }
+  
     },getInvoice : async function(req,res){
         res.render('user/invoice')
+    },orderConfirmation: async function(req,res){
+        if(req.session.paymentSubmitted==='Cash on delivery' ){
+            res.json('Cod')
+        }
+        else{   
+            let totalAmount = 0;
+            let totalMRP = 0;
+            let totalDiscount = 0;
+            let totalProductsCount = 0;
+            let deliveryCharge
+            deliveryCharge = 40;
+
+            productsWithCount.forEach(function(data) {
+                const totalPriceForProduct = data.product.salePrice * data.product.count;
+                totalAmount += totalPriceForProduct;
+                totalMRP += data.product.MRP * data.count;
+                totalDiscount += (data.product.MRP - data.product.salePrice) * data.count;
+                totalProductsCount += data.count;
+            });
+            const finalDiscountedPrice = totalMRP - totalDiscount;
+            const totalPriceIncludingDelivery = finalDiscountedPrice + deliveryCharge;
+            var options = {
+                amount: totalPriceIncludingDelivery*100,  // amount in the smallest currency unit
+                currency: "INR",
+                receipt: "order_rcptid_11"
+              };
+            instance.orders.create(options, (err, order) => { 
+                if (order) { 
+                    console.log(order, ": order success") 
+                    res.status(200).send({ 
+                        success: true, 
+                        msg: "Order Created", 
+                        order_id: order.id, 
+                        amount: 5000, 
+                        key_id: 'rzp_test_QfPZ4R4jhKFmna', 
+                        name: 'rafeeq', 
+                        email: 'muhammedrafeeqvr@gmail.com', 
+                        contact: '957983967' 
+               
+                    }) 
+                } 
+                else if (err) { 
+                    console.log("Error in creating razorpay order :", err) 
+                    res.status(500).send() 
+                }
+            })
+        }
+    
     }
 }
 

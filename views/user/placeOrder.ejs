@@ -52,10 +52,8 @@
                     let totalDiscount = 0;
                     let totalProductsCount = 0;
                     let deliveryCharge
-                  
-                        deliveryCharge = 40;
-                   
-                    
+                    deliveryCharge = 40;
+
                     products.forEach(function(data) {
                         const totalPriceForProduct = data.product.salePrice * data.product.count;
                         totalAmount += totalPriceForProduct;
@@ -167,9 +165,10 @@
         </div>
     </main>
     <div class="flex-grow"></div>
-    <div class="px-3  lg:px-52 fixed bottom-0  w-full bg-white pt-2">
-        <label for="submit"  class="bg-[#DAA520] mb-2 text-white font-semibold py-[6px] rounded-lg w-full text-center cursor-pointer flex flex-col ">Confirm </button>
+    <div class="px-3  lg:px-52 fixed bottom-0  w-full bg-white pt-2" id="rzp-button1">
+        <label   class="bg-[#DAA520] mb-2 text-white font-semibold py-[6px] rounded-lg w-full text-center cursor-pointer flex flex-col ">Confirm </button>
     </div>
+    
     <script src="/javascripts//user/placeOrder.js"></script>
 </body>
 <script>
@@ -177,4 +176,7 @@
         window.location.href='/user/address'
     }
 </script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script src="../../javascripts/user/common.js"></script>

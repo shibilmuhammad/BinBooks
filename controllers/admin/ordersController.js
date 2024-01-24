@@ -52,7 +52,10 @@ const get = async function (req, res) {
         gloabalOrders = []
         let orders = transformedOrders.flat().reverse()
         gloabalOrders = orders;
-
+        const sumOfTotalOrderPrice = gloabalOrders.reduce((total, order) => total + order.totalOrderPrice, 0);
+        const countOfOrders = gloabalOrders.length;
+        console.log('sum is '+sumOfTotalOrderPrice);
+        console.log('count is',countOfOrders);
         res.render('admin/adminOrders',{orders});
     } catch (error) {
         console.error(error);
@@ -173,6 +176,11 @@ postFilter = async function(req,res){
         return statusMatch;
     });
     res.render('partials/admin/ordersTabledata',{ orders:filteredOrders})
+},
+genderCount = async function(req,res){
+    const maleCount = await Customer.countDocuments({ gender: 'male' });
+    const femaleCount = await Customer.countDocuments({ gender: 'female' });
+    res.json({ maleCount, femaleCount });
 }
 function sortArraydate(a,b){
     if(a.date < b.date){
@@ -212,4 +220,4 @@ function sortArraydate(a,b){
   }
   
   
-module.exports = { get ,getEdit,postEdit,postSearch,postSort,postFilter};
+module.exports = { get ,getEdit,postEdit,postSearch,postSort,postFilter,genderCount};

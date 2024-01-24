@@ -24,6 +24,7 @@ const searchResultController = require('../controllers/user/searchResultControll
 const wishListController = require('../controllers/user/wishListController');
 const yourOrderControllers = require('../controllers/user/yourOrdersController');
 const logOutController = require('../controllers/user/logOutController')
+const contactUsController = require('../controllers/user/contactUsController')
 // Login 
 router.get('/logOut',logOutController.get)
 
@@ -34,6 +35,9 @@ router.get('/loginpassword',authMiddleware.isAuthenticated,authMiddleware.isPhon
 router.post('/loginpswd',authMiddleware.isAuthenticated,loginpswdController.post)
 
 router.get('/aboutUs',aboutuscontroller.get);
+
+router.get('/contactUs',contactUsController.get)
+
 router.get('/address',authMiddleware.requireLogin,authMiddleware.okeyForDeliver,addressController.get);
 router.get('/user/address/:adressId',authMiddleware.okeyForDeliver,addressController.getaddress)
 router.get('/address/edit/:addressId',addressController.getEdit)
@@ -66,7 +70,8 @@ router.post('/payment',paymentController.post)
 
 router.get('/placeOrder',authMiddleware.requireLogin,authMiddleware.okeyForDeliver,placeOrderController.get);
 router.post('/placeOrder/updateQuantity/:productId',placeOrderController.postUpdate)
-router.get('/proceedtoPay',placeOrderController.getProceedTopay)
+router.get('/proceedtoPay/:paymentId',placeOrderController.getProceedTopay)
+router.post('/placeOrder/orderConfirmation',placeOrderController.orderConfirmation)
 
 router.get('/product/:productId',productController.get);
 router.get('/products/:categoryName',productsController.get);
@@ -77,6 +82,7 @@ router.post('/myCart/:productId',myCartController.post);
 router.post('/myCart/updateQuantity/:productId',myCartController.postUpdate)
 router.get('/myCart/removeProduct/:productId',myCartController.removeget)
 router.get('/mycart/placeOrder',myCartController.placeOrderget)
+
 
 router.get('/resetPassword',authMiddleware.isAuthenticated,authMiddleware.isPhonenumber,resetpswdController.get);
 router.post('/resetpassword',resetpswdController.post)

@@ -63,3 +63,56 @@ const updateTotalAmount = (productsWithCount) => {
     document.getElementById("finalMRP").innerText ='₹'+ totalMRP;;
     document.getElementById('finalsaleprice').innerText='₹'+totalPriceIncludingDelivery
 };
+
+
+document.getElementById('rzp-button1').onclick =  async function(e){
+    const response =  await fetch('/user/placeOrder/orderConfirmation',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+            amount:500
+        })
+    })
+    let data = await response.json()
+
+    if(data == 'Cod'){
+        window.location.href = '/user/proceedtoPay/paymentId'
+    }
+var options = {
+    "key": data.key_id, // Enter the Key ID generated from the Dashboard
+    "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "BinBooks",
+    "description": "Test Transaction",
+    "image": "http://localhost:3000/images/LOGO FOR WHITEBG.jpg",
+    "order_id": data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        window.location.href= `/user/proceedtoPay/${response.razorpay_payment_id}`
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#5E8E99"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+    rzp1.open();
+    e.preventDefault();
+}
