@@ -59,7 +59,6 @@ module.exports = {
             },
             { new: true } 
         );
-        console.log(user.address);
         res.redirect('/user/address')
     }
 }

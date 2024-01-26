@@ -23,7 +23,6 @@ module.exports = {
         let user = await customerModel.findOne({phone:req.session.user})
         let addresses = user.address.filter(addr => addr._id == req.params.addressId);
         let address = addresses.length > 0 ? addresses[0] : null;
-        console.log('addressname',address.name);
         res.render('user/buynow',{address})
     }   
 }

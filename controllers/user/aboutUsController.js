@@ -6,6 +6,6 @@ module.exports = {
             let user = await customerModel.findOne({phone:req.session.user})
             res.locals.user = user.name;
         }
-        res.render('user/aboutUs',{user:res.locals.user})
+        res.render('user/aboutUs',{user:res.locals.user,categoryName:'About Us'})
     }
 }

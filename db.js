@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const connection = await mongoose.connect('mongodb://localhost:27017/binbooks', {
+    const connection = await mongoose.connect('mongodb+srv://binbookskerala:CuZCjwGvp0oAFRjY@binbooks.4lginhb.mongodb.net/binbooks?retryWrites=true&w=majority', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });

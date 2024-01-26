@@ -2,8 +2,6 @@ const customerModel = require('../../models/customers')
 const Product = require('../../models/products')
 module.exports = {
     get:async function (req,res){
-
-        console.log(req.params);
         let user = await customerModel.findOne({phone:req.session.user})
         let username;
         res.locals.user = user.name;
@@ -19,8 +17,6 @@ module.exports = {
                 };
             }));
             order.products = populatedProducts;
-            console.log(order);
-            console.log('Populated products:', order.products);
             res.render('user/orderSummery',{user:username,order,categoryName:'Order Summery'})
         
             }
@@ -29,9 +25,7 @@ module.exports = {
             const [orderId2,productId] = req.params.orderId.split('-');
 
             const specificProductId = productId
-            console.log('orderId2'+orderId2);
             const order = user.orders.find(order => order._id.toString() === orderId2.toString());
-            console.log('order is in the ',order);
             if (order && order.products) {
                 const specificProductIndex = order.products.findIndex(product => product.product.toString() === specificProductId);
             

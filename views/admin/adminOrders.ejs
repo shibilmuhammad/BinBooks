@@ -63,21 +63,23 @@
                     </div>
                 </form>
             </div>
-
-            <table class=" w-full mt-2 ">
-                <tr class="bg-[#5E8E99]   text-white text-left font-medium  ">
-                    <th class="font-medium ps-3 rounded-tl-md py-2">Order ID </th>
-                    <TH class="font-medium  ">Address</TH>
-                    <th class="font-medium">Phone</th>
-                    <th class="font-medium text-center">Date & Time</th>
-                    <th class="font-medium text-center">Price</th>
-                    <th class="font-medium text-center">Status</th>
-                    <th class="rounded-tr-md font-medium text-center">Action</th>
-                </tr>
-                <tbody id="table-container" > 
-                    <%-include("../partials/admin/ordersTabledata.ejs")%>
-                </tbody>
-            </table>
+            <div class="h-[32rem] overflow-y-auto">
+                <table class=" w-full mt-2 ">
+                    <tr class="bg-[#5E8E99]  sticky top-0     text-white text-left font-medium  ">
+                        <th class="font-medium ps-3 rounded-tl-md py-2">Order ID </th>
+                        <TH class="font-medium  ">Address</TH>
+                        <th class="font-medium">Phone</th>
+                        <th class="font-medium text-center">Date & Time</th>
+                        <th class="font-medium text-center">Price</th>
+                        <th class="font-medium text-center">Status</th>
+                        <th class="rounded-tr-md font-medium text-center">Action</th>
+                    </tr>
+                    <tbody id="table-container" > 
+                        <%-include("../partials/admin/ordersTabledata.ejs")%>
+                    </tbody>
+                </table>
+            </div>
+            
            
 
         </div>

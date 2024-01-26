@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title><%=locals.categoryName?categoryName: locals.products && locals.products.length > 0 ? locals.products[0]?.category : (locals.product ? locals.product.bookName : 'Binbooks') %></title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        
+        <link rel="icon" type="image/x-icon" href="/images/Fevicon.png">
     </head>

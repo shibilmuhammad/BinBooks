@@ -2,7 +2,7 @@
 const customerModel = require('../../models/customers')
 module.exports = {
     get: function (req,res){
-        res.render('user/login')
+        res.render('user/login',{categoryName:'Log in .Binbooks'})
     },
     post: async function (req, res){
         try {

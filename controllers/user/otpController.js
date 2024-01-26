@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 const customerModel = require('../../models/customers');
-
+require('dotenv').config();
 module.exports = {
     get: async function (req, res) {
         try {
@@ -66,7 +66,7 @@ module.exports = {
         requireTLS: true,
         auth: {
           user: 'binbookskerala@gmail.com',
-          pass: 'rtau qlbi fsbm xogt',
+          pass: process.env.email_pswd,
         },
         tls: {
           rejectUnauthorized: false,

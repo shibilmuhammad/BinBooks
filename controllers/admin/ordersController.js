@@ -54,8 +54,6 @@ const get = async function (req, res) {
         gloabalOrders = orders;
         const sumOfTotalOrderPrice = gloabalOrders.reduce((total, order) => total + order.totalOrderPrice, 0);
         const countOfOrders = gloabalOrders.length;
-        console.log('sum is '+sumOfTotalOrderPrice);
-        console.log('count is',countOfOrders);
         res.render('admin/adminOrders',{orders});
     } catch (error) {
         console.error(error);
@@ -89,10 +87,7 @@ const getEdit = async function(req,res){
     }
 }
 const postEdit = async function(req,res){
-    let [userId, orderId] = req.params.ids.split('-');
-    console.log('userId:', userId);
-    console.log('orderId:', orderId);
-    
+    let [userId, orderId] = req.params.ids.split('-');   
     try {
         const user = await Customer.findOneAndUpdate(
             { 
@@ -105,10 +100,7 @@ const postEdit = async function(req,res){
                 }
             },
             { new: true } 
-        );
-    
-        console.log('user after update:', user);
-    
+        );    
         if (!user) {
             console.log('User not found');
             return res.status(404).json({ error: 'User not found' });
@@ -142,8 +134,6 @@ postSearch = async function(req,res){
 
             return addressMatch || phoneMatch || otherPropertyMatch;
         });
-
-        console.log('filtered orders'+filteredOrders);
         res.render('partials/admin/ordersTabledata',{ orders:filteredOrders})
     } catch (error) {
         console.error(error);

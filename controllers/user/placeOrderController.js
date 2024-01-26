@@ -59,7 +59,6 @@ module.exports = {
           if (productIndex !== -1) {
             
             await updateProductCount(productIndex, newQuantity)
-            console.log('post prdocucts count '+productsWithCount[productIndex].product+ 'count is '+productsWithCount[productIndex].count);
               res.json({
                 success: true,
                 message: 'Quantity updated successfully',
@@ -101,7 +100,6 @@ module.exports = {
         }
         delete req.session.productsIds
         await user.save();
-        console.log('session is',req.session);
         res.locals.user = user.name;
         let  username = res.locals.user
         req.session.orderSuccessful = true;
@@ -137,12 +135,11 @@ module.exports = {
               };
             instance.orders.create(options, (err, order) => { 
                 if (order) { 
-                    console.log(order, ": order success") 
                     res.status(200).send({ 
                         success: true, 
                         msg: "Order Created", 
                         order_id: order.id, 
-                        amount: 5000, 
+                        amount: totalPriceIncludingDelivery*100, 
                         key_id: 'rzp_test_QfPZ4R4jhKFmna', 
                         name: 'rafeeq', 
                         email: 'muhammedrafeeqvr@gmail.com', 

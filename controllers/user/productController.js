@@ -18,7 +18,7 @@ module.exports = {
 
                 res.locals.user = user.name;
             }
-            console.log(isProductInWishlist);
+
             res.render('user/product', { product, recommendedProducts, user: res.locals.user, isProductInWishlist });
         } catch (error) {
             console.error('Error in product controller:', error);

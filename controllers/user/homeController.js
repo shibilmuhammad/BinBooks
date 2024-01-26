@@ -12,7 +12,6 @@ module.exports = {
         if (req.session.user) {
             let user = await customerModel.findOne({phone:req.session.user})
             res.locals.user = user.name;
-            console.log(res.locals.user)
         }
 
         res.render('user/home',{categories,products,banners,user:res.locals.user})

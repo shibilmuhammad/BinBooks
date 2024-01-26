@@ -61,13 +61,7 @@ module.exports = {
 
 // Count of female customers
 const femaleCustomersCount = await Customer.countDocuments({ gender: 'female' });
-
-console.log('Male customers count:', maleCustomersCount);
-console.log('Female customers count:', femaleCustomersCount);
-            console.log('sum is '+sumOfTotalOrderPrice);
-            console.log('count is',countOfOrders);
             res.render('admin/adminDashboard',{orders,totalSales:sumOfTotalOrderPrice,ordersCount:countOfOrders,productsCount,males:maleCustomersCount,females:femaleCustomersCount});
-            console.log('pproducts count s',productsCount);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });

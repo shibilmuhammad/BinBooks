@@ -14,7 +14,6 @@ module.exports = {
         let existingUser = await customerModel.findOne({ phone: req.body.number });
 
         if (existingUser) {
-            console.log("Phone number already exists in the database. No changes made.");
             res.redirect('/user/myAccount');
             return;
         }

@@ -77,8 +77,7 @@ module.exports = {
         if(req.file){
           await cloudinary.uploader.destroy(productForEdit.cloudinaryId);
           result = await cloudinary.uploader.upload(req.file.path)
-          console.log()
-          console.log(req.file.path)
+      
         }
         let updatedData={}
         let discountamount = (req.body.discount * req.body.mrp)/100

@@ -29,7 +29,6 @@ module.exports = {
                         }
                     }));
                     populatedOrders = populatedOrders.reverse()
-                    console.log('populatedOrders[0].products:', populatedOrders[0].products);
                     res.render('user/yourOrders',{user:res.locals.user,populatedOrders})
                     populatedOrders.forEach(function (order) {
                         order.products.forEach(function (product) {
