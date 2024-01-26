@@ -1,7 +1,8 @@
 const customerModel = require('../../models/customers')
 const productsModel = require('../../models/products');
 const Razorpay = require('razorpay');
-var instance = new Razorpay({ key_id: 'rzp_test_QfPZ4R4jhKFmna', key_secret: 'Kgvk8R04wASBxxMdnxR3CVZN' })
+require('dotenv').config()
+var instance = new Razorpay({ key_id: 'rzp_test_QfPZ4R4jhKFmna', key_secret: process.env.razorpay_key_Secret })
 
 
 let productsWithCount = [];
