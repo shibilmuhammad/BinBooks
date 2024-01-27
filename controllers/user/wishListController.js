@@ -29,18 +29,22 @@ module.exports = {
             const userPhone = req.session.user;
 
             const customer = await customerModel.findOne({ phone: userPhone });
+            if(!req.session.user){
+                res.json({success: false, })
+            }else{
+                const existingWishlistItem = customer.wishList.find(item => item.product.equals(productId));
 
-            const existingWishlistItem = customer.wishList.find(item => item.product.equals(productId));
-
-            if (existingWishlistItem) {
-                customer.wishList.pull(existingWishlistItem._id);
-                await customer.save();
-                res.json({ success: true, message: 'Removed from wishlist' });
-            } else {
-                customer.wishList.push({ product: productId });
-                await customer.save();
-                res.json({ success: true, message: 'Added to wishlist' });
+                if (existingWishlistItem) {
+                    customer.wishList.pull(existingWishlistItem._id);
+                    await customer.save();
+                    res.json({ success: true, message: 'Removed from wishlist' });
+                } else {
+                    customer.wishList.push({ product: productId });
+                    await customer.save();
+                    res.json({ success: true, message: 'Added to wishlist' });
+                }
             }
+           
         } catch (error) {
             console.error('Error in wishlistController.post:', error);
             res.status(500).json({ success: false, message: 'Internal Server Error' });

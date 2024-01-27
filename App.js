@@ -28,6 +28,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //User routes
 const userRoute = require('./routes/user');
+app.get('/', function(req, res) {
+    res.redirect('/user/home');
+});
 app.use("/user",userRoute);
 
 //Admin routes

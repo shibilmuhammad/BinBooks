@@ -23,40 +23,43 @@ async function favorite(element){
       const isInWishlist = data.message === 'Added to wishlist';
 
 
-     
+     if(!data.success){
+          window.location.href='/user/login'
+     }else{
+          if(favButton.classList.contains('text-[#666666]')){
+            document.getElementById('tooltip-bottom').innerText = 'Added to WishList'
+            document.getElementById('tooltip-bottom').style.opacity=1
+              setTimeout(() => {
+              document.getElementById('tooltip-bottom').innerText = 'Add to WishList'
+              document.getElementById('tooltip-bottom').style.opacity='0'
+              }, 2000);
+              favButton.classList.add('favFill')
+              favButton.style.fontVariationSettings = "'FILL' 100"
+              favButton.classList.remove('text-[#666666]')
+          }else{
+            document.getElementById('tooltip-bottom').innerText = 'Removed From wishList'
+            document.getElementById('tooltip-bottom').style.opacity=1
+              setTimeout(() => {
+              document.getElementById('tooltip-bottom').innerText = 'Add to WishList'
+              document.getElementById('tooltip-bottom').style.opacity='0'
+              }, 2000);
+              favButton.classList.remove('favFill')
+              favButton.classList.add('text-[#666666]')
+              favButton.style.fontVariationSettings = "'FILL' 0"
+          }
+          if (isInWishlist) {
+            // If the product is in the wishlist, update the button style
+            favButton.classList.add('favFill');
+            favButton.style.fontVariationSettings = "'FILL' 100";
+            favButton.classList.remove('text-[#666666]');
+          } else {
+            // If the product is not in the wishlist, update the button style
+            favButton.classList.remove('favFill');
+            favButton.classList.add('text-[#666666]');
+            favButton.style.fontVariationSettings = "'FILL' 0";
+        }
+     }
 
-    if(favButton.classList.contains('text-[#666666]')){
-      document.getElementById('tooltip-bottom').innerText = 'Added to WishList'
-      document.getElementById('tooltip-bottom').style.opacity=1
-        setTimeout(() => {
-        document.getElementById('tooltip-bottom').innerText = 'Add to WishList'
-        document.getElementById('tooltip-bottom').style.opacity='0'
-        }, 2000);
-        favButton.classList.add('favFill')
-        favButton.style.fontVariationSettings = "'FILL' 100"
-        favButton.classList.remove('text-[#666666]')
-    }else{
-      document.getElementById('tooltip-bottom').innerText = 'Removed From wishList'
-      document.getElementById('tooltip-bottom').style.opacity=1
-        setTimeout(() => {
-        document.getElementById('tooltip-bottom').innerText = 'Add to WishList'
-        document.getElementById('tooltip-bottom').style.opacity='0'
-        }, 2000);
-        favButton.classList.remove('favFill')
-        favButton.classList.add('text-[#666666]')
-        favButton.style.fontVariationSettings = "'FILL' 0"
-    }
-    if (isInWishlist) {
-      // If the product is in the wishlist, update the button style
-      favButton.classList.add('favFill');
-      favButton.style.fontVariationSettings = "'FILL' 100";
-      favButton.classList.remove('text-[#666666]');
-    } else {
-      // If the product is not in the wishlist, update the button style
-      favButton.classList.remove('favFill');
-      favButton.classList.add('text-[#666666]');
-      favButton.style.fontVariationSettings = "'FILL' 0";
-   }
 }
 
 var addToCartButtons = document.querySelectorAll('.main-add-to-cart-button');

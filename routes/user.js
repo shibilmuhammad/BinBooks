@@ -90,7 +90,7 @@ router.post('/resetpassword',resetpswdController.post)
 router.get('/search',searchResultController.getSearch)
 //WishList
 router.get('/wishList',authMiddleware.requireLogin,wishListController.get);
-router.post('/wishlist/:productId',authMiddleware.requireLoginMyCart,wishListController.post)
+router.post('/wishlist/:productId',wishListController.post)
 router.get('/wishlist/remove/:productId',wishListController.getremove)
 
 
