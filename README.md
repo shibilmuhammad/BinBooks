@@ -97,15 +97,15 @@ User Screens (Mobile view)
 Admin Screens
 
 <p float="left">
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/admin%20dashboard.png" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/ba08a94f-b599-46d2-86c3-9a611188c87a" width="400" height="200">
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/admin%20category.png" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/431d1936-b616-468e-8f79-e35999ecdd57" width="400" height="200">
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/admin%20customers.png" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/d4af19c4-bf99-4d16-a6d2-163c5259725a" width="400" height="200">
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/admin%20orders.png" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/e1577ce4-5e2a-4aaf-bb32-47203a716e67" width="400" height="200">
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/admin%20products.png" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/b7e4c40b-2dda-4e38-a162-e4024286236a" width="400" height="200">
 </p>
 
 
