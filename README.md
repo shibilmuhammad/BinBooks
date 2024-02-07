@@ -71,22 +71,21 @@ Install Binbooks-website with npm
 User Screens (Mobile view)
 
 <p float="left">
-<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/68874043-78ee-4312-b9fd-c62a1a6fed55" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/613e692c-4add-4bbe-896a-a5db0ed111ff" alt="Image description" width="200" height="400"/>
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145007.png" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/2fc6edea-099f-4cd5-b83d-2fe94da2108e" alt="Image description" width="200" height="400"/>
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145036.png" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/0eb3f94d-3ce2-4ab6-a548-4f8451201444" alt="Image description" width="200" height="400"/>
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145153.png" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/77ad9959-ba21-4cac-85a0-e482839cc30b" alt="Image description" width="200" height="400"/>
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145216.png" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/541aa224-6b8c-4b15-b12d-0ce7ef5b32ec" alt="Image description" width="200" height="400"/>
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145250.png" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/12554796-ef1c-48f4-b2e9-807daa4397fe" alt='image description' width='200' height='400'>
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145331.png" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/39080257-7bc3-4081-a0ea-5beea1cb8397" alt='image description' width='200' height='400'>
 
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145355.png" alt="Image description" width="200" height="400"/>
-
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/13544c76-db5d-4da7-8b12-f428c451f5bf" alt='image description' width='200' height='400'>
 </p>
 
 Admin Screens
