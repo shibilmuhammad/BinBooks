@@ -5,14 +5,13 @@
 BinBooks is all about making books more affordable and accessible, especially in rural areas. Whether you're looking to buy secondhand books or donate some of your own, we've got you covered.
 
 ## Why BinBooks?
-📚 Affordable Reading: Connecting rural book lovers with secondhand bookstores for budget-friendly options.
-
-🚚 Easy Delivery: Get your favorite books delivered right to your doorstep without breaking the bank.
-
-🔄 Dynamic Search: Effortlessly find books with dynamic search, sort, and filter features that keep things smooth.
+- 📚 **Affordable Reading:** Connecting rural book lovers with secondhand bookstores for budget-friendly options.
+  
+- 🚚 **Easy Delivery:** Get your favorite books delivered right to your doorstep without breaking the bank.
+  
+- 🔄 **Dynamic Search:** Effortlessly find books with dynamic search, sort, and filter features that keep things smooth.
 
 # Tech Talk
-For the tech-savvy, here's a quick peek under the hood:
 
 ### Tech Stack
  Node.js, Express, MongoDB, Tailwind CSS, and good old Vanilla JavaScript for a lightweight and fast experience.
@@ -39,14 +38,6 @@ Install Binbooks-website with npm
 
 [mongoose](https://www.npmjs.com/package//mongoose)
 ## Features
-
-- 📚 **Affordable Reading:** Connecting rural book lovers with secondhand bookstores for budget-friendly options.
-  
-- 🚚 **Easy Delivery:** Get your favorite books delivered right to your doorstep without breaking the bank.
-  
-- 🔄 **Dynamic Search:** Effortlessly find books with dynamic search, sort, and filter features that keep things smooth.
-
-### Additional features:
 
 - 🔒 **Secure User Login:** Protect user data with secure authentication mechanisms.
   
@@ -80,7 +71,7 @@ Install Binbooks-website with npm
 User Screens (Mobile view)
 
 <p float="left">
-<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-144925.png" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/68874043-78ee-4312-b9fd-c62a1a6fed55" alt="Image description" width="200" height="400"/>
 
 <img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145007.png" alt="Image description" width="200" height="400"/>
 
