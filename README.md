@@ -75,21 +75,15 @@ User Screens (Mobile view)
 
 <img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/2fc6edea-099f-4cd5-b83d-2fe94da2108e" alt="Image description" width="200" height="400"/>
 
-
-
 <img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/13544c76-db5d-4da7-8b12-f428c451f5bf" alt='image description' width='200' height='400'>
 
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/dc84a855-2e6f-45ef-8ff8-b7fe74b8e87f" alt='image description' width='200' height='400'>
 
 <img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/541aa224-6b8c-4b15-b12d-0ce7ef5b32ec" alt="Image description" width="200" height="400"/>
 
 <img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/12554796-ef1c-48f4-b2e9-807daa4397fe" alt='image description' width='200' height='400'>
 
-
-
-
 <img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/77ad9959-ba21-4cac-85a0-e482839cc30b" alt="Image description" width="200" height="400"/>
-
-<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/39080257-7bc3-4081-a0ea-5beea1cb8397" alt='image description' width='200' height='400'>
 
 <img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/e21d7936-fb97-4b20-b165-a17e83ce2bd0" alt='image description' width='200' height='400'>
 </p>
@@ -97,15 +91,15 @@ User Screens (Mobile view)
 Admin Screens
 
 <p float="left">
-<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/ba08a94f-b599-46d2-86c3-9a611188c87a" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/ba08a94f-b599-46d2-86c3-9a611188c87a"  width="1512"  >
 
-<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/431d1936-b616-468e-8f79-e35999ecdd57" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/431d1936-b616-468e-8f79-e35999ecdd57"  width="1512"  >
 
-<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/d4af19c4-bf99-4d16-a6d2-163c5259725a" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/d4af19c4-bf99-4d16-a6d2-163c5259725a"  width="1512"  >
 
-<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/e1577ce4-5e2a-4aaf-bb32-47203a716e67" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/e1577ce4-5e2a-4aaf-bb32-47203a716e67"  width="1512"  >
 
-<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/b7e4c40b-2dda-4e38-a162-e4024286236a" width="400" height="200">
+<img src="https://github.com/shibilmuhammad/BinBooks/assets/146309821/b7e4c40b-2dda-4e38-a162-e4024286236a"  width="1512" >
 </p>
 
 
